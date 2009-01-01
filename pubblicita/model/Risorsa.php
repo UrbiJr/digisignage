@@ -70,7 +70,7 @@ class Risorsa{
 	}
 
 	public function getThumbnail(){
-		return "./images/azienda-".$this->idAzienda."/".$info[0]."/thumbnail.jpeg";
+		return "./images/azienda-".$this->idAzienda."/".$info[0]."thumbnail.jpeg";
 	}
 
 	function controllaTipoRisorsa(){
@@ -142,5 +142,5 @@ class Risorsa{
 		return false;
 	}
 
-	
+
 }
