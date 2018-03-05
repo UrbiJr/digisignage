@@ -47,18 +47,18 @@ class Sequenza{
 	
 	public function save(){
 		if(!$this->id){
-			$n=UtentiTab::insert($this);
+			$n=SequenzeTab::insert($this);
 			$this->setId($n);
 			return true;
 		}else{
-			UtentiTab::update($this);
+			SequenzeTab::update($this);
 			return true;
 		}
 		return false;
 	}
 
 	public function delete(){
-		UtentiTab::remove($this);
+		SequenzeTab::remove($this);
 	}
 	
 }

@@ -48,7 +48,7 @@ class GruppiTab{
 	}
 
 	public static function update($gruppo){
-		$query=sprintf("UPDATE gruppi SET sigla='%s', descrizione='%s', id_azienda=%d WHERE id=%d",$gruppo->getSigla(),$gruppo->getDescrizione(),$gruppo->getId_azienda());
+		$query=sprintf("UPDATE gruppi SET sigla='%s', descrizione='%s', id_azienda=%d WHERE id=%d",$gruppo->getSigla(),$gruppo->getDescrizione(),$gruppo->getId_azienda(),$gruppo->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 

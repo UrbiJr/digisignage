@@ -48,7 +48,7 @@ class UtentiTab{
 	}
 
 	public static function update($utente){
-		$query=sprintf("UPDATE Utenti SET nome='%s', password='%s', mail='%s', id_aziende=%d, id_ruoli=%d WHERE id=%d",$utente->getNome(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo,$utente->getId());
+		$query=sprintf("UPDATE Utenti SET nome='%s', password='%s', mail='%s', id_aziende=%d, id_ruoli=%d WHERE id=%d",$utente->getNome(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo(),$utente->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 

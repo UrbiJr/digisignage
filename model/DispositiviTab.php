@@ -41,14 +41,14 @@ class DispositiviTab{
 	}
 
 	public static function insert($gruppo){
-		$query=sprintf("INSERT INTO gruppi (indirizzo_mac,indirizzo_ip,nome,orientamento,id_gruppo) VALUES('%s','%s','%s','%s',%d)",$dispositivo->getIndirizzoMac(),$dispositivo->getIndirizzoIp(),$dispositivo->getNome(),$dispositivo->getOrientamento,$dispositivo->getIdGruppo()); 
+		$query=sprintf("INSERT INTO gruppi (indirizzo_mac,indirizzo_ip,nome,orientamento,id_gruppo) VALUES('%s','%s','%s','%s',%d)",$dispositivo->getIndirizzoMac(),$dispositivo->getIndirizzoIp(),$dispositivo->getNome(),$dispositivo->getOrientamento(),$dispositivo->getIdGruppo()); 
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($gruppo){
-		$query=sprintf("UPDATE gruppi SET indirizzo_mac='%s', indirizzo_ip='%s', nome='%s', orientamento='%s', id_gruppo=%d WHERE id=%d",$dispositivo->getIndirizzoMac(),$dispositivo->getIndirizzoIp(),$dispositivo->getNome(),$dispositivo->getOrientamento,$dispositivo->getIdGruppo()); 
+		$query=sprintf("UPDATE gruppi SET indirizzo_mac='%s', indirizzo_ip='%s', nome='%s', orientamento='%s', id_gruppo=%d WHERE id=%d",$dispositivo->getIndirizzoMac(),$dispositivo->getIndirizzoIp(),$dispositivo->getNome(),$dispositivo->getOrientamento(),$dispositivo->getIdGruppo(),$dispositivo->getId()); 
 		$result=DBCONNECTION::$con->query($query);
 	}
 
