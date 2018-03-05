@@ -1,28 +1,25 @@
 <?php
 
-
-
 class File{
 	private $id;
-	private $nome;							
-	private $tipo; 							
+	private $nome;
+	private $tipo;
 	private $path;
-	private $idRisorse;							
-							
-	
-	function __construct($id, $nome, $tipo, $path, $idRisorse){
+	private $idRisorsa;
+
+	function __construct($id, $nome, $tipo, $path, $idRisorsa){
 		$this->id=$id;
 		$this->nome=$nome;
-		$this->tipo=$tipo;	
+		$this->tipo=$tipo;
 		$this->path=$path;
-		$this->idRisorse=$idRisorse;
+		$this->idRisorsa=$idRisorsa;
 	}
 
 
 	public function getId(){
 		return $this->id;
 	}
-	
+
 	public function getNome(){
 		return $this->nome;
 	}
@@ -47,14 +44,14 @@ class File{
 		$this->path = $path;
 	}
 
-	public function setIdRisorse($idRisorse){
-		$this->idRisorse = $idRisorse;
+	public function setIdRisorsa($idRisorsa){
+		$this->idRisorsa = $idRisorsa;
 	}
-	
-	public function getIdRisorse(){
-		return $this->IdRisorse;
+
+	public function getIdRisorsa(){
+		return $this->idRisorsa;
 	}
-	
+
 	public function save(){
 		if(!$this->id){
 			$n=FileTab::insert($this);
@@ -70,5 +67,5 @@ class File{
 	public function delete(){
 		FileTab::remove($this);
 	}
-	
+
 }

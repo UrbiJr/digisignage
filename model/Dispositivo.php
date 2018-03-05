@@ -1,74 +1,67 @@
 <?php
 
-
-
 class Dispositivo{
 	private $id;
-	private $indirizzo_mac;
-	private $indirizzo_ip;								
+	private $indirizzoMac;
+	private $indirizzoIp;
 	private $nome;
 	private $orientamento;
-	private $id_gruppo;	
-	
-	function __construct($id, $indirizzo_mac, $indirizzo_ip, $nome, $orientamento, $id_gruppo){
+	private $idGruppo;
+
+	function __construct($id, $indirizzoMac, $indirizzoIp, $nome, $orientamento, $idGruppo){
 		$this->id=$id;
-		$this->indirizzo_mac=$indirizzo_mac;
-		$this->indirizzo_ip=$indirizzo_ip;
-		$this->nome=$nome;	
+		$this->indirizzoMac=$indirizzoMac;
+		$this->indirizzoIp=$indirizzoIp;
+		$this->nome=$nome;
 		$this->orientamento=$orientamento;
-		$this->id_gruppo=$id_gruppo;
-	
+		$this->idGruppo=$idGruppo;
 	}
 
 	public function getId(){
 		return $this->id;
 	}
 
-	public function setId($id){
-		$this->id = $id;
-	}
-	
 	public function getIndirizzoMac(){
-		return $this->indirizzo_mac;
+		return $this->indirizzoMac;
 	}
 
-	public function setIndirizzoMac($indirizzo_mac){
-		$this->indirizzo_mac = $indirizzo_mac;
+	public function setIndirizzoMac($indirizzoMac){
+		$this->indirizzoMac = $indirizzoMac;
 	}
 
 	public function getIndirizzoIp(){
-		return $this->indirizzo_ip;
+		return $this->indirizzoIp;
 	}
 
-	public function setIndirizzoIp($indirizzo_ip){
-		$this->Indirizzo_ip = $indirizzo_ip;
+	public function setIndirizzoIp($indirizzoIp){
+		$this->indirizzoIp = $indirizzoIp;
 	}
-	
+
 	public function getNome(){
 		return $this->nome;
 	}
-	
+
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-	
+
 	public function getOrientamento(){
 		return $this->orientamento;
 	}
-	
+
 	public function setOrientamento($orientamento){
 		$this->orientamento = $orientamento;
 	}
-	
+
 	public function getIdGruppo(){
-		return $this->id_gruppo;
+		return $this->idGruppo;
 	}
-	
-	public function setIdGruppo($id_gruppo){
-		$this->id_gruppo = $id_gruppo;
+
+	public function setIdGruppo($idGruppo){
+		$this->idGruppo = $idGruppo;
 	}
-	
-	
+
+
 	public function save(){
 		if(!$this->id){
 			$n=DispositiviTab::insert($this);
@@ -84,5 +77,9 @@ class Dispositivo{
 	public function delete(){
 		DispositiviTab::remove($this);
 	}
-	
+
+	public function getGruppo(){
+		return DispositiviTab::getGruppo($this);
+	}
+
 }

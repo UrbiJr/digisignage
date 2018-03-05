@@ -1,18 +1,15 @@
 <?php
 
-
-
 class Sequenza{
 	private $id;
-	private $n_ordine;							
+	private $nOrdine;
 	private $idRisorsa;
-	private $idGruppo;								
-							
-	
-	function __construct($id, $n_ordine,$idRisorsa,$idGruppo ){
+	private $idGruppo;
+
+	function __construct($id, $nOrdine,$idRisorsa,$idGruppo ){
 		$this->id=$id;
-		$this->n_ordine=$n_ordine;
-		$this->idRisorsa=$idRisorsa;	
+		$this->nOrdine=$nOrdine;
+		$this->idRisorsa=$idRisorsa;
 		$this->idGruppo=$idGruppo;
 	}
 
@@ -20,13 +17,13 @@ class Sequenza{
 	public function getId(){
 		return $this->id;
 	}
-	
+
 	public function getNOrdine(){
-		return $this->n_ordine;
+		return $this->nOrdine;
 	}
 
-	public function setNOrdine($n_ordine){
-		$this->n_ordine = $n_ordine;
+	public function setNOrdine($nOrdine){
+		$this->nOrdine = $nOrdine;
 	}
 
 	public function getIdGruppo(){
@@ -40,11 +37,11 @@ class Sequenza{
 	public function setIdRisorsa($idRisorsa){
 		$this->idRisorsa = $idRisorsa;
 	}
-	
-	public function getIdIdRisorsa(){
+
+	public function getIdRisorsa(){
 		return $this->idRisorsa;
 	}
-	
+
 	public function save(){
 		if(!$this->id){
 			$n=SequenzeTab::insert($this);
@@ -60,5 +57,5 @@ class Sequenza{
 	public function delete(){
 		SequenzeTab::remove($this);
 	}
-	
+
 }

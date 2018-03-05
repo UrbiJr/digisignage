@@ -1,10 +1,8 @@
 <?php
 
-
-
 class RisorseTab{
 	private $risorse = array();
-	
+
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
@@ -34,14 +32,13 @@ class RisorseTab{
 		}
 	}
 
-
 	public static function remove($risorsa){
 		$query=sprintf("DELETE FROM Risorse WHERE id = %d ", $risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
 	public static function insert($risorsa){
-		$query=sprintf("INSERT INTO Risorse (nome) VALUES('%s')",$risorsa->getNome()); 
+		$query=sprintf("INSERT INTO Risorse (nome) VALUES('%s')",$risorsa->getNome());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
@@ -54,5 +51,4 @@ class RisorseTab{
 
 
 
-}	
-
+}

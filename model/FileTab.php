@@ -1,10 +1,8 @@
 <?php
 
-
-
 class FileTab{
 	private $file = array();
-	
+
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
@@ -14,7 +12,7 @@ class FileTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['id_risorse']);
+			return new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['idRisorsa']);
 		}else{
 			return null;
 		}
@@ -26,7 +24,7 @@ class FileTab{
 		if($result){
 			$file = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$file[$row['id']]= new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['id_risorse']);
+				$file[$row['id']]= new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['idRisorsa']);
 			}
 			return $file;
 		}else{
@@ -41,18 +39,17 @@ class FileTab{
 	}
 
 	public static function insert($file){
-		$query=sprintf("INSERT INTO File (nome,tipo,path,id_risorse) VALUES('%s','%s','%s',%d)",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse()); 
+		$query=sprintf("INSERT INTO File (nome,tipo,path,idRisorsa) VALUES('%s','%s','%s',%d)",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($file){
-		$query=sprintf("UPDATE File SET nome='%s', tipo='%s', path='%s', id_risorse=%d WHERE id=%d",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse(),$file->getId());
+		$query=sprintf("UPDATE File SET nome='%s', tipo='%s', path='%s', idRisorsa=%d WHERE id=%d",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse(),$file->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
 
 
-}	
-
+}

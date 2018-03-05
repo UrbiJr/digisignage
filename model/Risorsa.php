@@ -1,22 +1,18 @@
 <?php
 
-
-
 class Risorsa{
 	private $id;
-	private $nome;														
-							
-	
+	private $nome;
+
 	function __construct($id, $nome){
 		$this->id=$id;
 		$this->nome=$nome;
 	}
 
-
 	public function getId(){
 		return $this->id;
 	}
-	
+
 	public function getNome(){
 		return $this->nome;
 	}
@@ -24,7 +20,7 @@ class Risorsa{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-	
+
 	public function save(){
 		if(!$this->id){
 			$n=RisorseTab::insert($this);
@@ -40,5 +36,5 @@ class Risorsa{
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-	
+
 }

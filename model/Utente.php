@@ -1,20 +1,18 @@
 <?php
 
-
-
 class Utente{
 	private $id;
-	private $nome;							
-	private $password; 							
+	private $nome;
+	private $password;
 	private $mail;
 	private $idAzienda;
-	private $idRuolo;								
-							
-	
+	private $idRuolo;
+
+
 	function __construct($id, $nome, $password, $mail, $idAzienda, $idRuolo){
 		$this->id=$id;
 		$this->nome=$nome;
-		$this->password=$password;	
+		$this->password=$password;
 		$this->mail=$mail;
 		$this->idAzienda=$idAzienda;
 		$this->idRuolo=$idRuolo;
@@ -24,7 +22,7 @@ class Utente{
 	public function getId(){
 		return $this->id;
 	}
-	
+
 	public function getNome(){
 		return $this->nome;
 	}
@@ -52,19 +50,19 @@ class Utente{
 	public function setIdAzienda($idAzienda){
 		$this->idAzienda = $idAzienda;
 	}
-	
+
 	public function getIdAzienda(){
 		return $this->IdAzienda;
 	}
-	
+
 	public function setIdRuolo($idRuolo){
 		$this->idRuolo = $idRuolo;
 	}
-	
+
 	public function getIdRuolo($idRuolo){
 		return $this->IdRuolo;
 	}
-	
+
 	public function save(){
 		if(!$this->id){
 			$n=UtentiTab::insert($this);
@@ -80,5 +78,13 @@ class Utente{
 	public function delete(){
 		UtentiTab::remove($this);
 	}
-	
+
+	public function getAzienda(){
+		return UtentiTab::getAzienda($this);
+	}
+
+	public function getRuolo(){
+		return UtentiTab::getRuolo($this);
+	}
+
 }

@@ -1,10 +1,8 @@
 <?php
 
-
-
 class AziendeTab{
 	private $aziende = array();
-	
+
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
@@ -14,7 +12,7 @@ class AziendeTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new Azienda($row['id'],$row['ragione_sociale']);
+			return new Azienda($row['id'],$row['ragioneSociale']);
 		}else{
 			return null;
 		}
@@ -26,7 +24,7 @@ class AziendeTab{
 		if($result){
 			$aziende = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$aziende[$row['id']]= new Azienda($row['id'],$row['ragione_sociale']);
+				$aziende[$row['id']]= new Azienda($row['id'],$row['ragioneSociale']);
 			}
 			return $aziende;
 		}else{
@@ -41,18 +39,17 @@ class AziendeTab{
 	}
 
 	public static function insert($azienda){
-		$query=sprintf("INSERT INTO Aziende (ragione_sociale) VALUES('%s')",$azienda->getRagioneSociale()); 
+		$query=sprintf("INSERT INTO Aziende (ragioneSociale) VALUES('%s')",$azienda->getRagioneSociale());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($azienda){
-		$query=sprintf("UPDATE Aziende SET ragione_sociale='%s' WHERE id=%d",$azienda->getRagioneSociale(),$azienda->getId());
+		$query=sprintf("UPDATE Aziende SET ragioneSociale='%s' WHERE id=%d",$azienda->getRagioneSociale(),$azienda->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
 
 
-}	
-
+}

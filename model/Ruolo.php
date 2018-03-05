@@ -1,25 +1,23 @@
 <?php
 
-
-
 class Ruolo{
 	private $id;
 	private $superadmin;
-	private $amm_aziendale;								
-							
-	
-	function __construct($id, $superadmin, $amm_aziendale){
+	private $ammAziendale;
+
+
+	function __construct($id, $superadmin, $ammAziendale){
 		$this->id=$id;
 		$this->superadmin=$superadmin;
-		$this->amm_aziendale=$amm_aziendale;	
-	
+		$this->ammAziendale=$ammAziendale;
+
 	}
 
 
 	public function getId(){
 		return $this->id;
 	}
-	
+
 	public function getSuperadmin(){
 		return $this->superadmin;
 	}
@@ -28,14 +26,14 @@ class Ruolo{
 		$this->superadmin = $superadmin;
 	}
 
-	public function getAmm_aziendale(){
-		return $this->amm_aziendale;
+	public function getAmmAziendale(){
+		return $this->ammAziendale;
 	}
 
-	public function setAmmAziendale($amm_aziendale){
-		$this->amm_aziendale = $amm_aziendale;
+	public function setAmmAziendale($ammAziendale){
+		$this->ammAziendale = $ammAziendale;
 	}
-	
+
 	public function save(){
 		if(!$this->id){
 			$n=RuoliTab::insert($this);
@@ -51,5 +49,5 @@ class Ruolo{
 	public function delete(){
 		RuoliTab::remove($this);
 	}
-	
+
 }

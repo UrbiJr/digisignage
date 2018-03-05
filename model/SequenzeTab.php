@@ -1,10 +1,8 @@
 <?php
 
-
-
 class SequenzeTab{
 	private $sequenze = array();
-	
+
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
@@ -14,7 +12,7 @@ class SequenzeTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new Sequenza($row['id'],$row['n_ordine'],$row['id_risorse'],$row['id_gruppi']);
+			return new Sequenza($row['id'],$row['nOrdine'],$row['idRisorsa'],$row['idGruppo']);
 		}else{
 			return null;
 		}
@@ -26,7 +24,7 @@ class SequenzeTab{
 		if($result){
 			$sequenze = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$sequenze[$row['id']]= new Sequenza($row['id'],$row['n_ordine'],$row['id_risorse'],$row['id_gruppi']);
+				$sequenze[$row['id']]= new Sequenza($row['id'],$row['nOrdine'],$row['idRisorsa'],$row['idGruppo']);
 			}
 			return $sequenze;
 		}else{
@@ -41,18 +39,17 @@ class SequenzeTab{
 	}
 
 	public static function insert($sequenza){
-		$query=sprintf("INSERT INTO Sequenze (n_ordine,id_risorse,id_gruppi) VALUES(%d,%d,%d)",$sequenza->getNOrdine(),$sequenza->getIdRisorsa(),$sequenza->getIdGruppo()); 
+		$query=sprintf("INSERT INTO Sequenze (nOrdine,idRisorsa,idGruppo) VALUES(%d,%d,%d)",$sequenza->getNOrdine(),$sequenza->getIdRisorsa(),$sequenza->getIdGruppo());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($sequenza){
-		$query=sprintf("UPDATE Sequenze SET n_ordine=%d, id_risorse=%d, id_gruppi=%d WHERE id=%d",$sequenza->getNOrdine(),$sequenza->getIdRisorsa(),$sequenza->getIdGruppo(),$sequenza->getId());
+		$query=sprintf("UPDATE Sequenze SET nOrdine=%d, idRisorsa=%d, idGruppo=%d WHERE id=%d",$sequenza->getNOrdine(),$sequenza->getIdRisorsa(),$sequenza->getIdGruppo(),$sequenza->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
 
 
-}	
-
+}
