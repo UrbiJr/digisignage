@@ -3,13 +3,15 @@
 
 
 class Dispositivo{
+	private $id;
 	private $indirizzo_mac;
 	private $indirizzo_ip;								
 	private $nome;
 	private $orientamento;
 	private $id_gruppo;	
 	
-	function __construct($indirizzo_mac, $indirizzo_ip, $nome, $orientamento, $id_gruppo){
+	function __construct($id, $indirizzo_mac, $indirizzo_ip, $nome, $orientamento, $id_gruppo){
+		$this->id=$id;
 		$this->indirizzo_mac=$indirizzo_mac;
 		$this->indirizzo_ip=$indirizzo_ip;
 		$this->nome=$nome;	
@@ -18,20 +20,27 @@ class Dispositivo{
 	
 	}
 
+	public function getId(){
+		return $this->id;
+	}
+
+	public function setId($id){
+		$this->id = $id;
+	}
 	
-	public function getIndirizzo_mac(){
+	public function getIndirizzoMac(){
 		return $this->indirizzo_mac;
 	}
 
-	public function setIndirizzo_mac($indirizzo_mac){
+	public function setIndirizzoMac($indirizzo_mac){
 		$this->indirizzo_mac = $indirizzo_mac;
 	}
 
-	public function getIndirizzo_ip(){
+	public function getIndirizzoIp(){
 		return $this->indirizzo_ip;
 	}
 
-	public function setIndirizzo_ip($indirizzo_ip){
+	public function setIndirizzoIp($indirizzo_ip){
 		$this->Indirizzo_ip = $indirizzo_ip;
 	}
 	
@@ -51,11 +60,11 @@ class Dispositivo{
 		$this->orientamento = $orientamento;
 	}
 	
-	public function getId_gruppo(){
+	public function getIdGruppo(){
 		return $this->id_gruppo;
 	}
 	
-	public function setId_gruppo($id_gruppo){
+	public function setIdGruppo($id_gruppo){
 		$this->id_gruppo = $id_gruppo;
 	}
 	

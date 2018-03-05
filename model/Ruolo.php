@@ -5,13 +5,13 @@
 class Ruolo{
 	private $id;
 	private $superadmin;
-	private $amm_azziendale;								
+	private $amm_aziendale;								
 							
 	
-	function __construct($id, $superadmin, $amm_azziendale){
+	function __construct($id, $superadmin, $amm_aziendale){
 		$this->id=$id;
 		$this->superadmin=$superadmin;
-		$this->amm_azziendale=$amm_azziendale;	
+		$this->amm_aziendale=$amm_aziendale;	
 	
 	}
 
@@ -28,12 +28,12 @@ class Ruolo{
 		$this->superadmin = $superadmin;
 	}
 
-	public function getAmm_azziendale(){
-		return $this->amm_azziendale;
+	public function getAmm_aziendale(){
+		return $this->amm_aziendale;
 	}
 
-	public function setAmm_azziendale($amm_azziendale){
-		$this->amm_azziendale = $amm_azziendale;
+	public function setAmmAziendale($amm_aziendale){
+		$this->amm_aziendale = $amm_aziendale;
 	}
 	
 	public function save(){

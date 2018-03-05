@@ -6,7 +6,7 @@ class Gruppo{
 	private $id;
 	private $sigla;
 	private $descrizione;	
-	private $id_azienda							
+	private $id_azienda;						
 							
 	
 	function __construct($id, $sigla, $descrizione, $id_azienda){
@@ -38,11 +38,11 @@ class Gruppo{
 		$this->descrizione = $descrizione;
 	}
 	
-	public function setId_azienda($id_azienda){
-		return this->id_azienda;
+	public function getIdAzienda($id_azienda){
+		return $this->id_azienda;
 	}
 	
-	public function setId_azienda($id_azienda){
+	public function setIdAzienda($id_azienda){
 		$this->id_azienda = $id_azienda;
 	}
 	

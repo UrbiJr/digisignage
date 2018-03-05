@@ -14,7 +14,7 @@ class RuoliTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new ruolo($row['id'],$row['superadmin'],$row['amm_azziendale']);
+			return new ruolo($row['id'],$row['superadmin'],$row['amm_aziendale']);
 		}else{
 			return null;
 		}
@@ -26,7 +26,7 @@ class RuoliTab{
 		if($result){
 			$ruoli = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$ruolo[$row['id']]= new ruolo($row['id'],$row['superadmin'],$row['amm_azziendale']);
+				$ruolo[$row['id']]= new ruolo($row['id'],$row['superadmin'],$row['amm_aziendale']);
 			}
 			return $ruolo;
 		}else{
@@ -41,14 +41,14 @@ class RuoliTab{
 	}
 
 	public static function insert($ruolo){
-		$query=sprintf("INSERT INTO ruoli (superadmin,amm_azziendale) VALUES(%b,%b)",$ruolo->getSuperadmin(),$ruolo->getAmm_azziendale()); 
+		$query=sprintf("INSERT INTO ruoli (superadmin,amm_aziendale) VALUES(%b,%b)",$ruolo->getSuperadmin(),$ruolo->getAmm_aziendale()); 
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($ruolo){
-		$query=sprintf("UPDATE ruoli SET superadmin=%b, amm_azziendale=%b WHERE id=%d",$ruolo->getSuperadmin(),$ruolo->getAmm_azziendale(),$ruolo->getId());
+		$query=sprintf("UPDATE ruoli SET superadmin=%b, amm_aziendale=%b WHERE id=%d",$ruolo->getSuperadmin(),$ruolo->getAmm_aziendale(),$ruolo->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 

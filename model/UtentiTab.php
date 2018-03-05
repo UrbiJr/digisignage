@@ -3,7 +3,7 @@
 
 
 class UtentiTab{
-	$utenti = array();
+	private $utenti = array();
 	
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
