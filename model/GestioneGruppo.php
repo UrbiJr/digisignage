@@ -47,5 +47,13 @@ class GestioneGruppo{
 	public function delete(){
 		GestioneGruppiTab::remove($this);
 	}
+	
+	public function getUtente(){
+		GestioneGruppiTab::getUtente($this);
+	}
+	
+	public function getGruppo(){
+		GestioneGruppiTab::getGruppo();
+	}
 
 }
