@@ -51,7 +51,7 @@ class GruppiTab{
 	}
 
 	public static function getAzienda($gruppo){
-		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$gruppo->getId());
+		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$gruppo->getIdAzienda());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
@@ -76,4 +76,17 @@ class GruppiTab{
 			return null;
 		}
 	}
+	
+	public static function getSequenza($gruppo){
+		$query=sprintf("SELECT * FROM Sequenze WHERE idGruppo=%d",$gruppo->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$sequenza= new Sequenza($row['id'],$row['nOrdine'],$row['idRisorsa'],$row['idGruppo']);
+			}
+			return $sequenza;
+		}else{
+			return null;
+		}
+	}	
 }
