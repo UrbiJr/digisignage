@@ -48,12 +48,4 @@ class GestioneGruppo{
 		GestioneGruppiTab::remove($this);
 	}
 	
-	public function getUtente(){
-		GestioneGruppiTab::getUtente($this);
-	}
-	
-	public function getGruppo(){
-		GestioneGruppiTab::getGruppo();
-	}
-
 }

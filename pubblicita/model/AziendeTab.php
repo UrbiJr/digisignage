@@ -77,4 +77,18 @@ class AziendeTab{
 			return null;
 		}
 	}
+	
+	public static function getGruppi($azienda){
+		$query=sprintf("SELECT * FROM Gruppi WHERE idAzienda=%d",$azienda->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$gruppi = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$gruppi[$row['id']]= new Gruppo($row['id'],$row['sigla'],$row['descrizione'],$row['idAzienda']);
+			}
+			return $gruppi;
+		}else{
+			return null;
+		}
+	}
 }

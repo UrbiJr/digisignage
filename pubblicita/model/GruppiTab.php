@@ -89,4 +89,18 @@ class GruppiTab{
 			return null;
 		}
 	}	
+
+	public static function getUtenti($gruppo){
+		$query=sprintf("SELECT Utenti.id, Utenti.nome,Utenti.password,Utenti.mail,Utenti.idAzienda,Utenti.idRuolo FROM Gruppi JOIN GestioneGruppi on Gruppi.id = GestioneGruppi.idGruppo JOIN Utenti  on GestioneGruppi.idUtente = Utenti.id WHERE id=%d", $gruppo->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$utenti = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$utenti[$row['id']]= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+			}
+			return $utenti;
+		}else{
+			return null;
+		}
+	}
 }

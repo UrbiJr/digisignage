@@ -51,11 +51,11 @@ class FileTab{
 	}
 
 	public static function getRisorsa($file){
-		$query=sprintf("SELECT * FROM File WHERE id=%d",$file->getId());
+		$query=sprintf("SELECT * FROM Risorse WHERE id=%d",$file->getIdRisorsa());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorsa= new Risorsa(($row['id'],$row['nome']);
+				$risorsa= new Risorsa(($row['id'],$row['nome'],$row['idAzienda']);
 			}
 			return $gruppo;
 		}else{

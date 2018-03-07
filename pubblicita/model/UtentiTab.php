@@ -63,17 +63,18 @@ class UtentiTab{
 		}
 	}
 
-		public static function getRuolo($utente){
+	public static function getRuolo($utente){
 		$query=sprintf("SELECT * FROM Ruolo WHERE id=%d",$utente->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$ruolo= new Azienda($row['id'],$row['codice'],$row['descrizione']);
+				$ruolo= new Ruolo($row['id'],$row['codice'],$row['descrizione']);
 			}
 			return $ruolo;
 		}else{
 			return null;
 		}
 	}
+
 
 }

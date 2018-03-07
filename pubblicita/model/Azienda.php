@@ -47,4 +47,8 @@ class Azienda{
 		return AziendeTab::getRisorse($this);
 	}	
 	
+	public function getGruppi(){
+		return AziendeTab::getGruppi($this);
+	}
+	
 }

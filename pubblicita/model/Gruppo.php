@@ -66,5 +66,9 @@ class Gruppo{
 	public function getDispositivi(){
 		return GruppiTab::getDispositivo($this);
 	}
+	
+	public function getUtenti(){
+		return GruppiTab::getUtenti($this);
+	}
 
 }

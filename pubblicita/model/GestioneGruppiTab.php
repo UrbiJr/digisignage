@@ -50,29 +50,4 @@ class GestioneGruppiTab{
 		$result=DBCONNECTION::$con->query($query);
 	}
 	
-		public static function getGruppo($gestione){
-		$query=sprintf("SELECT * FROM Gruppi WHERE id=%d",$utente->getIdGruppo());
-		$result=DBCONNECTION::$con->query($query);
-		if($result){
-			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$gruppo= new Gruppo($row['id'],$row['sigla'],$row['descrizione'],$row['idAzienda']);
-			}
-			return $gruppo;
-		}else{
-			return null;
-		}
-
-		public static function getUtente($gestione){
-		$query=sprintf("SELECT * FROM Utenti WHERE id=%d",$utente->getIdUtente());
-		$result=DBCONNECTION::$con->query($query);
-		if($result){
-			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$utente= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
-			}
-			return $utente;
-		}else{
-			return null;
-		}
-		
-			
 }
