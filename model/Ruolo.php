@@ -2,14 +2,14 @@
 
 class Ruolo{
 	private $id;
-	private $superadmin;
-	private $ammAziendale;
+	private $codice;
+	private $descrizione;
 
 
-	function __construct($id, $superadmin, $ammAziendale){
+	function __construct($id, $codice, $descrizione){
 		$this->id=$id;
-		$this->superadmin=$superadmin;
-		$this->ammAziendale=$ammAziendale;
+		$this->codice=$codice;
+		$this->descrizione=$descrizione;
 
 	}
 
@@ -18,20 +18,20 @@ class Ruolo{
 		return $this->id;
 	}
 
-	public function getSuperadmin(){
-		return $this->superadmin;
+	public function getCodice(){
+		return $this->codice;
 	}
 
-	public function setSuperadmin($superadmin){
-		$this->superadmin = $superadmin;
+	public function setCodice($codice){
+		$this->codice = $codice;
 	}
 
-	public function getAmmAziendale(){
-		return $this->ammAziendale;
+	public function getDescrizione(){
+		return $this->descrizione;
 	}
 
-	public function setAmmAziendale($ammAziendale){
-		$this->ammAziendale = $ammAziendale;
+	public function setDescrizione($descrizione){
+		$this->descrizione = $descrizione;
 	}
 
 	public function save(){

@@ -12,7 +12,7 @@ class RuoliTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new Ruolo($row['id'],$row['superadmin'],$row['ammAziendale']);
+			return new Ruolo($row['id'],$row['codice'],$row['descrizione']);
 		}else{
 			return null;
 		}
@@ -24,7 +24,7 @@ class RuoliTab{
 		if($result){
 			$ruoli = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$ruolo[$row['id']]= new Ruolo($row['id'],$row['superadmin'],$row['ammAziendale']);
+				$ruolo[$row['id']]= new Ruolo($row['id'],$row['codice'],$row['descrizione']);
 			}
 			return $ruolo;
 		}else{
@@ -39,14 +39,14 @@ class RuoliTab{
 	}
 
 	public static function insert($ruolo){
-		$query=sprintf("INSERT INTO Ruoli (superadmin,ammAziendale) VALUES(%b,%b)",$ruolo->getSuperadmin(),$ruolo->getAmmAziendale());
+		$query=sprintf("INSERT INTO Ruoli (codice,descrizione) VALUES(%b,%b)",$ruolo->getCodice(),$ruolo->getDescrizione());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($ruolo){
-		$query=sprintf("UPDATE Ruoli SET superadmin=%b, ammAziendale=%b WHERE id=%d",$ruolo->getSuperadmin(),$ruolo->getAmmAziendale(),$ruolo->getId());
+		$query=sprintf("UPDATE Ruoli SET codice=%b, descrizione=%b WHERE id=%d",$ruolo->getCodice(),$ruolo->getDescrizione(),$ruolo->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
