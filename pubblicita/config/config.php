@@ -1,11 +1,11 @@
 <?php
-	define("ROOTPATH",     "/home/ITIS-EMATTEI.LOCAL/s_grsgcm99h28g479w/projectWork/application/");
+	define("ROOTPATH",     "../../public_html/digisignage/");
 
 	class CONFIG{
-		public static $modelPath =  ROOTPATH . "model/";
-		public static $controllerPath =  ROOTPATH . "controller/";
-		public static $libPath =  ROOTPATH . "lib/";
-		public static $templatePath =  ROOTPATH . "template/";
+		public static $modelPath =  ROOTPATH . "pubblicita/model/";
+		public static $controllerPath =  ROOTPATH . "pubblicita/controller/";
+		public static $libPath =  ROOTPATH . "pubblicita/lib/";
+		public static $templatePath =  ROOTPATH . "pubblicita/template/";
 	}
 
 	class DBCONNECTION{
@@ -27,8 +27,5 @@
 	 */
 
 	include (CONFIG::$libPath . 'lib.php');
-	//include (CONFIG::$modelPath . 'AnimaliRec.php');
-	//include (CONFIG::$modelPath . 'AnimaliTab.php');
-	//include (CONFIG::$modelPath . 'PersoneRec.php');
-	//include (CONFIG::$modelPath . 'PersoneTab.php');
+
 ?>
