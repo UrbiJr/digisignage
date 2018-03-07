@@ -12,7 +12,9 @@ class Gruppo{
 		$this->descrizione=$descrizione;
 		$this->idAzienda=$idAzienda;
 	}
-
+	public function setId($id){
+		$this->id=$id;
+	}
 	public function getId(){
 		return $this->id;
 	}
