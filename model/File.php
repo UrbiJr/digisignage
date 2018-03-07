@@ -67,5 +67,9 @@ class File{
 	public function delete(){
 		FileTab::remove($this);
 	}
+	
+	public function getRisorsa(){
+		return FileTab::getRisorsa($this);
+	}
 
 }

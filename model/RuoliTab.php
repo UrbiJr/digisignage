@@ -50,6 +50,17 @@ class RuoliTab{
 		$result=DBCONNECTION::$con->query($query);
 	}
 
-
+	public static function getUtenti($ruolo){
+		$query=sprintf("SELECT * FROM Utenti WHERE idRuolo = %d", $ruolo->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$utenti = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$utenti[$row['id']]= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+			}
+			return $utenti;
+		}else{
+			return null;
+		}	
 
 }

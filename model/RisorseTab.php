@@ -48,7 +48,20 @@ class RisorseTab{
 		$query=sprintf("UPDATE Risorse SET nome='%s' WHERE id=%d",$risorsa->getNome(),$risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
-
+	
+	public static function getFile($risorsa){
+		$query=sprintf("SELECT * FROM File WHERE idGruppo = %d", $risorsa->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$file = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$file[$row['id']]= new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['idRisorsa']);
+			}
+			return $dispositivi;
+		}else{
+			return null;
+		}
+	}
 
 
 }

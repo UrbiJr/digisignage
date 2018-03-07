@@ -50,7 +50,7 @@ class DispositiviTab{
 		$result=DBCONNECTION::$con->query($query);
 	}
 
-		public static function getGruppo($dispositivo){
+	public static function getGruppo($dispositivo){
 		$query=sprintf("SELECT * FROM Gruppi WHERE id=%d",$dispositivo->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){

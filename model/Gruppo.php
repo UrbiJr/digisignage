@@ -60,5 +60,9 @@ class Gruppo{
 	public function getAzienda(){
 		return GruppiTab::getAzienda($this);
 	}
+	
+	public function getDispositivi(){
+		return GruppiTab::getDispositivo($this);
+	}
 
 }

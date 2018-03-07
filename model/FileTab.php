@@ -50,6 +50,17 @@ class FileTab{
 		$result=DBCONNECTION::$con->query($query);
 	}
 
-
+	public static function getRisorsa($file){
+		$query=sprintf("SELECT * FROM File WHERE id=%d",$file->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$risorsa= new Risorsa(($row['id'],$row['nome']);
+			}
+			return $gruppo;
+		}else{
+			return null;
+		}
+	}
 
 }
