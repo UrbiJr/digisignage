@@ -63,18 +63,21 @@ class SequenzeTab{
 		}
 	}
 	
-		public static function getRisorsa($sequenza){
-		$query=sprintf("SELECT * FROM Risorse WHERE id=%d",$sequenza->getId());
+	public static function getRisorse($sequenza){
+		$query=sprintf("SELECT * FROM Risorse WHERE id=%d", $sequenza->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
+			$risorse = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorsa= new Risorsa($row['id'],$row['nome']);
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome']);
 			}
-			return $risorsa;
+			return $risorse;
 		}else{
 			return null;
 		}
 	}
+
+
 
 
 }

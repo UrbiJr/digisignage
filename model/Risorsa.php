@@ -3,10 +3,12 @@
 class Risorsa{
 	private $id;
 	private $nome;
+	private $idAzienda;
 
-	function __construct($id, $nome){
+	function __construct($id, $nome, $idAzienda){
 		$this->id=$id;
 		$this->nome=$nome;
+		$this->idAzienda=$idAzienda;
 	}
 
 	public function getId(){
@@ -20,6 +22,15 @@ class Risorsa{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
+	
+	public function getIdAzienda(){
+		return $this->idAzienda;
+	}
+
+	public function setIdAzienda($idAzienda){
+		$this->nome = $idAzienda;
+	}
+
 
 	public function save(){
 		if(!$this->id){

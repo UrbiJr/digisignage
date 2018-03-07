@@ -57,5 +57,13 @@ class Sequenza{
 	public function delete(){
 		SequenzeTab::remove($this);
 	}
+	
+	public function getGruppo(){
+		SequenzeTab::getGruppo($this);
+	}
+	
+	public function getRisorse(){
+		SequenzeTab::getRisorse($this);
+	}
 
 }

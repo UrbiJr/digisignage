@@ -51,7 +51,7 @@ class AziendeTab{
 	}
 	
 	public static function getUtenti($azienda){
-		$query=sprintf("SELECT * FROM Utenti WHERE id_azienda=%d",$azienda->getId());
+		$query=sprintf("SELECT * FROM Utenti WHERE idAzienda=%d",$azienda->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$utenti = array();
@@ -63,6 +63,18 @@ class AziendeTab{
 			return null;
 		}
 	}
-
-
+	
+	public static function getRisorse($azienda){
+		$query=sprintf("SELECT * FROM Risorse WHERE idAzienda=%d",$azienda->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$risorse = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+			}
+			return $risorse;
+		}else{
+			return null;
+		}
+	}
 }

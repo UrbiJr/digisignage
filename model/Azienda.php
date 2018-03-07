@@ -39,6 +39,10 @@ class Azienda{
 	
 	public function getUtenti(){
 		return AziendeTab::getUtenti($this);
+	}
+	
+	public function getRisorse(){
+		return AziendeTab::getRisorse($this);
 	}	
 	
 }
