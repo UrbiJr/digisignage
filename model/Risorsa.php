@@ -36,5 +36,8 @@ class Risorsa{
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-
+	
+	public function getFile(){
+		return RisorseTab::getFile($this);
+	}
 }

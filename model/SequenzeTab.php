@@ -49,7 +49,32 @@ class SequenzeTab{
 		$query=sprintf("UPDATE Sequenze SET nOrdine=%d, idRisorsa=%d, idGruppo=%d WHERE id=%d",$sequenza->getNOrdine(),$sequenza->getIdRisorsa(),$sequenza->getIdGruppo(),$sequenza->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
-
+	
+	public static function getGruppo($sequenza){
+		$query=sprintf("SELECT * FROM Gruppi WHERE id=%d",$sequenza->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$gruppo= new Gruppo($row['id'],$row['sigla'],$row['descrizione'],$row['idAzienda']);
+			}
+			return $gruppo;
+		}else{
+			return null;
+		}
+	}
+	
+		public static function getRisorsa($sequenza){
+		$query=sprintf("SELECT * FROM Risorse WHERE id=%d",$sequenza->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$risorsa= new Risorsa($row['id'],$row['nome']);
+			}
+			return $risorsa;
+		}else{
+			return null;
+		}
+	}
 
 
 }

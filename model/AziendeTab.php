@@ -49,7 +49,20 @@ class AziendeTab{
 		$query=sprintf("UPDATE Aziende SET ragioneSociale='%s' WHERE id=%d",$azienda->getRagioneSociale(),$azienda->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
-
+	
+	public static function getUtenti($azienda){
+		$query=sprintf("SELECT * FROM Utenti WHERE id_azienda=%d",$azienda->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$utenti = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$dutenti[$row['id']]= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+			}
+			return $utenti;
+		}else{
+			return null;
+		}
+	}
 
 
 }

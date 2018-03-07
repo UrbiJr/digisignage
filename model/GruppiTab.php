@@ -62,7 +62,18 @@ class GruppiTab{
 			return null;
 		}
 	}
-
-
-
+	
+	public static function getDispositivi($gruppo){
+		$query=sprintf("SELECT * FROM Dispositivi WHERE idGruppo = %d", $gruppo->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$dispositivi = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$dispositivi[$row['id']]= new Dispositivo($row['indirizzoMac'],$row['indirizzoIp'],$row['nome'],$row['orientamento'],$row['idGruppo']);
+			}
+			return $dispositivi;
+		}else{
+			return null;
+		}
+	}
 }

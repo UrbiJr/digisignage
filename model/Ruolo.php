@@ -49,5 +49,9 @@ class Ruolo{
 	public function delete(){
 		RuoliTab::remove($this);
 	}
+	
+	public function getUtenti(){
+		return RuoliTab::getUtenti($this);
+	}
 
 }

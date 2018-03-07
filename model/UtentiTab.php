@@ -55,7 +55,7 @@ class UtentiTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$azienda= new Azienda($row['id'],$row['ragione_sociale']);
+				$azienda= new Azienda($row['id'],$row['ragioneSociale']);
 			}
 			return $azienda;
 		}else{
@@ -68,7 +68,7 @@ class UtentiTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$ruolo= new Azienda($row['id'],$row['superadmin'],$row['amm_aziendale']);
+				$ruolo= new Azienda($row['id'],$row['codice'],$row['descrizione']);
 			}
 			return $ruolo;
 		}else{
