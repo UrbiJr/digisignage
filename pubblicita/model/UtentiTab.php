@@ -6,6 +6,17 @@ class UtentiTab{
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
+	
+	public static function getByUtente&Password($utente, $psw){
+		$query=printf("SELECT * FROM Utenti WHERE utente='%s' and password='%s'", $utente, $psw);
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$row=$result->fetch_array(MYSQLI_ASSOC);
+			return new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['id_aziende'],$row['id_ruoli']);
+		}else{
+			return null;
+		}
+	}
 
 	public static function getById($id){
 		$query=sprintf("SELECT * FROM Utenti WHERE id = %d", $id);
