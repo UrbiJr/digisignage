@@ -1,6 +1,6 @@
 <?php
-	define("ROOTPATH",     "../../public_html/digisignage/");
-
+	define("ROOTPATH", __DIR__."/../../");
+	
 	class CONFIG{
 		public static $modelPath =  ROOTPATH . "pubblicita/model/";
 		public static $controllerPath =  ROOTPATH . "pubblicita/controller/";
