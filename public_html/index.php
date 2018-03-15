@@ -1,11 +1,11 @@
 <?php
 	session_start();
-	include ('~/public_html/digisignage/pubblicita/config/config.php');
+	include ('../pubblicita/config/config.php');
 	//Recupera il modello sul quale si vuole lavorare
 	$content="";
 	//$model  = (isset($_REQUEST['model']) ? $_REQUEST['model'] : "animali");
 	$model = "";
-	
+
 	if(!isset($_SESSION['id_utente'])){
 		$model="login";
 		$action="login";
@@ -18,8 +18,7 @@
 			//include (CONFIG::$templatePath.'main.php');
 			break;
 	}
-	
+
 	include (CONFIG::$templatePath.'main.php');
 
 ?>
-
