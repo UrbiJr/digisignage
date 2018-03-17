@@ -51,7 +51,7 @@ class GruppiTab{
 	}
 
 	public static function getAzienda($gruppo){
-		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$gruppo->getId());
+		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$gruppo->getIdAzienda());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
@@ -72,6 +72,35 @@ class GruppiTab{
 				$dispositivi[$row['id']]= new Dispositivo($row['indirizzoMac'],$row['indirizzoIp'],$row['nome'],$row['orientamento'],$row['idGruppo']);
 			}
 			return $dispositivi;
+		}else{
+			return null;
+		}
+	}
+	
+	public static function getRisorse($gruppo){
+		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse 
+		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo  WHERE Gruppi.id=%d",$gruppo->getId()));
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$risorse= array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+			}
+			return $risorse;
+		}else{
+			return null;
+		}
+	}	
+
+	public static function getUtenti($gruppo){
+		$query=sprintf("SELECT Utenti.id, Utenti.nome,Utenti.password,Utenti.mail,Utenti.idAzienda,Utenti.idRuolo FROM Gruppi JOIN GestioneGruppi on Gruppi.id = GestioneGruppi.idGruppo JOIN Utenti  on GestioneGruppi.idUtente = Utenti.id WHERE id=%d", $gruppo->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$utenti = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$utenti[$row['id']]= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+			}
+			return $utenti;
 		}else{
 			return null;
 		}

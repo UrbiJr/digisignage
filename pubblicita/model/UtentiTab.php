@@ -86,19 +86,6 @@ class UtentiTab{
 			return null;
 		}
 	}
-	
-	public static function getGruppo($utente){
-		$query=sprintf("SELECT Gruppo.id, Gruppo.sigla, Gruppo.descrizione, Gruppo.idAzienda FROM Utenti
-		JOIN GestioneGruppi ON GestioneGruppi.idUtente=Utenti.id
-		JOIN Gruppi ON Gruppi.id=GestioneGruppi.idGruppo WHERE Utenti.id=%d",$utente->getId());
-		$result=DBCONNECTION::$con->query($query);
-		if($result){
-			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$gruppo= new Gruppo($row['id'],$row['sigla'],$row['descrizione'],$row['idAzienda']));
-			}
-			return $gruppo;
-		}else{
-			return null;
 
 
 }

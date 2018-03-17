@@ -16,7 +16,9 @@ class Dispositivo{
 		$this->orientamento=$orientamento;
 		$this->idGruppo=$idGruppo;
 	}
-
+	public function setId($id){
+		$this->id=$id;
+	}
 	public function getId(){
 		return $this->id;
 	}
