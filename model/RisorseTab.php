@@ -87,6 +87,5 @@ class RisorseTab{
 		}else{
 			return null;
 		}
-
-
+	}
 }
