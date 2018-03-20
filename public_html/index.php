@@ -34,7 +34,7 @@
 	}
 
 	if($action=='login' && $model=='login'){
-			echo $content;
+		include (CONFIG::$templatePath.'templateLogin.php');
 	}else{
 		include (CONFIG::$templatePath.'main.php');
 	}
