@@ -7,6 +7,7 @@
 		public static $controllerPath =  ROOTPATH . "pubblicita/controller/";
 		public static $libPath =  ROOTPATH . "pubblicita/lib/";
 		public static $templatePath =  ROOTPATH . "pubblicita/template/";
+		public static $imgPath =  ROOTPATH . "images/";
 	}
 
 	class DBCONNECTION{
