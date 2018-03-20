@@ -4,7 +4,7 @@
 	</head>
 	<body>
 		Nome:<input type="text" name="nome">
-		<form action="controller.php?model=" method="post" enctype="multipart/form-data">
+		<form action="controller.php?action=add" method="post" enctype="multipart/form-data">
 		Select image to upload:
 		<input type="file" name="userfile">
 		<input type="submit" value="Upload Image" name="submit">
