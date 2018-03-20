@@ -4,7 +4,7 @@
 	include ('../pubblicita/config/config.php');
 	//Recupera il modello sul quale si vuole lavorare
 	$content="";
-
+	$error="";
 	if (isset($_REQUEST['model'])) {
 		$model = $_REQUEST['model'];
 	}else {
@@ -31,6 +31,8 @@
 			include (CONFIG::$controllerPath.'login/controller.php');
 			//include (CONFIG::$templatePath.'main.php');
 			break;
+
+			
 	}
 
 	if($action=='login' && $model=='login'){

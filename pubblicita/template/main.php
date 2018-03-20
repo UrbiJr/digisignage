@@ -13,7 +13,7 @@
       bottom: 0;
       width: 100%;
       background-color: #222222;
-      color: #black;
+      color: #f2f2f2;
       text-align: center;
       padding: 10px;
     }
@@ -30,12 +30,10 @@
   </style>
 	</head>
 	<body>
-	<div class="jumbotron">
-  <div class="container text-center">
-    <h1>ProjectWork</h1>
-    <p>Digital Signage</p>
-  </div>
-</div>
+
+  <center>  <h1>ProjectWork</h1></center>
+
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">

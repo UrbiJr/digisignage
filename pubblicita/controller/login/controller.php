@@ -19,7 +19,8 @@ switch ($action){
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
 			break;
 		}else{
-			echo("Login fallito, username o password non validi!");
+			$error="Login fallito, username o password non validi!";
+			echo($error);
 			$action="login";
 			$model="login";
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
