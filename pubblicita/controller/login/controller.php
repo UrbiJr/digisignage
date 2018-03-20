@@ -5,6 +5,7 @@
 switch ($action){
 
 	case 'login':
+		//include (CONFIG::$controllerPath.'login/viewLogin.php');
 		$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
 		break;
 

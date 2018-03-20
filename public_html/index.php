@@ -1,27 +1,30 @@
 <?php
-	@session_start();
+	session_start();
 
 	include ('../pubblicita/config/config.php');
 	//Recupera il modello sul quale si vuole lavorare
 	$content="";
-	//$model  = (isset($_REQUEST['model']) ? $_REQUEST['model'] : "animali");
-	@$model = $_REQUEST['model'];
-	@$action = $_REQUEST['action'];
-	if(!$_SESSION['id_utente']){
-		if(is_null($_REQUEST['action']) || is_null($_REQUEST['model'])){
-			$model="login";
-			$action="login";
-		}
-	}else{
-		if(!@$_REQUEST['action'] || !@$_REQUEST['model']){
-			$model="login";
-			$action="login";
-		}else{
-			$model = $_REQUEST['model'];
-			$action = $_REQUEST['action'];
-			$utente=UtentiTab::getById($_SESSION['id_utente']);
-		}
+
+	if (isset($_REQUEST['model'])) {
+		$model = $_REQUEST['model'];
+	}else {
+		$model = "login";		//settate il default
 	}
+
+	if (isset($_REQUEST['action'])) {
+		$action = $_REQUEST['action'];
+	}else {
+		$action = "login";	//settate il default
+	}
+
+	if (isset($_SESSION['id_utente'])){
+			$utente=UtentiTab::getById($_SESSION['id_utente']);
+	}else	if(!isset($_SESSION['id_utente']) && $action!='postLogin' ){
+			$model="login";
+			$action="login";
+	}
+
+
 
 	switch ($model) {
 		case 'login':
@@ -30,6 +33,10 @@
 			break;
 	}
 
-	include (CONFIG::$templatePath.'main.php');
+	if($action=='login' && $model=='login'){
+			echo $content;
+	}else{
+		include (CONFIG::$templatePath.'main.php');
+	}
 
 ?>

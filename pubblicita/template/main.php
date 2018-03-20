@@ -11,21 +11,21 @@
       margin-bottom: 50px;
       border-radius: 0;
     }
-    
+
      .jumbotron {
       margin-bottom: 0;
     }
-   
+
     footer {
       background-color: #f2f2f2;
       padding: 25px;
     }
   </style>
-	</head>	
+	</head>
 	<body>
 	<div class="jumbotron">
   <div class="container text-center">
-    <h1>ProjectWork</h1>      
+    <h1>ProjectWork</h1>
     <p>Digital Signage</p>
   </div>
 </div>
@@ -36,11 +36,11 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      
+
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Carica</a></li>
@@ -48,7 +48,7 @@
         <li><a href="#">Visualizza</a></li>
         <li><a href="#">Modifica</a></li>
       </ul>
-      
+
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
 
@@ -57,9 +57,9 @@
   </div>
 </nav>
 
-<div class="container">    
+<div class="container">
   <div class="row">
-    
+
   </div>
 </div><br>
 
@@ -69,6 +69,5 @@
 	<p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
 </footer>
 	<?php echo $content ?>
-		<?php echo $content ?>
 	</body>
 </html>
