@@ -39,14 +39,14 @@ class FileTab{
 	}
 
 	public static function insert($file){
-		$query=sprintf("INSERT INTO File (nome,tipo,path,idRisorsa) VALUES('%s','%s','%s',%d)",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse());
+		$query=sprintf("INSERT INTO File (nome,tipo,path,idRisorsa) VALUES('%s','%s','%s',%d)",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorsa());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($file){
-		$query=sprintf("UPDATE File SET nome='%s', tipo='%s', path='%s', idRisorsa=%d WHERE id=%d",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse(),$file->getId());
+		$query=sprintf("UPDATE File SET nome='%s', tipo='%s', path='%s', idRisorsa=%d WHERE id=%d",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorsa(),$file->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
@@ -55,7 +55,7 @@ class FileTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorsa= new Risorsa(($row['id'],$row['nome'],$row['idAzienda']);
+				$risorsa= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
 			}
 			return $gruppo;
 		}else{
