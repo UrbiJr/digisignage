@@ -1,7 +1,6 @@
 <?php
 
 class DispositiviTab{
-	private $dispositivi = array();
 
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
@@ -24,12 +23,24 @@ class DispositiviTab{
 		if($result){
 			$dispositivi = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$dispositivo[$row['id']]= new Dispositivo($row['indirizzoMac'],$row['indirizzoIp'],$row['nome'],$row['orientamento'],$row['idGruppo']);
+				$dispositivo= new Dispositivo($row['id'],$row['indirizzoMac'],$row['indirizzoIp'],$row['nome'],$row['orientamento'],$row['idGruppo']);
+				$dispositivi[$rec['id']]=$dispositivo;
 			}
-			return $gruppo;
+			return $dispositivi;
 		}else{
 			return null;
 		}
+	}
+
+	public static function getByIndirizzoMac($indirizzoMac) {
+		$query = sprintf("SELECT * FROM Dispositivi WHERE indirizzoMac = %s",$indirizzoMac);
+		$result = DBCONNECTION::$con->query($query);
+		if($result){
+			$rec = $result->fetch_assoc();
+			$dispositivo= new Dispositivo($row['id'],$row['indirizzoMac'],$row['indirizzoIp'],$row['nome'],$row['orientamento'],$row['idGruppo']);
+			return $dispositivo;
+		}
+		return null;
 	}
 
 
