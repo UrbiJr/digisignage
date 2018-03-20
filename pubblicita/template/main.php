@@ -12,8 +12,8 @@
       left: 0;
       bottom: 0;
       width: 100%;
-      background-color: #f2f2f2;
-      color: #222222;
+      background-color: #222222;
+      color: #black;
       text-align: center;
       padding: 10px;
     }
