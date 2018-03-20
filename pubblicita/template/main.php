@@ -65,7 +65,7 @@
 
 </div><br><br>
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center navbar navbar-fixed-bottom">
 	<p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
 </footer>
 	<?php echo $content ?>
