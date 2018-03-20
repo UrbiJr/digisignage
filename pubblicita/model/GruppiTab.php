@@ -62,7 +62,7 @@ class GruppiTab{
 			return null;
 		}
 	}
-	
+
 	public static function getDispositivi($gruppo){
 		$query=sprintf("SELECT * FROM Dispositivi WHERE idGruppo = %d", $gruppo->getId());
 		$result=DBCONNECTION::$con->query($query);
@@ -76,10 +76,10 @@ class GruppiTab{
 			return null;
 		}
 	}
-	
+
 	public static function getRisorse($gruppo){
-		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse 
-		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo  WHERE Gruppi.id=%d",$gruppo->getId()));
+		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse
+		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo  WHERE Gruppi.id=%d",$gruppo->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$risorse= array();
@@ -90,7 +90,7 @@ class GruppiTab{
 		}else{
 			return null;
 		}
-	}	
+	}
 
 	public static function getUtenti($gruppo){
 		$query=sprintf("SELECT Utenti.id, Utenti.nome,Utenti.password,Utenti.mail,Utenti.idAzienda,Utenti.idRuolo FROM Gruppi JOIN GestioneGruppi on Gruppi.id = GestioneGruppi.idGruppo JOIN Utenti  on GestioneGruppi.idUtente = Utenti.id WHERE id=%d", $gruppo->getId());
