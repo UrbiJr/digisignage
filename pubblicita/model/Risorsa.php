@@ -45,6 +45,7 @@ class Risorsa{
 		if(!$this->id){
 			$n=RisorseTab::insert($this);
 			$this->setId($n);
+			$this->saveToDatabase();
 			return true;
 		}else{
 			RisorseTab::update($this);
