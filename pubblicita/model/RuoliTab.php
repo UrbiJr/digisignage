@@ -62,5 +62,5 @@ class RuoliTab{
 		}else{
 			return null;
 		}	
-
+	}
 }
