@@ -57,8 +57,8 @@ class Risorsa{
 		RisorseTab::remove($this);
 	}
 	
-	public function getFile(){
-		return RisorseTab::getFile($this);
+	public function getFiles(){
+		return RisorseTab::getFiles($this);
 	}
 
 	function controllaTipoRisorsa(){
