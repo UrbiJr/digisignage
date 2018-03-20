@@ -1,6 +1,7 @@
 <?php
 	define("ROOTPATH", __DIR__."/../../");
 	
+	
 	class CONFIG{
 		public static $modelPath =  ROOTPATH . "pubblicita/model/";
 		public static $controllerPath =  ROOTPATH . "pubblicita/controller/";
@@ -26,6 +27,12 @@
 	 * Include delle librerie e dei modelli
 	 */
 
-	include (CONFIG::$libPath . 'lib.php');
+	include(CONFIG::$modelPath."UtentiTab.php");
+	include(CONFIG::$libPath."lib.php");
+	include(CONFIG::$modelPath."Utente.php");
+	include(CONFIG::$modelPath."Gruppo.php");
+	include(CONFIG::$modelPath."GruppiTab.php");
+	include(CONFIG::$modelPath."Ruolo.php");
+	include(CONFIG::$modelPath."RuoliTab.php");
 
 ?>
