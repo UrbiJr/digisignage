@@ -7,6 +7,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #353942;
+      color: white;
+      text-align: center;
+    }
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
@@ -64,10 +73,14 @@
 </div><br>
 
 </div><br><br>
+<?php echo $content ?>
 
-<footer class="container-fluid text-center">
-	<p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
-</footer>
-	<?php echo $content ?>
+
+<div class="footer">
+  <p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
+</div>
+
+
+
 	</body>
 </html>
