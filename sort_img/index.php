@@ -28,7 +28,7 @@ $db=new DB();
 $(document).ready(function(){
     $('.reorder_link').on('click',function(){
         $("ul.reorder-photos-list").sortable({ tolerance: 'pointer' });
-        $('.reorder_link').html('save reordering');
+        $('.reorder_link').html('Salva ordinamento');
         $('.reorder_link').attr("id","save_reorder");
         $('#reorder-helper').slideDown('slow');
         $('.image_link').attr("href","javascript:void(0);");

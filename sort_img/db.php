@@ -2,10 +2,10 @@
 class DB{
     //database configuration
     private $dbHost     ="localhost";
-    private $dbUsername ="root";
-    private $dbPassword =null;
-    private $dbName     ="project_work";
-    private $imgTbl     ='images';
+    private $dbUsername ="amministratore";
+    private $dbPassword ="DigitalSignage";
+    private $dbName     ="pubblicita";
+    private $imgTbl     ='Sequenze';
     
     function __construct(){
         if(!isset($this->db)){
@@ -20,7 +20,7 @@ class DB{
     }
     
     function getRows(){
-        $query=$this->db->query("SELECT * FROM ".$this->imgTbl." ORDER BY img_order ASC");
+        $query=$this->db->query("SELECT * FROM ".$this->imgTbl." ORDER BY nOrdine ASC");
         if($query->num_rows>0){
             while($row=$query->fetch_assoc()){
                 $result[]=$row;
@@ -34,7 +34,7 @@ class DB{
     function updateOrder($id_array){
         $count = 1;
         foreach ($id_array as $id){
-            $update=$this->db->query("UPDATE ".$this->imgTbl." SET img_order=$count WHERE id=$id");
+            $update=$this->db->query("UPDATE ".$this->imgTbl." SET nOrdine=$count WHERE id=$id");
             $count ++;    
         }
         return TRUE;
