@@ -34,5 +34,9 @@
 	include(CONFIG::$modelPath."GruppiTab.php");
 	include(CONFIG::$modelPath."Ruolo.php");
 	include(CONFIG::$modelPath."RuoliTab.php");
+	include(CONFIG::$modelPath."Risorsa.php");
+	include(CONFIG::$modelPath."RisorseTab.php");
+	include(CONFIG::$modelPath."File.php");
+	include(CONFIG::$modelPath."FileTab.php");
 
 ?>
