@@ -82,5 +82,12 @@
 
 
 
+<<<<<<< HEAD
+=======
+<footer class="container-fluid text-center navbar navbar-fixed-bottom">
+	<p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
+</footer>
+	<?php echo $content ?>
+>>>>>>> bc3a06cdba86b6ffdfd112ab7ffcb0c849fbbeeb
 	</body>
 </html>
