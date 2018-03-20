@@ -77,14 +77,16 @@ class GruppiTab{
 		}
 	}
 	
-	public static function getSequenza($gruppo){
-		$query=sprintf("SELECT * FROM Sequenze WHERE idGruppo=%d",$gruppo->getId());
+	public static function getRisorse($gruppo){
+		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse 
+		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo  WHERE Gruppi.id=%d",$gruppo->getId()));
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
+			$risorse= array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$sequenza= new Sequenza($row['id'],$row['nOrdine'],$row['idRisorsa'],$row['idGruppo']);
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
 			}
-			return $sequenza;
+			return $risorse;
 		}else{
 			return null;
 		}
