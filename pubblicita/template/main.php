@@ -12,9 +12,10 @@
       left: 0;
       bottom: 0;
       width: 100%;
-      background-color: #353942;
-      color: white;
+      background-color: #f2f2f2;
+      color: #222222;
       text-align: center;
+      padding: 10px;
     }
     .navbar {
       margin-bottom: 50px;
@@ -25,10 +26,7 @@
       margin-bottom: 0;
     }
 
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
+
   </style>
 	</head>
 	<body>
@@ -52,7 +50,7 @@
 
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Carica</a></li>
+        <li><a href="#">Carica Img</a></li>
         <li><a href="#">Ordina</a></li>
         <li><a href="#">Visualizza</a></li>
         <li><a href="#">Modifica</a></li>
@@ -80,14 +78,5 @@
   <p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
 </div>
 
-
-
-<<<<<<< HEAD
-=======
-<footer class="container-fluid text-center navbar navbar-fixed-bottom">
-	<p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
-</footer>
-	<?php echo $content ?>
->>>>>>> bc3a06cdba86b6ffdfd112ab7ffcb0c849fbbeeb
 	</body>
 </html>
