@@ -48,23 +48,24 @@ class RisorseTab{
 		$query=sprintf("UPDATE Risorse SET nome='%s',idAzienda=%d WHERE id=%d",$risorsa->getNome(), $risorsa->getIdAzienda() ,$risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
-	
+
+	/* da testare */
 	public static function getFiles($risorsa){
-		$query=sprintf("SELECT * FROM File WHERE idGruppo = %d", $risorsa->getId());
+		$query=sprintf("SELECT * FROM File WHERE idRisorsa = %d", $risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
-			$file = array();
+			$files = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$file[$row['id']]= new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['idRisorsa']);
+				$files[$row['id']]= new File($row['id'],$row['nome'],$row['tipo'],$row['path'],$row['idRisorsa']);
 			}
-			return $dispositivi;
+			return $files;
 		}else{
 			return null;
 		}
 	}
-	
+
 	public static function getGruppo($risorsa){
-		$query=sprintf("SELECT Gruppi.id, Gruppi.sigla, Gruppi.descrizione, Gruppi.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse 
+		$query=sprintf("SELECT Gruppi.id, Gruppi.sigla, Gruppi.descrizione, Gruppi.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse
 		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo  WHERE Risorse.id=%d",$risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
@@ -76,7 +77,7 @@ class RisorseTab{
 			return null;
 		}
 	}
-	
+
 	public static function getAzienda($risorsa){
 		$query=sprintf("SELECT * FROM Aziende WHERE id=%d",$risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
