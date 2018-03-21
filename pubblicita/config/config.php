@@ -8,7 +8,6 @@
 		public static $libPath =  ROOTPATH . "pubblicita/lib/";
 		public static $templatePath =  ROOTPATH . "pubblicita/template/";
 		public static $imagesPath =  ROOTPATH . "public_html/images/";
-
 	}
 
 	class DBCONNECTION{
