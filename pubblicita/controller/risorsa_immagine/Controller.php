@@ -9,12 +9,13 @@
 	$action=$_REQUEST['action'];
 	switch ($action){
 		case 'new':
-			$content=get_include_contents(/*Path::$controllerPath.*/"FormAggiungi.php");
+			$content=get_include_contents(CONFIG::$controllerPath."/risorsa_immagine/FormAggiungi.php");
 			break;
 		case 'add':
 			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$file,1);
 			$risorsa->save();
+			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
 			break;
 
 		case 'delete':

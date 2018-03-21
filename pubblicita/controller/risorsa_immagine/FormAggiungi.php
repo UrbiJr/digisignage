@@ -7,14 +7,14 @@
 		</br>
 		<h1 align="center">Aggiungi immagine</h1><br>
 		<div class="container center_div">
-			<form action="Controller.php" method="POST" enctype="multipart/form-data">
+			<form action="index.php?model=risorsa_immagine&action=add" method="POST" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Seleziona immagine:</label>
 					<input type="file" name="file" id="file"/>
 				</div>
 				<input type="hidden" name="action" value="add"/>
 				<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-				<input type="submit" style="font-size:20px" class="btn btn-success center-block" value="Aggiungi"/>		
+				<input type="submit" style="font-size:20px" class="btn btn-success center-block" value="Aggiungi"/>
 			</form>
 			</br>
 		</div>

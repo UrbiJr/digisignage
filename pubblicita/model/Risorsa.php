@@ -66,12 +66,12 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-				echo (CreateFiles::convert($this->nome,$imagesPath,$info[0]));
+				echo (CreateFiles::convert($this->nome,CONFIG::$imagesPath,$info[0]));
 				break;
 			case 'docx':
 			case 'odt':
 				CreateFiles::WordTopPdfConvert($this->nome);
-				echo (CreateFiles::convert($info[0].".pdf",$imagesPath,$info[0]));
+				echo (CreateFiles::convert($info[0].".pdf",CONFIG::$imagesPath,$info[0]));
 				break;
 		}
 	}
@@ -79,15 +79,15 @@ class Risorsa{
 	public function saveToDatabase(){
 
 		$info = explode(".", $this->getNome());
-		$n=CreateFiles::countPages($imagesPath.$this->getNome());
+		$n=CreateFiles::countPages(CONFIG::$imagesPath.$this->getNome());
 		if($n==1){
 			$name=$info[0].".jpeg";
-			$file=new File(null,$name,null, $imagesPath . $name,$this->id);
+			$file=new File(null,$name,null, CONFIG::$imagesPath . $name,$this->id);
 			$file->save();
 		}else{
 			for($i=0;$i<$n;$i++){
 				$name=$info[0]."-".$i.".jpeg";
-				$file=new File(null,$name,null, $imagesPath . $name,$this->id);
+				$file=new File(null,$name,null,CONFIG::$imagesPath . $name,$this->id);
 				$file->save();
 			}
 		}
