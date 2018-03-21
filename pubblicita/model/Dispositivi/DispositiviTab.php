@@ -32,6 +32,7 @@ class DispositiviTab{
 		}
 	}
 
+	/* Ritorna dispositivo con indirizzoMac = $indirizzoMac */
 	public static function getByIndirizzoMac($indirizzoMac) {
 		$query = sprintf("SELECT * FROM Dispositivi WHERE indirizzoMac = '%s'",$indirizzoMac);
 		$result = DBCONNECTION::$con->query($query);
@@ -72,6 +73,22 @@ class DispositiviTab{
 		}else{
 			return null;
 		}
+	}
+
+	/* restituisce lo zip di files che spetta al dispositivo ($dispositivo)
+		in base al gruppo di appartenenza
+		- da testare */
+	public static function createZipForDevice($dispositivo) {
+		$totalFiles = array();
+		$risorse = GruppiTab::getRisorse($dispositivo->getGruppo());
+		foreach $risorse as $risorsa {
+			$filesPerResource = RisorseTab::getFiles($risorsa);
+			foreach $filesPerResource as $f {
+				$totalFiles[] = $f;
+			}
+		}
+
+		/* creare zip da $totalFiles... */
 	}
 
 }
