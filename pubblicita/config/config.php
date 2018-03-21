@@ -39,5 +39,7 @@
 	include(CONFIG::$modelPath."RisorseTab.php");
 	include(CONFIG::$modelPath."File.php");
 	include(CONFIG::$modelPath."FileTab.php");
+	include(CONFIG::$modelPath."Dispositivi/DispositiviTab.php");
+	include(CONFIG::$modelPath."Dispositivi/Dispositivo.php");
 
 ?>
