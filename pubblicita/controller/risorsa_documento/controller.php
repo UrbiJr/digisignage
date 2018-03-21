@@ -9,10 +9,10 @@
 			break;
 
 		case 'add':
-		echo $_POST['nome'];
+
 
 			$risorsa = new Risorsa(NULL, $_POST['nome'],1);
-			var_dump($risorsa);
+
 			$risorsa -> save();
 
 			//$risorse = RisorseTab::getAll();
