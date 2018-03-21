@@ -1,4 +1,17 @@
-
+.footer_mio {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #222222;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px;
+}
+.navbar {
+	margin-bottom: 50px;
+	border-radius: 0;
+}
 
 
 

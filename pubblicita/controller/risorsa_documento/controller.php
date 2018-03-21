@@ -4,26 +4,29 @@
 
 	switch ($action){
 		case 'new':
-			$risorse = RisorseTab::getAll();
+			//$risorse = RisorseTab::getAll();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");
 			break;
-			
+
 		case 'add':
-			$risorsa = new Risorsa(NULL, $_POST["nome"],1);
-			$risorsa -> Save(); 
+		echo $_POST['nome'];
 
-			$risorse = RisorseTab::getAll();
+			$risorsa = new Risorsa(NULL, $_POST['nome'],1);
+			var_dump($risorsa);
+			$risorsa -> save();
+
+			//$risorse = RisorseTab::getAll();
 			$tmp_name = $_FILES['userfile']['tmp_name'];
-			move_uploaded_file($tmp_name,CONFIG::$imgPath .$name.".jpeg");
+			move_uploaded_file($tmp_name,CONFIG::$imagesPath .$_POST['nome'].".jpeg");
+$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
 
-			
-			
+
 			break;
-		
+
 		case 'delete':
-			
+
 			break;
-		
+
 		case 'edit':
 			break;
 

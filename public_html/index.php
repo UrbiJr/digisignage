@@ -29,10 +29,12 @@
 	switch ($model) {
 		case 'login':
 			include (CONFIG::$controllerPath.'login/controller.php');
-			//include (CONFIG::$templatePath.'main.php');
-			break;
+		break;
+		case 'risorsa_documento':
+				include (CONFIG::$controllerPath.'risorsa_documento/controller.php');
+		break;
 
-			
+
 	}
 
 	if($action=='login' && $model=='login'){
