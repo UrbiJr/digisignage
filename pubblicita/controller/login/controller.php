@@ -18,6 +18,7 @@ switch ($action){
 			//include("index.php");
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
 			break;
+
 		}else{
 			$error="Login fallito, username o password non validi!";
 			echo($error);
@@ -25,5 +26,12 @@ switch ($action){
 			$model="login";
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
 		}
+		case 'logout':
+				session_destroy();
+				$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
+				include (CONFIG::$templatePath.'templateLogin.php');
+
+			break;
+
 }
 ?>

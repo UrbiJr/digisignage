@@ -52,15 +52,14 @@
 	border-radius: 0;
 }ref="#">Home</a></li>
         <li><a href="index.php?model=risorsa_documento&action=new">Carica File</a></li>
-        <li><a href="#">Carica Immagini</a></li>
+        <li><a href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a></li>
         <li><a href="#">Ordina</a></li>
         <li><a href="#">Visualizza</a></li>
         <li><a href="#">Modifica</a></li>
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
-
+        <li><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       </ul>
     </div>
   </div>
