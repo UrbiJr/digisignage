@@ -5,8 +5,8 @@ class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
-	
-	private $CONVERT_COMMAND_WORD_TO_PDF = "soffice --headless --convert-to pdf";	
+
+	private $CONVERT_COMMAND_WORD_TO_PDF = "soffice --headless --convert-to pdf";
 	private $CONVERT_COMMAND_PDF_TO_WORD = "soffice --headless --convert-to odt";
 
 	function __construct($id, $nome, $idAzienda){
@@ -31,7 +31,7 @@ class Risorsa{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-	
+
 	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
@@ -57,14 +57,14 @@ class Risorsa{
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-	
+
 	public function getFiles(){
 		return RisorseTab::getFiles($this);
 	}
 
 	function controllaTipoRisorsa(){
 		$info = explode(".", $this->nome);
-		switch($info[1]){
+		switch(@$info[1]){
 			case 'pdf':
 				echo (CreateFiles::convert($this->nome,"../images/",$info[0]));
 				break;
@@ -75,12 +75,12 @@ class Risorsa{
 				break;
 		}
 	}
-	
+
 	public function saveToDatabase(){
 		$info = explode(".", $this->getNome());
 		$n=CreateFiles::countPages("../images/".$this->getNome());
 		if($n==1){
-			$name=$info[0].".jpeg";	
+			$name=$info[0].".jpeg";
 			$file=new File(null,$name,null, './images/' . $name,$this->id);
 			$file->save();
 		}else{
@@ -91,7 +91,7 @@ class Risorsa{
 			}
 		}
 	}
-	
-	
+
+
 
 }
