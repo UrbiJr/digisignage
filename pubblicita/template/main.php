@@ -47,10 +47,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
 
       <ul class="nav navbar-nav">
-        <li class="active"><a h.navbar {
-	margin-bottom: 50px;
-	border-radius: 0;
-}ref="#">Home</a></li>
+        <li><a href="index.php?model=login&action=home">Home</a></li>
         <li><a href="index.php?model=risorsa_documento&action=new">Carica File</a></li>
         <li><a href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a></li>
         <li><a href="#">Ordina</a></li>

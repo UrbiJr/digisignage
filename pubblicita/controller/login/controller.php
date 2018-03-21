@@ -8,6 +8,9 @@ switch ($action){
 		//include (CONFIG::$controllerPath.'login/viewLogin.php');
 		$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
 		break;
+	case'home':
+		$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
+		break;
 
 	case 'postLogin':
 		@$utente=UtentiTab::getByUtente_Password($_POST['username'],$_POST['password']);
