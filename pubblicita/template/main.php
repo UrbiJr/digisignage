@@ -7,6 +7,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #222222;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 10px;
+    }
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
@@ -16,19 +26,14 @@
       margin-bottom: 0;
     }
 
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
+
   </style>
 	</head>
 	<body>
-	<div class="jumbotron">
-  <div class="container text-center">
-    <h1>ProjectWork</h1>
-    <p>Digital Signage</p>
-  </div>
-</div>
+
+  <center>  <h1>ProjectWork</h1></center>
+
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -43,7 +48,7 @@
 
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Carica</a></li>
+        <li><a href="#">Carica Img</a></li>
         <li><a href="#">Ordina</a></li>
         <li><a href="#">Visualizza</a></li>
         <li><a href="#">Modifica</a></li>
@@ -64,10 +69,12 @@
 </div><br>
 
 </div><br><br>
+<?php echo $content ?>
 
-<footer class="container-fluid text-center navbar navbar-fixed-bottom">
-	<p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
-</footer>
-	<?php echo $content ?>
+
+<div class="footer">
+  <p>Realizzato dalla classe 5AIN dell' ITIS E.Mattei di Urbino</p>
+</div>
+
 	</body>
 </html>

@@ -1,11 +1,23 @@
 <?php
 
 	$action=$_REQUEST['action'];
-	$file=$_REQUEST['file'];
+
 	switch ($action){
+		case 'new':
+			$risorse = RisorseTab::getAll();
+			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");
+			break;
+			
 		case 'add':
-			$risorsa=new Risorsa(null,basename($file),1);
-			$risorsa->save();
+			$risorsa = new Risorsa(NULL, $_POST["nome"],1);
+			$risorsa -> Save(); 
+
+			$risorse = RisorseTab::getAll();
+			$tmp_name = $_FILES['userfile']['tmp_name'];
+			move_uploaded_file($tmp_name,CONFIG::$imgPath .$name.".jpeg");
+
+			
+			
 			break;
 		
 		case 'delete':
