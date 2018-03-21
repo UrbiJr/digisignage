@@ -75,20 +75,37 @@ class DispositiviTab{
 		}
 	}
 
-	/* restituisce lo zip di files che spetta al dispositivo ($dispositivo)
+	/*	restituisce lo zip di files che spetta al dispositivo ($dispositivo)
 		in base al gruppo di appartenenza
-		- da testare */
+		restituisce null in caso di errore*/
 	public static function createZipForDevice($dispositivo) {
 		$totalFiles = array();
 		$risorse = GruppiTab::getRisorse($dispositivo->getGruppo());
-		foreach $risorse as $risorsa {
+		foreach ($risorse as $risorsa) {
 			$filesPerResource = RisorseTab::getFiles($risorsa);
-			foreach $filesPerResource as $f {
+			foreach ($filesPerResource as $f) {
 				$totalFiles[] = $f;
 			}
 		}
 
-		/* creare zip da $totalFiles... */
+		/* creo zip che contiene $totalFiles... */
+		$zip = new ZipArchive();
+		$filename = "./" . $dispositivo->getIdGruppo() . ".zip";
+		if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+    		//exit("cannot open <$filename>\n");
+			return null;
+		}
+		// aggiungi ciascun file ad archivio zip
+		foreach ($totalFiles as $k => $file) {
+			/*	ZipArchive::addFile($percorsoFile, $nuovoNomeFile)
+				$nuovoNomeFile (opzionale) -> nuovo nome del file dentro
+				l'archivio zip */
+			$zip->addFile($file->getPath(), "/" . $k . $file->getTipo());
+			//echo "numfiles: " . $zip->numFiles . "\n";
+			//echo "status:" . $zip->status . "\n";
+		}
+		$zip->close();
+		return $zip;
 	}
 
 }
