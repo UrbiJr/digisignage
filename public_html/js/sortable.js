@@ -17,7 +17,7 @@ $(document).ready(function(){
                 
                 $.ajax({
                     type: "POST",
-                    url: "orderUpdate.php",
+                    url: "../orderUpdate.php",
                     data: {ids: " " + h + ""},
                     success: function(){
                         window.location.reload();

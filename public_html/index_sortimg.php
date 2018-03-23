@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<!-- PAGINA DA INTEGRARE SU index.php-->
 
 <?php
 //include database class
-include_once 'Controller.php';
+
 $controller=new Controller();
 ?>
 

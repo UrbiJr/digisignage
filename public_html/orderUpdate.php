@@ -1,6 +1,6 @@
 <?php
 //include database class
-include_once 'Controller.php';
+
 $db=new Controller();
 
 //get images id and generate ids array
