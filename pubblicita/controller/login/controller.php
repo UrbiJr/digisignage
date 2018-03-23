@@ -15,7 +15,6 @@ switch ($action){
 	case 'postLogin':
 		@$utente=UtentiTab::getByUtente_Password($_POST['username'],$_POST['password']);
 		if($id=$utente->getId()){
-			$id=$utente->getId();
 			$_SESSION['id_utente']=$id;
 
 			//include("index.php");

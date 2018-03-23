@@ -3,6 +3,14 @@
 	$action=$_REQUEST['action'];
 
 	switch ($action){
+
+		case 'list':
+			$risorse = RisorseTab::getAll();
+			//$content=get_include_contents(/*Path::$controllerPath.*/"ViewRisorse.php");
+			include("ViewRisorse.php");
+			break;
+
+
 		case 'new':
 			//$risorse = RisorseTab::getAll();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");
