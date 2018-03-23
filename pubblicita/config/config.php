@@ -41,5 +41,6 @@
 	include(CONFIG::$modelPath."FileTab.php");
 	include(CONFIG::$modelPath."Dispositivi/DispositiviTab.php");
 	include(CONFIG::$modelPath."Dispositivi/Dispositivo.php");
+	include(CONFIG::$controllerPath."sequenza/Controller.php");
 
 ?>

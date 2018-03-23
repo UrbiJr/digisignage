@@ -1,7 +1,7 @@
 <?php
 //include database class
-include_once 'db.php';
-$db=new DB();
+include_once 'Controller.php';
+$db=new Controller();
 
 //get images id and generate ids array
 $idArray=explode(",",$_POST['ids']);
