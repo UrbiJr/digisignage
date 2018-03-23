@@ -63,12 +63,12 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-				echo (fileConverter::convert($this->nome,"./images/",$info[0]));
+				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
 				break;
 			case 'docx':
 			case 'odt':
 				fileConverter::WordToPdfConvert($this->nome);
-				echo (fileConverter::convert($info[0].".pdf","./images/",$info[0]));
+				echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
 				break;
 			default:
 				$this->save();
@@ -79,7 +79,7 @@ class Risorsa{
 	
 	private function saveToDatabase($fileExt){
 		if($fileExt==='pdf'){
-			$n=fileConverter::countPages($info[0].".pdf");
+			$n=CreateFiles::countPages($info[0].".pdf");
 			if($n==1){
 				$name=$info[0].".jpeg";	
 				$file=new File(null,$name,null, './images/' . $name,$this->id);
