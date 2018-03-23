@@ -8,6 +8,7 @@
 	switch ($action){
 		case 'new':
 			$content=get_include_contents("./FormAggiungi.php");
+			break;
 		case 'add':
 			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$file,1);
