@@ -31,9 +31,7 @@ switch ($action){
 		case 'logout':
 				session_destroy();
 				$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
-				include (CONFIG::$templatePath.'templateLogin.php');
-
-			break;
+				break;
 
 }
 ?>
