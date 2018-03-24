@@ -28,19 +28,23 @@
 	 * Include delle librerie e dei modelli
 	 */
 
-	include(CONFIG::$modelPath."UtentiTab.php");
+	 include(CONFIG::$controllerPath."sequenza/Controller.php");
+
 	include(CONFIG::$libPath."lib.php");
-	include(CONFIG::$modelPath."Utente.php");
+
+	include(CONFIG::$modelPath."Dispositivi/DispositiviTab.php");
+	include(CONFIG::$modelPath."Dispositivi/Dispositivo.php");
+	include(CONFIG::$modelPath."File.php");
+	include(CONFIG::$modelPath."FileTab.php");
 	include(CONFIG::$modelPath."Gruppo.php");
 	include(CONFIG::$modelPath."GruppiTab.php");
 	include(CONFIG::$modelPath."Ruolo.php");
 	include(CONFIG::$modelPath."RuoliTab.php");
 	include(CONFIG::$modelPath."Risorsa.php");
 	include(CONFIG::$modelPath."RisorseTab.php");
-	include(CONFIG::$modelPath."File.php");
-	include(CONFIG::$modelPath."FileTab.php");
-	include(CONFIG::$modelPath."Dispositivi/DispositiviTab.php");
-	include(CONFIG::$modelPath."Dispositivi/Dispositivo.php");
-	include(CONFIG::$controllerPath."sequenza/Controller.php");
+	include(CONFIG::$modelPath."Sequenza.php");
+	include(CONFIG::$modelPath."SequenzeTab.php");
+	include(CONFIG::$modelPath."Utente.php");
+	include(CONFIG::$modelPath."UtentiTab.php");
 
 ?>
