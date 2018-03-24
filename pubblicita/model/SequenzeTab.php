@@ -49,7 +49,7 @@ class SequenzeTab{
 		$query=sprintf("UPDATE Sequenze SET nOrdine=%d, idRisorsa=%d, idGruppo=%d WHERE id=%d",$sequenza->getNOrdine(),$sequenza->getIdRisorsa(),$sequenza->getIdGruppo(),$sequenza->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
-	
+
 	public static function getGruppo($sequenza){
 		$query=sprintf("SELECT * FROM Gruppi WHERE id=%d",$sequenza->getId());
 		$result=DBCONNECTION::$con->query($query);
@@ -62,7 +62,7 @@ class SequenzeTab{
 			return null;
 		}
 	}
-	
+
 	public static function getRisorse($sequenza){
 		$query=sprintf("SELECT * FROM Risorse WHERE id=%d", $sequenza->getId());
 		$result=DBCONNECTION::$con->query($query);
@@ -75,6 +75,19 @@ class SequenzeTab{
 		}else{
 			return null;
 		}
+	}
+
+	/* 	restituisce TRUE se un record con coppia FK idRisorsa = $idRisorsa e FK idGruppo
+		= $idGruppo e' gia' presente nella tabella Sequenza.
+		FALSE altrimenti.
+		N.B. da utilizzare nella fase di assegnazione della risorsa a un gruppo:
+		serve a verificare se quella risorsa e' stata gia' assegnata a quel
+		gruppo. Evita dunque DOPPIONI nella tabella Sequenze.
+	*/
+	public static function alreadyExists($idRisorsa, $idGruppo) {
+		$query = sprintf("SELECT * FROM Sequenze WHERE idRisorsa=%d AND idGruppo=%d", $idRisorsa, $idGruppo);
+		$result=DBCONNECTION::$con->query($query);
+		return $result;
 	}
 
 

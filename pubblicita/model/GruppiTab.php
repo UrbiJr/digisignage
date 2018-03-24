@@ -79,8 +79,8 @@ class GruppiTab{
 
 	/* da testare */
 	public static function getRisorse($gruppo){
-		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorse
-		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo  WHERE Gruppi.id=%d",$gruppo->getId());
+		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorsa
+		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo WHERE Gruppi.id=%d",$gruppo->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$risorse= array();
