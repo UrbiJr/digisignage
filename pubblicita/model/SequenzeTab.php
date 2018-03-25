@@ -87,10 +87,13 @@ class SequenzeTab{
 	public static function alreadyExists($idRisorsa, $idGruppo) {
 		$query = sprintf("SELECT * FROM Sequenze WHERE idRisorsa=%d AND idGruppo=%d", $idRisorsa, $idGruppo);
 		$result=DBCONNECTION::$con->query($query);
-		return $result;
+		if (mysqli_num_rows($result) != 0){
+			//record gia' presente
+			return true;
+		} else {
+			//record non presente
+			return false;
+		}
 	}
-
-
-
 
 }

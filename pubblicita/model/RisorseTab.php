@@ -49,7 +49,6 @@ class RisorseTab{
 		$result=DBCONNECTION::$con->query($query);
 	}
 
-	/* da testare */
 	public static function getFiles($risorsa){
 		$query=sprintf("SELECT * FROM File WHERE idRisorsa = %d", $risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
