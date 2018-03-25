@@ -6,12 +6,11 @@ class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
-	
+
 	function __construct($id, $nome, $idAzienda){
 		$this->id=$id;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
-		$this->controllaTipoRisorsa();
 	}
 
 	public function setId($id){
@@ -29,7 +28,7 @@ class Risorsa{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-	
+
 	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
@@ -37,7 +36,6 @@ class Risorsa{
 	public function setIdAzienda($idAzienda){
 		$this->nome = $idAzienda;
 	}
-
 
 	public function save(){
 		if(!$this->id){
@@ -54,46 +52,9 @@ class Risorsa{
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-	
-	public function getFile(){
-		return RisorseTab::getFile($this);
-	}
 
-	function controllaTipoRisorsa(){
-		$info = explode(".", $this->nome);
-		switch($info[1]){
-			case 'pdf':
-				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
-				break;
-			case 'docx':
-			case 'odt':
-				fileConverter::WordToPdfConvert($this->nome);
-				echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
-				break;
-			default:
-				$this->save();
-				$this->saveToDatabase($info[1]);
-				break;
-		}
+	public function getFiles(){
+		return RisorseTab::getFiles($this);
 	}
 	
-	private function saveToDatabase($fileExt){
-		if($fileExt==='pdf'){
-			$n=CreateFiles::countPages($info[0].".pdf");
-			if($n==1){
-				$name=$info[0].".jpeg";	
-				$file=new File(null,$name,null, './images/' . $name,$this->id);
-				$file->save();
-			}else{
-				for($i=0;$i<$n;$i++){
-					$name=$info[0]."-".$i.".jpeg";
-					$file=new File(null,$name,null, './images/' . $name,$this->id);
-					$file->save();
-				}
-			}
-		}else{
-			$file=new File(null,$this->getNome(),null, './images/' . $this->getNome(),$this->id);
-			$file->save();
-		}
-	}
 }
