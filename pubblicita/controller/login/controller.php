@@ -15,7 +15,6 @@ switch ($action){
 	case 'postLogin':
 		@$utente=UtentiTab::getByUtente_Password($_POST['username'],$_POST['password']);
 		if($id=$utente->getId()){
-			$id=$utente->getId();
 			$_SESSION['id_utente']=$id;
 
 			//include("index.php");
@@ -32,9 +31,7 @@ switch ($action){
 		case 'logout':
 				session_destroy();
 				$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
-				include (CONFIG::$templatePath.'templateLogin.php');
-
-			break;
+				break;
 
 }
 ?>

@@ -1,19 +1,16 @@
 <?php
 
 include("CreateFiles.php");
+
 class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
 
-	private $CONVERT_COMMAND_WORD_TO_PDF = "soffice --headless --convert-to pdf";
-	private $CONVERT_COMMAND_PDF_TO_WORD = "soffice --headless --convert-to odt";
-
 	function __construct($id, $nome, $idAzienda){
 		$this->id=$id;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
-		$this->controllaTipoRisorsa();
 	}
 
 	public function setId($id){
@@ -40,12 +37,10 @@ class Risorsa{
 		$this->nome = $idAzienda;
 	}
 
-
 	public function save(){
 		if(!$this->id){
 			$n=RisorseTab::insert($this);
 			$this->setId($n);
-			$this->saveToDatabase();
 			return true;
 		}else{
 			RisorseTab::update($this);
@@ -61,38 +56,5 @@ class Risorsa{
 	public function getFiles(){
 		return RisorseTab::getFiles($this);
 	}
-
-	function controllaTipoRisorsa(){
-		$info = explode(".", $this->nome);
-		switch($info[1]){
-			case 'pdf':
-				echo (CreateFiles::convert($this->nome,CONFIG::$imagesPath,$info[0]));
-				break;
-			case 'docx':
-			case 'odt':
-				CreateFiles::WordTopPdfConvert($this->nome);
-				echo (CreateFiles::convert($info[0].".pdf",CONFIG::$imagesPath,$info[0]));
-				break;
-		}
-	}
-
-	public function saveToDatabase(){
-
-		$info = explode(".", $this->getNome());
-		$n=CreateFiles::countPages(CONFIG::$imagesPath.$this->getNome());
-		if($n==1){
-			$name=$info[0].".jpeg";
-			$file=new File(null,$name,null, CONFIG::$imagesPath . $name,$this->id);
-			$file->save();
-		}else{
-			for($i=0;$i<$n;$i++){
-				$name=$info[0]."-".$i.".jpeg";
-				$file=new File(null,$name,null,CONFIG::$imagesPath . $name,$this->id);
-				$file->save();
-			}
-		}
-	}
-
-
-
+	
 }

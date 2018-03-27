@@ -40,7 +40,7 @@
 
 	}
 
-	if($action=='login' && $model=='login'){
+	if(($action=='login' && $model=='login') || ($action=='logout' && $model=='login') ){
 		include (CONFIG::$templatePath.'templateLogin.php');
 	}else{
 		include (CONFIG::$templatePath.'main.php');

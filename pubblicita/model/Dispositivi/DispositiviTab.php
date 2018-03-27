@@ -32,6 +32,7 @@ class DispositiviTab{
 		}
 	}
 
+	/* Ritorna dispositivo con indirizzoMac = $indirizzoMac */
 	public static function getByIndirizzoMac($indirizzoMac) {
 		$query = sprintf("SELECT * FROM Dispositivi WHERE indirizzoMac = '%s'",$indirizzoMac);
 		$result = DBCONNECTION::$con->query($query);
@@ -72,6 +73,57 @@ class DispositiviTab{
 		}else{
 			return null;
 		}
+	}
+
+	/*	restituisce lo zip di files che spetta al dispositivo ($dispositivo)
+		in base al gruppo di appartenenza
+		restituisce null in caso di errore*/
+	public static function createZipForDevice($dispositivo) {
+		$totalFiles = array();
+		$risorse = GruppiTab::getRisorse($dispositivo->getGruppo());
+		// ciclo sulle risorse
+		foreach ($risorse as $risorsa) {
+			$filesPerResource = RisorseTab::getFiles($risorsa);
+			// ciclo sui file (per ogni risorsa)
+			foreach ($filesPerResource as $f) {
+				// estraggo il percorso del file
+				$path = $f->getPath();
+				// controllo se il file esiste
+				if (file_exists($path))
+					$totalFiles[] = $path;
+				else {
+					echo "file ".$f->getNome()." non esistente";
+					return null;
+				}
+			}
+		}
+
+		/* creo zip che contiene $totalFiles... */
+		$zip = new ZipArchive();
+		$filename = "./" . $dispositivo->getIdGruppo() . ".zip";
+		// zip gia' presente, apri in modalita' overwrite
+		if (file_exists($filename)) {
+			if ($zip->open($filename, ZipArchive::OVERWRITE)!==TRUE) {
+	    		//exit("cannot open <$filename>\n");
+				return null;
+			}
+		// altrimenti, apri in modalita' create
+		}else if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+    			//exit("cannot open <$filename>\n");
+				return null;
+		}
+		// aggiungi ciascun file ad archivio zip
+		foreach ($totalFiles as $k => $file) {
+			/*	ZipArchive::addFile($percorsoFile, $nuovoNomeFile)
+				$nuovoNomeFile (opzionale) -> nuovo nome del file dentro
+				l'archivio zip */
+			//$zip->addFile($file, "/" . $k . $file->getTipo());
+			$zip->addFile($file, $file);
+			echo "numfiles: " . $zip->numFiles . "\n";
+			echo "status:" . $zip->status . "\n";
+		}
+		$zip->close();
+		return $filename;
 	}
 
 }

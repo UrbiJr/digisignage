@@ -53,10 +53,11 @@
         <li><a href="#">Ordina</a></li>
         <li><a href="#">Visualizza</a></li>
         <li><a href="#">Modifica</a></li>
+			</ul>
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+        <li  style="right: 0px;"><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       </ul>
     </div>
   </div>

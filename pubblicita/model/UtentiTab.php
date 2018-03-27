@@ -6,8 +6,9 @@ class UtentiTab{
 	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
-	
+
 	public static function getByUtente_Password($utente, $psw){
+		$psw = md5($psw);
 		$query=sprintf("SELECT * FROM Utenti WHERE nome='%s' and password='%s'", $utente, $psw);
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
