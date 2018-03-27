@@ -56,5 +56,5 @@ class Risorsa{
 	public function getFiles(){
 		return RisorseTab::getFiles($this);
 	}
-	
+
 }
