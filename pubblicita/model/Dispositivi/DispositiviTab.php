@@ -99,7 +99,7 @@ class DispositiviTab{
 		}
 
 		/* creo zip che contiene $totalFiles... */
-		$zip = new ZipArchive();
+		$zip = new ZipArchive();	// manca estensione ziparchive
 		$filename = "./" . $dispositivo->getIdGruppo() . ".zip";
 		// zip gia' presente, apri in modalita' overwrite
 		if (file_exists($filename)) {

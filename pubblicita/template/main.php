@@ -20,8 +20,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #222222;      <ul class="nav navbar-n <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>av navbar-right">
+    background-color: #222222;
     color: #f2f2f2;
     text-align: center;
     padding: 10px;
@@ -36,7 +35,7 @@
 	</head>
 	<body>
 
-  <center>  <h1>ProjectWork</h1></center>
+  <center>  <img src="images/logone.png" height="150" width="600"></center>
 
 
 
@@ -45,7 +44,7 @@
   <div class="container-fluid">
         <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.php?model=login&action=home">Home</a>
+          <a class="nav-link" href="index.php?model=login&action=home"><img src="images/loghino.png" height="25" width="25"></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php?model=risorsa_documento&action=new">Carica Risorsa</a>
