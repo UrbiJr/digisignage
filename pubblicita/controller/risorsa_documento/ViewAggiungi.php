@@ -4,7 +4,6 @@
 	</head>
 	<body>
 		<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
-			Nome:<input type="text" name="nome">
 		Select image to upload:
 		<input type="file" name="userfile">
 		<input type="submit" value="Upload Image" name="submit">
