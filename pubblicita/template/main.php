@@ -20,7 +20,8 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #222222;
+    background-color: #222222;      <ul class="nav navbar-n <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>av navbar-right">
     color: #f2f2f2;
     text-align: center;
     padding: 10px;
@@ -47,11 +48,11 @@
           <a class="nav-link" href="index.php?model=login&action=home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?model=risorsa_documento&action=new">Carica File</a>
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=new">Carica Risorsa</a>
         </li>
-        <li class="nav-item">
+      <!--  <li class="nav-item">
           <a class="nav-link" href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a class="nav-link" href="#">Ordina</a>
         </li>
@@ -67,7 +68,7 @@
 			</ul>
 
 
-      <ul class="nav navbar-nav navbar-right">
+
         <li  style="right: 0px;"><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       </ul>
     </div>
