@@ -46,21 +46,10 @@ class FileTab{
 	}
 
 	public static function update($file){
-		$query=sprintf("UPDATE File SET nome='%s', tipo='%s', path='%s', idRisorsa=%d WHERE id=%d",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorsa(),$file->getId());
+		$query=sprintf("UPDATE File SET nome='%s', tipo='%s', path='%s', idRisorsa=%d WHERE id=%d",$file->getNome(),$file->getTipo(),$file->getPath(),$file->getIdRisorse(),$file->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
-	public static function getRisorsa($file){
-		$query=sprintf("SELECT * FROM Risorse WHERE id=%d",$file->getIdRisorsa());
-		$result=DBCONNECTION::$con->query($query);
-		if($result){
-			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorsa= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
-			}
-			return $gruppo;
-		}else{
-			return null;
-		}
-	}
+
 
 }
