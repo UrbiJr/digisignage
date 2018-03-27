@@ -12,7 +12,6 @@
 						<th>Nome</th>
 						<th>Id Azienda</th>
 						<th>Elimina</th>
-						<th>Modifica</th>
 					</tr>
 					<?php foreach($risorse as $key => $risorsa):?>
 						<tr>
@@ -20,11 +19,10 @@
 							<td><?php echo $risorsa->getNome();?></td>
 							<td><?php echo $risorsa->getIdAzienda();?></td>
 							<td><a onClick="return confirm('Sei sicuro')" href="Index.php?model=risorse&id=<?php echo $key?>&action=delete">Elimina<a></td>
-							<td><a href="Index.php?model=risorse&action=edit&id=<?php echo $key;?>">Modifica<a></td>
 						</tr>
 					<?php endforeach;?>
 				</table>
-			</div> 
+			</div>
 		<?php else:?>
 			<h1 align="center">Non ci sono risorse.</h1>
 		<?php endif;?>
