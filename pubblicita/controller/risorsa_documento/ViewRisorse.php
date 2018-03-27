@@ -1,8 +1,6 @@
 <html>
 	<head>
-		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</head>
+			</head>
 	<body>
 		</br>
 		<?php if($risorse):?>
@@ -26,7 +24,7 @@
 						</tr>
 					<?php endforeach;?>
 				</table>
-			</div>
+			</div> 
 		<?php else:?>
 			<h1 align="center">Non ci sono risorse.</h1>
 		<?php endif;?>
