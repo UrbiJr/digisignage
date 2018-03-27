@@ -9,7 +9,7 @@
 			<h1 align="center">Schede</h1><br>
 			<div class="container">
 				<table align="center"s class="table table-striped">
-					<tr>	
+					<tr>
 						<th>Id</th>
 						<th>Nome</th>
 						<th>Id Azienda</th>
@@ -17,12 +17,12 @@
 						<th>Modifica</th>
 					</tr>
 					<?php foreach($risorse as $key => $risorsa):?>
-						<tr>		
-							<td><?php echo $key?></td>	 	
+						<tr>
+							<td><?php echo $key?></td>
 							<td><?php echo $risorsa->getNome();?></td>
 							<td><?php echo $risorsa->getIdAzienda();?></td>
 							<td><a onClick="return confirm('Sei sicuro')" href="Index.php?model=risorse&id=<?php echo $key?>&action=delete">Elimina<a></td>
-							<td><a href="Index.php?model=risorse&action=edit&id=<?php echo $key;?>">Modifica<a></td>							
+							<td><a href="Index.php?model=risorse&action=edit&id=<?php echo $key;?>">Modifica<a></td>
 						</tr>
 					<?php endforeach;?>
 				</table>
