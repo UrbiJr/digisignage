@@ -35,7 +35,7 @@
 	</head>
 	<body>
 
-  <center>  <h1>ProjectWork</h1></center>
+  <center>  <img src="images/logone.png" height="150" width="600"></center>
 
 
 
@@ -51,7 +51,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
 
       <ul class="nav navbar-nav">
-        <li><a href="index.php?model=login&action=home">Home</a></li>
+        <li><a href="index.php?model=login&action=home"><img src="images/loghino.png" height="25" width="25"></a></li>
         <li><a href="index.php?model=risorsa_documento&action=new">Carica File</a></li>
         <li><a href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a></li>
         <li><a href="#">Ordina</a></li>
