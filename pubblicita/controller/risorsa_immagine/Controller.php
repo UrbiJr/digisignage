@@ -7,7 +7,7 @@
 	$action=$_REQUEST['action'];
 	switch ($action){
 		case 'new':
-			$content=get_include_contents("./FormAggiungi.php");
+			$content=get_include_contents(CONFIG::$controllerPath."risorsa_immagine/FormAggiungi.php");
 			break;
 		case 'add':
 			$file=basename($_FILES['file']['name']);
@@ -26,7 +26,7 @@
 			
 		case 'list':
 			$risorse = RisorseTab::getAll();
-			$content=get_include_contents("./ViewRisorse.php");
+			$content=get_include_contents(CONFIG::$controllerPath."risorsa_immagine/ViewRisorse.php");
 			break;
 			
 		default:
