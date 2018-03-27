@@ -11,8 +11,18 @@
  			<div class="col-sm-4">
 				<center>
 					<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
-						<input type="file" name="userfile">
-						<input class="btn btn-dark"  type="submit" value="Upload Image" name="submit">
+						<div class="form-group">
+							<label for="email">Nome del file:</label>
+							<input class="form-control" type="test" name="filename">
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="file" name="userfile">
+						</div>
+						<div class="form-group">
+							<input class="form-control btn btn-dark"  type="submit" value="Upload Image" name="submit">
+ 						</div>
+
+
 					</form>
 				</center>
 			</div>

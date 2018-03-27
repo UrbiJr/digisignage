@@ -39,24 +39,31 @@
 
 
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
 
-      <ul class="nav navbar-nav">
-        <li><a href="index.php?model=login&action=home">Home</a></li>
-        <li><a href="index.php?model=risorsa_documento&action=new">Carica File</a></li>
-        <li><a href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a></li>
-        <li><a href="#">Ordina</a></li>
-        <li><a href="#">Visualizza</a></li>
-        <li><a href="#">Modifica</a></li>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?model=login&action=home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=new">Carica File</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ordina</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Visualizza</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Modifica</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Gestisci gruppo</a>
+        </li>
 			</ul>
 
 
