@@ -18,17 +18,11 @@
 
 		case 'add':
 
-
-			$risorsa = new Risorsa(NULL, $_POST['nome'],1);
-
-			$risorsa -> save();
-
-			//$risorse = RisorseTab::getAll();
-			$tmp_name = $_FILES['userfile']['tmp_name'];
-			move_uploaded_file($tmp_name,CONFIG::$imagesPath .$_POST['nome'].".jpeg");
-$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
-
-
+			$file=basename($_FILES['file']['name']);
+			$risorsa=new Risorsa(null,$file,1);
+			$risorsa->save();
+			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
+			
 			break;
 
 		case 'delete':
@@ -47,3 +41,4 @@ $content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.ph
 	}
 
 ?>
+
