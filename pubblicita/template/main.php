@@ -20,8 +20,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #222222;      <ul class="nav navbar-n <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>av navbar-right">
+    background-color: #222222;
     color: #f2f2f2;
     text-align: center;
     padding: 10px;
@@ -71,7 +70,7 @@
 
         <li  style="right: 0px;"><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       </ul>
-    </div>
+    </div>  
   </div>
 </nav>
 
