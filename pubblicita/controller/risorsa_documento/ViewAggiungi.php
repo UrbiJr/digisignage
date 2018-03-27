@@ -1,32 +1,24 @@
 <html>
 	<head>
-		<title>Carica Documento</title>
-
-
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-
-		<div class="row">
- 			<div class="col-sm-4"></div>
- 			<div class="col-sm-4">
-				<center>
-					<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
-						<div class="form-group">
-							<label for="email">Nome del file:</label>
-							<input class="form-control" type="test" name="filename">
-						</div>
-						<div class="form-group">
-							<input class="form-control" type="file" name="userfile">
-						</div>
-						<div class="form-group">
-							<input class="form-control btn btn-dark"  type="submit" value="Upload Image" name="submit">
- 						</div>
-
-
-					</form>
-				</center>
-			</div>
- 			<div class="col-sm-4"></div>
+		</br>
+		<h1 align="center">Aggiungi immagine</h1><br>
+		<div class="container center_div">
+			<form action="index.php?model=risorsa_documento&action=add" method="POST" enctype="multipart/form-data">
+				<p>Nome:</p>
+				<input type="text" name="filename"/>
+				<div class="form-group">
+					<label>Seleziona immagine:</label>
+					<input type="file" name="file" id="file"/>
+				</div>
+				<input type="hidden" name="action" value="add"/>
+				<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+				<input type="submit" style="font-size:20px" class="btn btn-success center-block" value="Aggiungi"/>
+			</form>
+			</br>
 		</div>
 	</body>
 </html>
