@@ -2,63 +2,30 @@
 class CreateFiles{
 	//file existing control
 	public static function controlIfFileExists($fn){return file_exists($fn)?true:false;}
-
+	
 	//convert from word to pdf
-	public function WordTopPdfConvert($fn){
+	public static function WordToPdfConvert($fn){
 		//if (! ( fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
 		try{
-			$result = shell_exec(("export HOME=/tmp && ".$this->CONVERT_COMMAND_WORD_TO_PDF." ".$fn));
+			$result = shell_exec(("export HOME=/tmp && soffice --headless --convert-to pdf"." ".$fn));
+			echo $result;
+			die();
 		}catch(Exception $e){
 			$result = $e->getMessage();
 		}
 		return $result;
 	}
-
-	/*	converte file documento in (piu') file jpeg.
-		l'oggetto File passato per parametro acquisisce gli attributi
-		dell'oggetto File della prima pagina jpeg convertita.
-		ritorna true in caso di successo;
-		null in caso di errore
-		*/
-	public static function convert($file) {
+	
+	//convert all pages into .jpg format
+	public static function convert($fn, $destination, $name) {
 		//if (! (fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
-		// estraggo il percorso (sottraendo il nome del file dal path)
-		$destination = str_replace($file->getNome(),"",$file->getPath());
-		$name = explode(".",$file->getNome())[0];
 		try{
-			// leggo numero pagine
-			$nPages = (new Imagick($file->getPath()))->getNumberImages();
 			$imagick = new Imagick();
-			// maggiore qualita' immagine
-			$imagick->setResolution(150, 150);
-			// ciclo sul numero di pagine del documento
-			for ($i = 0; $i < $nPages; $i++) {
-				// nome corrente del nuovo file jpeg
-				$currName = $name."-".$i.".jpeg";
-				// leggi pagina numero $i del documento...
-				$imagick->readImage($file->getPath()."[".$i."]");
-				// aggiusta immagine
-				$imagick = $imagick->flattenImages();
-				// ... e trasformala in jpeg
-				$imagick->writeImage($destination.$currName);
-				// ora posso salvare il nuovo file nel database
-				$temp = new File(null,$currName,"jpeg",$destination.$currName,$file->getIdRisorsa());
-				$n = FileTab::insert($temp);
-				$temp->setId($n);
-				/*	 il file documento iniziale diventa il primo file jpeg convertito
-					 (prima verifico che non sia assegnato l'id, come dovrebbe essere)
-				*/
-				if ($file->getId() == null) {
-					$file->setId($temp->getId());
-					$file->setNome($temp->getNome());
-					$file->setTipo($temp->getTipo());
-					$file->setPath($temp->getPath());
-				}
-			}
-
+			$imagick->readImage("./images/".$fn);
+			$imagick->writeImages($destination . $name . ".jpeg", false);
 			$result = true;
 		}catch(Exception $e){
-			$result = false;
+			$result = $e->getMessage();
 		}
 		return $result;
 	}
@@ -103,7 +70,7 @@ class CreateFiles{
 		sort($pages);
 		for($i=0; $i<=$nPages; $i++){
 			for($j=0; $j<count($pages); $j++){
-				if($pages[$j]==$i){
+				if($pages[$j]==$i){ 
 					$command = 'convert ' . $fn . '[' . $i . '] ' . CONFIG::$imagesPath . $name . $x . '.jpeg';
 					try{
 						shell_exec($command);
@@ -116,7 +83,8 @@ class CreateFiles{
 		}
 		if($result != null) return $result;
 	}
-
-
+	
+	
 }
 ?>
+

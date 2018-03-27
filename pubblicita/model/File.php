@@ -18,6 +18,7 @@ class File{
 	public function setId($id){
 		$this->id=$id;
 	}
+
 	public function getId(){
 		return $this->id;
 	}
@@ -56,10 +57,10 @@ class File{
 
 	public function save(){
 		if(!$this->id){
-			$this->controllaTipoFile();
+			$n=FileTab::insert($this);
+			$this->setId($n);
 			return true;
 		}else{
-			// controllare tipo file anche qui (update) ???
 			FileTab::update($this);
 			return true;
 		}
@@ -68,32 +69,6 @@ class File{
 
 	public function delete(){
 		FileTab::remove($this);
-	}
-
-	public function getRisorsa(){
-		return FileTab::getRisorsa($this);
-	}
-
-
-	public function controllaTipoFile(){
-		$info = explode(".", $this->nome);
-		switch($info[1]){
-			case 'pdf':
-				// converti e salva
-				CreateFiles::convert($this);
-				break;
-			case 'docx':
-			case 'odt':
-				// converti e salva
-				fileConverter::WordToPdfConvert($this->nome);
-				CreateFiles::convert($this);
-				break;
-			default:
-				// salva
-				$n = FileTab::insert($this);
-				$this->setId($n);
-				break;
-		}
 	}
 
 }
