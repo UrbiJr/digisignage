@@ -20,8 +20,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #222222;      <ul class="nav navbar-n <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>av navbar-right">
+    background-color: #222222;
     color: #f2f2f2;
     text-align: center;
     padding: 10px;
@@ -36,13 +35,31 @@
 	</head>
 	<body>
 
-  <center>  <h1>ProjectWork</h1></center>
+  <center>  <img src="images/logone.png" height="150" width="600"></center>
 
 
 
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
+<<<<<<< HEAD
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav">
+        <li><a href="index.php?model=login&action=home"><img src="images/loghino.png" height="25" width="25"></a></li>
+        <li><a href="index.php?model=risorsa_documento&action=new">Carica File</a></li>
+        <li><a href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a></li>
+        <li><a href="#">Ordina</a></li>
+        <li><a href="#">Visualizza</a></li>
+        <li><a href="#">Modifica</a></li>
+=======
         <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="index.php?model=login&action=home">Home</a>
@@ -65,13 +82,14 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Gestisci gruppo</a>
         </li>
+>>>>>>> f2bf022342ddfd5a04d1d7d32172fe9dc111d065
 			</ul>
 
 
 
         <li  style="right: 0px;"><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       </ul>
-    </div>
+    </div>  
   </div>
 </nav>
 

@@ -19,10 +19,16 @@
 
 		case 'add':
 
+<<<<<<< HEAD
 			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$file,1);
+=======
+			$file=basename($_FILES['file']['filename']);
+			$risorsa=new Risorsa($_GET['filename'],$file,1);
+			$risorsa->save();
+>>>>>>> 957a6b9d96323c5a082cad4deeb45e09ce7311ff
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
-			
+
 			break;
 
 		case 'delete':
@@ -41,4 +47,3 @@
 	}
 
 ?>
-
