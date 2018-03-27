@@ -7,9 +7,10 @@ class CreateFiles{
 	public static function WordToPdfConvert($fn){
 		//if (! ( fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
 		try{
+			/* NON ESEGUE (quindi non crea .pdf), SERVONO PERMESSI!! */
 			$result = shell_exec(("export HOME=/tmp && soffice --headless --convert-to pdf"." ".$fn));
 			echo $result;
-			die();
+			
 		}catch(Exception $e){
 			$result = $e->getMessage();
 		}
@@ -21,7 +22,11 @@ class CreateFiles{
 		//if (! (fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
 		try{
 			$imagick = new Imagick();
-			$imagick->readImage("./images/".$fn);
+			// maggiore qualita' immagine
+			$imagick->setResolution(150, 150);
+			// aggiusta immagine
+			$imagick = $imagick->flattenImages();
+			$imagick->readImage($fn);
 			$imagick->writeImages($destination . $name . ".jpeg", false);
 			$result = true;
 		}catch(Exception $e){

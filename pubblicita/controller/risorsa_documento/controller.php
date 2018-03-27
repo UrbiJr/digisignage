@@ -1,5 +1,6 @@
 <?php
 
+	include("../../config/config.php");
 	$action=$_REQUEST['action'];
 
 	switch ($action){
@@ -20,7 +21,6 @@
 
 			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$file,1);
-			$risorsa->save();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
 			
 			break;
