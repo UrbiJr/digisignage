@@ -63,12 +63,12 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
+				echo (CreateFiles::convert($this->nome,"../images/",$info[0]));
 				break;
 			case 'docx':
 			case 'odt':
 				CreateFiles::WordToPdfConvert($this->nome);
-				echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
+				//echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
 				break;
 			default:
 				$this->save();
