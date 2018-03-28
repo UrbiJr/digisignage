@@ -6,12 +6,21 @@ class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
-	
+
+	/* 	costruttore per Risorse create per la prima volta
+		OPPURE (ri)create dalle query (es. GruppiTab::getRisorse()).
+		Per risorse create per la prima volta, NON PASSARE IL TERZO
+		PARAMETRO ($id).
+		Per risorse gia' salvate nel database, PASSARE ANCHE $id
+		Se $id e' passato come parametro, $this->$id = $id,
+		altrimenti $this->$id = null
+	*/
 	function __construct($id, $nome, $idAzienda){
-		$this->id=$id;
+		$this->$id = $id;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
-		$this->controllaTipoRisorsa();
+		if ($this->id != null)
+			$this->controllaTipoRisorsa();
 	}
 
 	public function setId($id){
@@ -29,7 +38,7 @@ class Risorsa{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-	
+
 	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
@@ -54,7 +63,7 @@ class Risorsa{
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-	
+
 	public function getFile(){
 		return RisorseTab::getFile($this);
 	}
@@ -76,12 +85,12 @@ class Risorsa{
 				break;
 		}
 	}
-	
+
 	private function saveToDatabase($fileExt){
 		if($fileExt==='pdf'){
 			$n=CreateFiles::countPages($info[0].".pdf");
 			if($n==1){
-				$name=$info[0].".jpeg";	
+				$name=$info[0].".jpeg";
 				$file=new File(null,$name,null, './images/' . $name,$this->id);
 				$file->save();
 			}else{
