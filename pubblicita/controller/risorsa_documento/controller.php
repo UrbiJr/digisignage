@@ -15,15 +15,9 @@
 			
 		case 'add':
 			$file=basename($_FILES['file']['name']);
-			$risorsa=new Risorsa(null,$_POST['filename'],1);
-			$risorsa->save();
-			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$file,1);
-			$file=basename($_FILES['file']['filename']);
-			$risorsa=new Risorsa($_GET['filename'],$file,1);
 			$risorsa->save();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
-
 			break;
 
 		case 'delete':
