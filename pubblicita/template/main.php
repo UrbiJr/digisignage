@@ -3,7 +3,7 @@
 		 <title>ProjectWork</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
