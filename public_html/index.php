@@ -33,11 +33,6 @@
 		case 'risorsa_documento':
 			include (CONFIG::$controllerPath.'risorsa_documento/controller.php');
 			break;
-		case 'risorsa_immagine':
-			include (CONFIG::$controllerPath.'risorsa_immagine/Controller.php');
-			break;
-
-
 	}
 
 	if(($action=='login' && $model=='login') || ($action=='logout' && $model=='login') ){
