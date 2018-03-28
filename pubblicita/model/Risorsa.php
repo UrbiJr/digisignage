@@ -70,11 +70,7 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-<<<<<<< HEAD
 				echo (CreateFiles::convert($this->nome,"/images/",$info[0]));
-=======
-				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
->>>>>>> 31d47e62e10854124cdee227fb2cafc942a7b78f
 				break;
 			case 'docx':
 			case 'odt':
