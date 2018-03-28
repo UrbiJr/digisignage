@@ -17,7 +17,7 @@ class Risorsa{
 		$this->$id = $id;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
-		if ($this->id != null)
+		if ($this->id == null)
 			$this->controllaTipoRisorsa();
 	}
 
