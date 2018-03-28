@@ -101,7 +101,7 @@ class DispositiviTab{
 		/* creo zip che contiene $totalFiles... */
 		$zip = new ZipArchive();	// manca estensione ziparchive
 		$filename = "./" . $dispositivo->getIdGruppo() . ".zip";
-		
+
 		// zip gia' presente, apri in modalita' overwrite
 		if (file_exists($filename)) {
 			if ($zip->open($filename, ZipArchive::OVERWRITE)!==TRUE) {
@@ -122,7 +122,7 @@ class DispositiviTab{
 				$nuovoNomeFile (opzionale) -> nuovo nome del file dentro
 				l'archivio zip */
 			//$zip->addFile($file, "/" . $k . $file->getTipo());
-			$zip->addFile($file->getPath(), $file->getId() . $file->getTipo());
+			$zip->addFile($file->getPath(), $file->getId() . "." . $file->getTipo());
 			echo "numfiles: " . $zip->numFiles . "\n";
 			echo "status:" . $zip->status . "\n";
 		}
