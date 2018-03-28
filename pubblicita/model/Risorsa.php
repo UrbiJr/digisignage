@@ -9,11 +9,9 @@ class Risorsa{
 
 	/* 	costruttore per Risorse create per la prima volta
 		OPPURE (ri)create dalle query (es. GruppiTab::getRisorse()).
-		Per risorse create per la prima volta, NON PASSARE IL TERZO
-		PARAMETRO ($id).
-		Per risorse gia' salvate nel database, PASSARE ANCHE $id
-		Se $id e' passato come parametro, $this->$id = $id,
-		altrimenti $this->$id = null
+		Per risorse create per la prima volta, passare null come
+		primo parametro.
+		Altrimenti, utilizzare l'$id restituito dalla query (per esempio)
 	*/
 	function __construct($id, $nome, $idAzienda){
 		$this->$id = $id;
@@ -72,12 +70,12 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-				echo (CreateFiles::convert($this->nome,"../images/",$info[0]));
+				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
 				break;
 			case 'docx':
 			case 'odt':
 				CreateFiles::WordToPdfConvert($this->nome);
-				//echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
+				echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
 				break;
 			default:
 				$this->save();
