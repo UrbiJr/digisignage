@@ -4,7 +4,7 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 	
-	include("../../config/config.php");
+	//include("../../config/config.php");
 	$action=$_REQUEST['action'];
 
 	$action=$_REQUEST['action'];
@@ -12,10 +12,11 @@
 		case 'new':
 			$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");
 			break;
+			
 		case 'add':
 			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$_POST['filename'],1);
-			$risorsa->save()
+			$risorsa->save();
 			$file=basename($_FILES['file']['name']);
 			$risorsa=new Risorsa(null,$file,1);
 			$file=basename($_FILES['file']['filename']);

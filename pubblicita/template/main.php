@@ -56,7 +56,7 @@
           <a class="nav-link" href="#">Ordina</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Visualizza</a>
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=list">Visualizza</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Modifica</a>
