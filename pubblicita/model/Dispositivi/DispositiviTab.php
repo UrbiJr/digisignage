@@ -90,7 +90,7 @@ class DispositiviTab{
 				$path = $f->getPath();
 				// controllo se il file esiste
 				if (file_exists($path))
-					$totalFiles[] = $path;
+					$totalFiles[] = $f;
 				else {
 					echo "file ".$f->getNome()." non esistente";
 					return null;
@@ -118,7 +118,7 @@ class DispositiviTab{
 				$nuovoNomeFile (opzionale) -> nuovo nome del file dentro
 				l'archivio zip */
 			//$zip->addFile($file, "/" . $k . $file->getTipo());
-			$zip->addFile($file, $file);
+			$zip->addFile($file->getPath(), $file->getId() . $file->getTipo());
 			echo "numfiles: " . $zip->numFiles . "\n";
 			echo "status:" . $zip->status . "\n";
 		}

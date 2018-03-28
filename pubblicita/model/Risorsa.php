@@ -6,12 +6,19 @@ class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
-	
+
+	/* 	costruttore per Risorse create per la prima volta
+		OPPURE (ri)create dalle query (es. GruppiTab::getRisorse()).
+		Per risorse create per la prima volta, passare null come
+		primo parametro.
+		Altrimenti, utilizzare l'$id restituito dalla query (per esempio)
+	*/
 	function __construct($id, $nome, $idAzienda){
-		$this->id=$id;
+		$this->$id = $id;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
-		$this->controllaTipoRisorsa();
+		if ($this->id != null)
+			$this->controllaTipoRisorsa();
 	}
 
 	public function setId($id){
@@ -29,7 +36,7 @@ class Risorsa{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-	
+
 	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
@@ -54,7 +61,7 @@ class Risorsa{
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-	
+
 	public function getFile(){
 		return RisorseTab::getFile($this);
 	}
@@ -63,12 +70,16 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
+<<<<<<< HEAD
 				echo (CreateFiles::convert($this->nome,"/images/",$info[0]));
+=======
+				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
+>>>>>>> 31d47e62e10854124cdee227fb2cafc942a7b78f
 				break;
 			case 'docx':
 			case 'odt':
 				CreateFiles::WordToPdfConvert($this->nome);
-				//echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
+				echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
 				break;
 			default:
 				$this->save();
@@ -76,12 +87,12 @@ class Risorsa{
 				break;
 		}
 	}
-	
+
 	private function saveToDatabase($fileExt){
 		if($fileExt==='pdf'){
 			$n=CreateFiles::countPages($info[0].".pdf");
 			if($n==1){
-				$name=$info[0].".jpeg";	
+				$name=$info[0].".jpeg";
 				$file=new File(null,$name,null, './images/' . $name,$this->id);
 				$file->save();
 			}else{

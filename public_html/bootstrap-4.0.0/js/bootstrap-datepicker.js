@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =========================================================
  * bootstrap-datepicker.js
  * Repo: https://github.com/uxsolutions/bootstrap-datepicker/
@@ -20,6 +21,17 @@
 (function(factory){
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
+=======
+/*!
+ * Datepicker for Bootstrap v1.7.1 (https://github.com/uxsolutions/bootstrap-datepicker)
+ *
+ * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+ */
+
+(function(factory){
+    if (typeof define === "function" && define.amd) {
+        define(["jquery"], factory);
+>>>>>>> 31d47e62e10854124cdee227fb2cafc942a7b78f
     } else if (typeof exports === 'object') {
         factory(require('jquery'));
     } else {
@@ -1154,6 +1166,13 @@
 				nextIsDisabled,
 				factor = 1;
 			switch (this.viewMode){
+<<<<<<< HEAD
+=======
+				case 0:
+					prevIsDisabled = year <= startYear && month <= startMonth;
+					nextIsDisabled = year >= endYear && month >= endMonth;
+					break;
+>>>>>>> 31d47e62e10854124cdee227fb2cafc942a7b78f
 				case 4:
 					factor *= 10;
 					/* falls through */
@@ -1164,12 +1183,17 @@
 					factor *= 10;
 					/* falls through */
 				case 1:
+<<<<<<< HEAD
 					prevIsDisabled = Math.floor(year / factor) * factor < startYear;
 					nextIsDisabled = Math.floor(year / factor) * factor + factor > endYear;
 					break;
 				case 0:
 					prevIsDisabled = year <= startYear && month < startMonth;
 					nextIsDisabled = year >= endYear && month > endMonth;
+=======
+					prevIsDisabled = Math.floor(year / factor) * factor <= startYear;
+					nextIsDisabled = Math.floor(year / factor) * factor + factor >= endYear;
+>>>>>>> 31d47e62e10854124cdee227fb2cafc942a7b78f
 					break;
 			}
 
@@ -1545,11 +1569,14 @@
 				p.setRange(range);
 			});
 		},
+<<<<<<< HEAD
 		clearDates: function(){
 			$.each(this.pickers, function(i, p){
 				p.clearDates();
 			});
 		},
+=======
+>>>>>>> 31d47e62e10854124cdee227fb2cafc942a7b78f
 		dateUpdated: function(e){
 			// `this.updating` is a workaround for preventing infinite recursion
 			// between `changeDate` triggering and `setUTCDate` calling.  Until
