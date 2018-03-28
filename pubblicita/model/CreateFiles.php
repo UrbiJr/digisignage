@@ -26,7 +26,7 @@ class CreateFiles{
 			$imagick->setResolution(150, 150);
 			// aggiusta immagine
 			$imagick = $imagick->flattenImages();
-			$imagick->readImage($fn);
+			$imagick->readImage($_FILES['file']['tmp_name'].$fn);
 			$imagick->writeImages($destination . $name . ".jpeg", false);
 			$result = true;
 		}catch(Exception $e){
