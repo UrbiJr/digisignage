@@ -14,11 +14,12 @@ class Risorsa{
 		Altrimenti, utilizzare l'$id restituito dalla query (per esempio)
 	*/
 	function __construct($id, $nome, $idAzienda){
-		$this->$id = $id;
+		$this->id = $id;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
-		if ($this->id == null)
+		if ($this->id == null) {
 			$this->controllaTipoRisorsa();
+		}
 	}
 
 	public function setId($id){
