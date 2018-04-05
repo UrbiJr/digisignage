@@ -54,7 +54,7 @@ class Utente{
 	}
 
 	public function getIdAzienda(){
-		return $this->IdAzienda;
+		return $this->idAzienda;
 	}
 
 	public function setIdRuolo($idRuolo){
