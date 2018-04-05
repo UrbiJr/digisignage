@@ -18,7 +18,7 @@
 							<td><?php echo $key?></td>
 							<td><?php echo $risorsa->getNome();?></td>
 							<td><?php echo $risorsa->getIdAzienda();?></td>
-							<td><a onClick="return confirm('Sei sicuro')" href="Index.php?model=risorse&id=<?php echo $key?>&action=delete">Elimina<a></td>
+							<td><a onClick="return confirm('Sei sicuro')" href="index.php?model=risorsa_documento&id=<?php echo $key?>&action=delete">Elimina<a></td>
 						</tr>
 					<?php endforeach;?>
 				</table>
@@ -28,7 +28,7 @@
 		<?php endif;?>
 		<br>
 		<div style="margin: 0 auto; text-align: center">
-			<a href="Index.php?model=risorse&action=new" style="font-size:20px">Aggiungi risorsa</a><br><br>
+			<a href="index.php?model=risorsa_documento&action=new" style="font-size:20px">Aggiungi risorsa</a><br><br>
 			<?php if(@$message):?>
 				<h2><?php echo $message?></h2>
 			<?php endif;?>

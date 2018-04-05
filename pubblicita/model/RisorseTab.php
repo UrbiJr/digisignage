@@ -79,4 +79,18 @@ class RisorseTab{
 			return null;
 		}
 	}
+
+	public static function getRisorseByUtente($utente){
+		$query=sprintf("SELECT * FROM Risorse WHERE idAzienda=%d",$utente->getIdAzienda());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$risorse = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+			}
+			return $risorse;
+		}else{
+			return null;
+		}
+		}
 }
