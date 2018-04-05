@@ -14,7 +14,7 @@ class Risorsa{
 		Altrimenti, utilizzare l'$id restituito dalla query (per esempio)
 	*/
 	function __construct($id, $nome, $idAzienda){
-		$this->$id = $id;
+		$this->id=null;
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
 		if ($this->id != null)
@@ -48,6 +48,7 @@ class Risorsa{
 
 	public function save(){
 		if(!$this->id){
+			echo getcwd();
 			$n=RisorseTab::insert($this);
 			$this->setId($n);
 			return true;
@@ -70,16 +71,13 @@ class Risorsa{
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-				echo (CreateFiles::convert($this->nome,"./images/",$info[0]));
+				echo (CreateFiles::convert($this->nome,"/images/",$info[0]));
+				$this->saveToDatabase($info[1]);
 				break;
 			case 'docx':
 			case 'odt':
 				CreateFiles::WordToPdfConvert($this->nome);
-				echo (CreateFiles::convert($info[0].".pdf","./images/",$info[0]));
-				break;
-			default:
-				$this->save();
-				$this->saveToDatabase($info[1]);
+				echo (CreateFiles::convert($info[0].".pdf","/images/",$info[0]));
 				break;
 		}
 	}
