@@ -14,7 +14,6 @@
 			break;
 
 		case 'add':
-<<<<<<< HEAD
 			$target_dir = CONFIG::$controllerPath."risorsa_documento/temp/";
 			$target_file = $target_dir . basename($_FILES['file']['name']);
 			//$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -27,10 +26,6 @@
 			}
 			
 			$risorsa=new Risorsa(null,$target_file,1);
-=======
-			$file=basename($_FILES['file']['name']);
-			$risorsa=new Risorsa(null,$file,$utente->getIdAzienda());
->>>>>>> 45227edb5a04b11046d5078c4850516632d1921c
 			$risorsa->save();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
 			break;
