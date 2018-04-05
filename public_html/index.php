@@ -36,7 +36,7 @@
 		case 'risorsa_immagine':
 			include (CONFIG::$controllerPath.'risorsa_immagine/Controller.php');
 			break;
-
+		
 
 	}
 
