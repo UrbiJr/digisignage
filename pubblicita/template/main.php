@@ -3,7 +3,8 @@
 		 <title>ProjectWork</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -35,32 +36,39 @@
 	</head>
 	<body>
 
-  <center>  <h1>ProjectWork</h1></center>
+  <center>  <img src="images/logone.png" height="150" width="600"></center>
 
 
 
-<nav class="navbar navbar-inverse">
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-
-      <ul class="nav navbar-nav">
-        <li><a href="index.php?model=login&action=home">Home</a></li>
-        <li><a href="index.php?model=risorsa_documento&action=new">Carica File</a></li>
-        <li><a href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a></li>
-        <li><a href="#">Ordina</a></li>
-        <li><a href="#">Visualizza</a></li>
-        <li><a href="#">Modifica</a></li>
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?model=login&action=home"><img src="images/loghino.png" height="25" width="25"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=new">Carica Risorsa</a>
+        </li>
+      <!--  <li class="nav-item">
+          <a class="nav-link" href="index.php?model=risorsa_immagine&action=new">Carica Immagine</a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ordina</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=list">Visualizza</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Modifica</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Gestisci gruppo</a>
+        </li>
 			</ul>
 
 
-      <ul class="nav navbar-nav navbar-right">
+
         <li  style="right: 0px;"><a href="index.php?model=login&action=logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       </ul>
     </div>
@@ -77,7 +85,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/daterangepicker/moment.min.js"></script>

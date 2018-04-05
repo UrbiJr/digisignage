@@ -90,7 +90,7 @@ class DispositiviTab{
 				$path = $f->getPath();
 				// controllo se il file esiste
 				if (file_exists($path))
-					$totalFiles[] = $path;
+					$totalFiles[] = $f;
 				else {
 					echo "file ".$f->getNome()." non esistente";
 					return null;
@@ -99,26 +99,30 @@ class DispositiviTab{
 		}
 
 		/* creo zip che contiene $totalFiles... */
-		$zip = new ZipArchive();
+		$zip = new ZipArchive();	// manca estensione ziparchive
 		$filename = "./" . $dispositivo->getIdGruppo() . ".zip";
+
 		// zip gia' presente, apri in modalita' overwrite
 		if (file_exists($filename)) {
 			if ($zip->open($filename, ZipArchive::OVERWRITE)!==TRUE) {
+				echo "cannot open ".$filename;
 	    		//exit("cannot open <$filename>\n");
 				return null;
 			}
 		// altrimenti, apri in modalita' create
 		}else if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
     			//exit("cannot open <$filename>\n");
+				echo "cannot open ".$filename;
 				return null;
 		}
+
 		// aggiungi ciascun file ad archivio zip
 		foreach ($totalFiles as $k => $file) {
 			/*	ZipArchive::addFile($percorsoFile, $nuovoNomeFile)
 				$nuovoNomeFile (opzionale) -> nuovo nome del file dentro
 				l'archivio zip */
 			//$zip->addFile($file, "/" . $k . $file->getTipo());
-			$zip->addFile($file, $file);
+			$zip->addFile($file->getPath(), $file->getId() . "." . $file->getTipo());
 			echo "numfiles: " . $zip->numFiles . "\n";
 			echo "status:" . $zip->status . "\n";
 		}

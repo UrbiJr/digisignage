@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Carica Documento</title>
-
+	
 
 	</head>
 	<body>
@@ -11,8 +11,12 @@
  			<div class="col-sm-4">
 				<center>
 					<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
-						<input type="file" name="userfile">
-						<input class="btn btn-dark"  type="submit" value="Upload Image" name="submit">
+						Seleziona immagine:
+						<input type="file" name="file"/>
+						<input type="hidden" name="action" value="add"/>
+						<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+						<input type="submit" class="btn btn-dark" value="Aggiungi" name="submit"/>
+						
 					</form>
 				</center>
 			</div>
