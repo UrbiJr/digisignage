@@ -14,11 +14,7 @@ class Risorsa{
 		Altrimenti, utilizzare l'$id restituito dalla query (per esempio)
 	*/
 	function __construct($id, $nome, $idAzienda){
-<<<<<<< HEAD
-		$this->id=null;
-=======
 		$this->id = $id;
->>>>>>> f47db98f758f0add04243bec9e1b0a2a8ec05573
 		$this->nome=$nome;
 		$this->idAzienda=$idAzienda;
 		if ($this->id == null) {
