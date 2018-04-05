@@ -17,11 +17,26 @@ $(document).ready(function(){
                 
                 $.ajax({
                     type: "POST",
-                    url: "../orderUpdate.php",
+                    url: "indexSortImg.php?action=sort",
                     data: {ids: " " + h + ""},
-                    success: function(){
-                        window.location.reload();
-                    }
+			dataType: "text",
+
+		    beforeSend: function() {
+			    
+			},
+
+			complete: function() {
+				alert("777");
+			},
+
+			success: function(data){
+			   
+			    alert(data);
+			},
+
+			error: function(obj, text, error) {
+			    alert(obj.responseText);
+			}
                 }); 
                 return false;
             }   
