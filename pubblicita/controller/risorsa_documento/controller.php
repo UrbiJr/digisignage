@@ -14,8 +14,18 @@
 			break;
 
 		case 'add':
-			$file=basename($_FILES['file']['name']);
-			$risorsa=new Risorsa(null,$file,$utente->getIdAzienda());
+			$target_dir = CONFIG::$controllerPath."risorsa_documento/temp/";
+			$target_file = $target_dir . basename($_FILES['file']['name']);
+			//$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+			echo($_FILES["file"]["tmp_name"]);
+			if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+				echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+			}else{
+				echo("Failed to upload.");
+			}
+
+			$risorsa=new Risorsa(null,$target_file,1);
 			$risorsa->save();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
 			break;
@@ -23,6 +33,8 @@
 		case 'delete':
 			$risorsa = RisorseTab::getById($_GET['id']);
 			RisorseTab::remove($risorsa);
+			$risorse = RisorseTab::getRisorseByUtente($utente);
+			$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewRisorse.php");
 			break;
 
 		case 'edit':

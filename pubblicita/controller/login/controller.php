@@ -16,14 +16,15 @@ switch ($action){
 		@$utente=UtentiTab::getByUtente_Password($_POST['username'],$_POST['password']);
 		if($id=$utente->getId()){
 			$_SESSION['id_utente']=$id;
-
+			$error=false;
 			//include("index.php");
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
 			break;
 
 		}else{
-			$error="Login fallito, username o password non validi!";
-			echo($error);
+			$error=true;
+			//$error="Login fallito, username o password non validi!";
+			//echo($error);
 			$action="login";
 			$model="login";
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');

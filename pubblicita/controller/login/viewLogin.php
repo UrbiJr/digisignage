@@ -1,3 +1,16 @@
+<?php if($error){
+		echo ('<style type="text/css">
+	  	#div_error{
+	  	visibility:visible;
+	  </style>');
+	}else{
+		echo ('<style type="text/css">
+	  	#div_error{
+	  	visibility:hidden;
+	  </style>');
+	}
+ ?>
+
 <form class="login100-form validate-form flex-sb flex-w" action="index.php" method="POST">
 	<input class="input100" type="hidden" name="model" value="login">
 	<input class="input100" type="hidden" name="action" value="postLogin" >
@@ -5,6 +18,11 @@
 	<span class="login100-form-title p-b-53">
 		Sign In With
 	</span>
+
+	<div class="alert alert-danger alert-dismissible fade in" id="div_error">
+    <strong>Acccesso negato!</strong> Username o password sbagliate.
+  </div>
+
 	<div class="p-t-31 p-b-9">
 		<span class="txt1">
 			Username
@@ -30,8 +48,6 @@
 		</button>
 	</div>
 	<div class="w-full text-center p-t-55">
-
 			powered by 5A-IN
-
 	</div>
 </form>
