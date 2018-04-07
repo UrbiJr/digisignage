@@ -21,6 +21,8 @@
 			break;
 
 		case 'delete':
+			$risorsa = RisorseTab::getById($_GET['id']);
+			RisorseTab::remove($risorsa);
 			break;
 
 		case 'edit':

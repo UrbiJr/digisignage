@@ -28,7 +28,9 @@ class RisorseTab{
 		}
 	}
 	public static function remove($risorsa){
-		$query=sprintf("DELETE FROM Risorse WHERE id = %d ", $risorsa->getId());
+		$query=sprintf("DELETE FROM File WHERE idRisorsa = %d", $risorsa->getId());
+		$result=DBCONNECTION::$con->query($query);
+		$query=sprintf("DELETE FROM Risorse WHERE id = %d", $risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 	public static function insert($risorsa){
