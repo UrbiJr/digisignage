@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	$('#reload-button').css('display', 'none');
+	
     $('.reorder_link').on('click',function(){
         $("ul.reorder-photos-list").sortable({ tolerance: 'pointer' });
         $('.reorder_link').html('Salva ordinamento');
@@ -8,10 +10,9 @@ $(document).ready(function(){
         $('.image_link').css("cursor","move");
         $("#save_reorder").click(function( e ){
             if( !$("#save_reorder i").length ){
-                $(this).html('').prepend('<img src="images/refresh-animated.gif"/>');
+            
                 $("ul.reorder-photos-list").sortable('destroy');
-                $("#reorder-helper").html( "Reordering Photos - This could take a moment. Please don't navigate away from this page." ).removeClass('light_box').addClass('notice notice_error');
-    
+        
                 var h = [];
                 $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id').substr(9));  });
                 
@@ -22,16 +23,18 @@ $(document).ready(function(){
 			dataType: "text",
 
 		    beforeSend: function() {
-			    
+			$('#save_reorder').html('').prepend('<img height="32px" witdh="32px" src="images/loading.svg"/>');
+			    $("#reorder-helper").html( "Riordinando le foto - Potrebbe richiedere un momento. Non lasciare questa pagina." ).removeClass('light_box').addClass('notice notice_error');
+    
 			},
 
 			complete: function() {
-				alert("777");
+				$('#save_reorder').html('').prepend('<img height="32px" witdh="32px" src="images/completed.png"/>');
+				$("#reorder-helper").html('Caricamento completato');
 			},
 
 			success: function(data){
-			   
-			    alert(data);
+				$('#reload-button').css('display', 'block');
 			},
 
 			error: function(obj, text, error) {
@@ -44,3 +47,7 @@ $(document).ready(function(){
         });
     });
 });
+
+function reload(){
+	window.location.href = "indexSortImg.php?action=start&nocache=" + (new Date()).getTime();	    
+}

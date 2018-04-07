@@ -26,6 +26,7 @@ $controller=new Controller();
         <?php } } ?>
         </ul>
     </div>
+	<button id="reload-button" type="button" onclick="reload()">Riordina ancora</button>
 </div>
 
 
