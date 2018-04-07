@@ -1,12 +1,9 @@
 <?php
-
 include("CreateFiles.php");
-
 class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
-
 	/* 	costruttore per Risorse create per la prima volta
 		OPPURE (ri)create dalle query (es. GruppiTab::getRisorse()).
 		Per risorse create per la prima volta, passare null come
@@ -21,85 +18,73 @@ class Risorsa{
 			$this->controllaTipoRisorsa();
 		}
 	}
-
 	public function setId($id){
 		$this->id=$id;
 	}
-
 	public function getId(){
 		return $this->id;
 	}
-
 	public function getNome(){
 		return $this->nome;
 	}
-
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-
 	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
-
 	public function setIdAzienda($idAzienda){
 		$this->nome = $idAzienda;
 	}
-
-
 	public function save(){
 		if(!$this->id){
-			echo getcwd();
 			$n=RisorseTab::insert($this);
 			$this->setId($n);
-			return true;
 		}else{
 			RisorseTab::update($this);
-			return true;
 		}
-		return false;
+		$this->saveToDatabase();
 	}
-
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-
 	public function getFile(){
 		return RisorseTab::getFile($this);
 	}
-
 	function controllaTipoRisorsa(){
+		$tmp_name=explode('/',TEMP_NAME);
 		$info = explode(".", $this->nome);
 		switch($info[1]){
 			case 'pdf':
-				echo (CreateFiles::convert($this->nome,"/images/",$info[0]));
-				$this->saveToDatabase($info[1]);
+				echo (CreateFiles::convert(TEMP_NAME,"./images/",$info[0]));
 				break;
-			case 'docx':
-			case 'odt':
-				CreateFiles::WordToPdfConvert($this->nome);
-				echo (CreateFiles::convert($info[0].".pdf","/images/",$info[0]));
-				break;
+			default:
+				rename((TEMP_NAME), ("./images/".$this->nome));
 		}
 	}
-
-	private function saveToDatabase($fileExt){
-		if($fileExt==='pdf'){
-			$n=CreateFiles::countPages($info[0].".pdf");
+	private function saveToDatabase(){
+		$info = explode(".", $this->nome);
+		if($info[1]==='pdf'){
+			$n=CreateFiles::countPages(TEMP_NAME);
 			if($n==1){
-				$name=$info[0].".jpeg";
+				$name="1.jpeg";
 				$file=new File(null,$name,null, './images/' . $name,$this->id);
 				$file->save();
 			}else{
 				for($i=0;$i<$n;$i++){
-					$name=$info[0]."-".$i.".jpeg";
+					$name=$i.".jpeg";
 					$file=new File(null,$name,null, './images/' . $name,$this->id);
 					$file->save();
 				}
 			}
 		}else{
-			$file=new File(null,$this->getNome(),null, './images/' . $this->getNome(),$this->id);
+			$name="1.jpeg";
+			$file=new File(null,$this->name,null, './images/' . $this->getNome(),$this->id);
 			$file->save();
 		}
+	}
+
+	private function MakeDir($name){
+
 	}
 }
