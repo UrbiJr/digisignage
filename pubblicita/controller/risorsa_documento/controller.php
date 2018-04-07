@@ -14,26 +14,25 @@
 			break;
 
 		case 'add':
-			$target_dir = CONFIG::$controllerPath."risorsa_documento/temp/";
-			$target_file = $target_dir . basename($_FILES['file']['name']);
+			$target_dir = "/tmp/";
+			$target_file = $target_dir . basename($_FILES['file']['tmp_name']);
 			//$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-			echo($_FILES["file"]["tmp_name"]);
-			if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-				echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
-			}else{
+			
+			//echo($_FILES["file"]["tmp_name"]);
+			define("TEMP_NAME",$_FILES["file"]["tmp_name"]);
+			if (!(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file))) {
 				echo("Failed to upload.");
 			}
-
-			$risorsa=new Risorsa(null,$target_file,1);
+			
+			$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$utente->getIdAzienda());
 			$risorsa->save();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
 			break;
 
 		case 'delete':
-			$risorsa = RisorseTab::getById($_GET['id']);
+			$risorsa=RisorseTab::getById($_GET['id']);
 			RisorseTab::remove($risorsa);
-			$risorse = RisorseTab::getRisorseByUtente($utente);
+			$risorse=RisorseTab::getRisorseByUtente($utente);
 			$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewRisorse.php");
 			break;
 
