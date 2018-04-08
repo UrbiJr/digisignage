@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$('#reload-button').css('display', 'none');
-	
+
     $('.reorder_link').on('click',function(){
         $("ul.reorder-photos-list").sortable({ tolerance: 'pointer' });
         $('.reorder_link').html('Salva ordinamento');
@@ -10,44 +10,42 @@ $(document).ready(function(){
         $('.image_link').css("cursor","move");
         $("#save_reorder").click(function( e ){
             if( !$("#save_reorder i").length ){
-            
+
                 $("ul.reorder-photos-list").sortable('destroy');
-        
+
                 var h = [];
                 $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id').substr(9));  });
-                
+
                 $.ajax({
                     type: "POST",
-                    url: "indexSortImg.php?action=sort",
+                    url: "index.php?model=sequenza&action=sort",
                     data: {ids: " " + h + ""},
-			dataType: "text",
+					dataType: "text",
 
-		    beforeSend: function() {
-			$('#save_reorder').html('').prepend('<img height="32px" witdh="32px" src="images/loading.svg"/>');
-			    $("#reorder-helper").html( "Riordinando le foto - Potrebbe richiedere un momento. Non lasciare questa pagina." ).removeClass('light_box').addClass('notice notice_error');
-    
-			},
+				    beforeSend: function() {
+						$('#save_reorder').css('display', 'none');
+					    $("#reorder-helper").html( '<img height="24px" witdh="24px" src="images/loading.svg"/> Riordinando le foto - Potrebbe richiedere un momento. Non lasciare questa pagina.').removeClass("light_box").addClass("notice notice_error");
+					},
 
-			complete: function() {
-				$('#save_reorder').html('').prepend('<img height="32px" witdh="32px" src="images/completed.png"/>');
-				$("#reorder-helper").html('Caricamento completato');
-			},
+					complete: function() {
+						$("#reorder-helper").html('<img height="24px" witdh="24px" src="images/completed.png"/> Caricamento completato, nuovo ordine:');
+					},
 
-			success: function(data){
-				$('#reload-button').css('display', 'block');
-			},
+					success: function(data){
+						$('#reload-button').css('display', 'block');
+					},
 
-			error: function(obj, text, error) {
-			    alert(obj.responseText);
+					error: function(obj, text, error) {
+					    alert(obj.responseText);
+					}
+				});
+		        return false;
 			}
-                }); 
-                return false;
-            }   
-            e.preventDefault();     
+            e.preventDefault();
         });
     });
 });
 
 function reload(){
-	window.location.href = "indexSortImg.php?action=start&nocache=" + (new Date()).getTime();	    
+	window.location.href = "index.php?model=sequenza&action=start&nocache=" + (new Date()).getTime();
 }

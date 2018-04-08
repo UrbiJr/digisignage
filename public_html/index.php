@@ -1,20 +1,22 @@
 <?php
-	session_start();
 
-	include ('../pubblicita/config/config.php');
+	/* 	includi una sola volta il config.php, su cui e' presente session_start
+		e che quindi verra' eseguito una sola volta */
+	require_once ('../pubblicita/config/config.php');
 	//Recupera il modello sul quale si vuole lavorare
+
 	$content="";
 	$error="";
 	if (isset($_REQUEST['model'])) {
 		$model = $_REQUEST['model'];
 	}else {
-		$model = "login";		//settate il default
+		$model = "login";		//settato il default
 	}
 
 	if (isset($_REQUEST['action'])) {
 		$action = $_REQUEST['action'];
 	}else {
-		$action = "login";	//settate il default
+		$action = "login";		//settato il default
 	}
 
 	if (isset($_SESSION['id_utente'])){
@@ -24,12 +26,11 @@
 			$action="login";
 	}
 
-
-
 	switch ($model) {
 		case 'login':
 			include (CONFIG::$controllerPath.'login/controller.php');
 			break;
+
 		case 'risorsa_documento':
 			include (CONFIG::$controllerPath.'risorsa_documento/controller.php');
 			break;
@@ -37,6 +38,11 @@
 			include (CONFIG::$controllerPath.'risorsa_immagine/Controller.php');
 			break;
 		*/
+
+		// modello ordinamento immagini sequenza
+		case 'sequenza':
+			include (CONFIG::$controllerPath.'sequenza/controller.php');
+			break;
 	}
 
 	if(($action=='login' && $model=='login') || ($action=='logout' && $model=='login') ){
