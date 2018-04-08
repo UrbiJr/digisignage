@@ -25,7 +25,7 @@ class Utente{
 		return $this->id;
 	}
 
-	public function getNome(){
+	public function getUsername(){
 		return $this->nome;
 	}
 
