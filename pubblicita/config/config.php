@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	define("ROOTPATH", __DIR__."/../../");
 
 
@@ -26,25 +27,27 @@
 
 	/*
 	 * Include delle librerie e dei modelli
+	 * AGGIUNGERE I MODELLI MANCANTI
 	 */
 
-	 include(CONFIG::$controllerPath."sequenza/Controller.php");
+	require_once(CONFIG::$modelPath."DispositiviTab.php");
+ 	require_once(CONFIG::$modelPath."Dispositivo.php");
+ 	require_once(CONFIG::$modelPath."File.php");
+ 	require_once(CONFIG::$modelPath."FileTab.php");
+ 	require_once(CONFIG::$modelPath."GruppiTab.php");
+ 	require_once(CONFIG::$modelPath."Gruppo.php");
+ 	require_once(CONFIG::$modelPath."OrdinaSequenze.php");
+ 	require_once(CONFIG::$modelPath."Ruolo.php");
+ 	require_once(CONFIG::$modelPath."RuoliTab.php");
+ 	require_once(CONFIG::$modelPath."Risorsa.php");
+ 	require_once(CONFIG::$modelPath."RisorseTab.php");
+ 	require_once(CONFIG::$modelPath."Sequenza.php");
+ 	require_once(CONFIG::$modelPath."SequenzeTab.php");
+ 	require_once(CONFIG::$modelPath."Utente.php");
+ 	require_once(CONFIG::$modelPath."UtentiTab.php");
 
-	include(CONFIG::$libPath."lib.php");
+	require_once(CONFIG::$libPath."lib.php");
 
-	include(CONFIG::$modelPath."Dispositivi/DispositiviTab.php");
-	include(CONFIG::$modelPath."Dispositivi/Dispositivo.php");
-	include(CONFIG::$modelPath."File.php");
-	include(CONFIG::$modelPath."FileTab.php");
-	include(CONFIG::$modelPath."Gruppo.php");
-	include(CONFIG::$modelPath."GruppiTab.php");
-	include(CONFIG::$modelPath."Ruolo.php");
-	include(CONFIG::$modelPath."RuoliTab.php");
-	include(CONFIG::$modelPath."Risorsa.php");
-	include(CONFIG::$modelPath."RisorseTab.php");
-	include(CONFIG::$modelPath."Sequenza.php");
-	include(CONFIG::$modelPath."SequenzeTab.php");
-	include(CONFIG::$modelPath."Utente.php");
-	include(CONFIG::$modelPath."UtentiTab.php");
+
 
 ?>

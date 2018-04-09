@@ -1,13 +1,10 @@
 
 <?php
-
 include("CreateFiles.php");
-
 class Risorsa{
 	private $id;
 	private $nome;
 	private $idAzienda;
-
 	/* 	costruttore per Risorse create per la prima volta
 		OPPURE (ri)create dalle query (es. GruppiTab::getRisorse()).
 		Per risorse create per la prima volta, passare null come
@@ -22,32 +19,24 @@ class Risorsa{
 			$this->controllaTipoRisorsa();
 		}
 	}
-
 	public function setId($id){
 		$this->id=$id;
 	}
-
 	public function getId(){
 		return $this->id;
 	}
-
 	public function getNome(){
 		return $this->nome;
 	}
-
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
-
 	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
-
 	public function setIdAzienda($idAzienda){
 		$this->nome = $idAzienda;
 	}
-
-
 	public function save(){
 		if(!$this->id){
 			$n=RisorseTab::insert($this);
@@ -57,15 +46,12 @@ class Risorsa{
 		}
 		$this->saveToDatabase();
 	}
-
 	public function delete(){
 		RisorseTab::remove($this);
 	}
-
 	public function getFile(){
 		return RisorseTab::getFile($this);
 	}
-
 	function controllaTipoRisorsa(){
 		$tmp_name=explode('/',TEMP_NAME);
 		$info = explode(".", $this->nome);
@@ -77,7 +63,10 @@ class Risorsa{
 				rename((TEMP_NAME), ("./images/".$this->nome));
 		}
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
 	private function saveToDatabase(){
 		$info = explode(".", $this->nome);
 		if($info[1]==='pdf'){
@@ -99,8 +88,14 @@ class Risorsa{
 			$file->save();
 		}
 	}
+<<<<<<< HEAD
 	
 	private function MakeDir($name){
 		
+=======
+
+	private function MakeDir($name){
+
+>>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
 	}
 }

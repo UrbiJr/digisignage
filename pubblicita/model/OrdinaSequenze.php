@@ -1,12 +1,12 @@
 <?php
-class Controller{
+class OrdinaSequenze{
     //database configuration
     private $dbHost     ="localhost";
     private $dbUsername ="amministratore";
     private $dbPassword ="DigitalSignage";
     private $dbName     ="pubblicita";
     private $imgTbl     ='Sequenze';
-    
+
     function __construct(){
         if(!isset($this->controller)){
             // Connect to the database
@@ -18,7 +18,7 @@ class Controller{
             }
         }
     }
-    
+
     function getRows(){
         $query=$this->controller->query("SELECT * FROM ".$this->imgTbl." ORDER BY nOrdine ASC");
         if($query->num_rows>0){
@@ -30,12 +30,12 @@ class Controller{
         }
         return $result;
     }
-    
+
     function updateOrder($id_array){
         $count = 1;
         foreach ($id_array as $id){
             $update=$this->controller->query("UPDATE ".$this->imgTbl." SET nOrdine=$count WHERE id=$id");
-            $count ++;    
+            $count ++;
         }
         return TRUE;
     }

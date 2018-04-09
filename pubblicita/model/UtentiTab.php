@@ -3,20 +3,35 @@
 class UtentiTab{
 	private $utenti = array();
 
-	//Il costruttore riceve il nome del file sul quale appoggiare i dati
 	function __construct(){
 	}
 
-	public static function getByUtente_Password($utente, $psw){
-		$psw = md5($psw);
-		$query=sprintf("SELECT * FROM Utenti WHERE nome='%s' and password='%s'", $utente, $psw);
+	/* 	manca parte REGISTRAZIONE (con annessa CRIPTAZIONE PASSWORD tramite password_hash())!!!!!!!!!!
+		http://php.net/manual/en/function.password-hash.php
+		HASHING E' CONSIGLIATO DAL MANUALE PHP PIUTTOSTO CHE md5 PERCHE' PIU' SICURO
+		uso semplicissimo: basta questa riga
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+		... dopodiche' aggiungi record utente al DB con questa $hashed_password
+	*/
+
+	public static function postLogin($username, $password){
+		// RECUPERA PASSWORD CRIPTATA DAL DB
+		$query=sprintf("SELECT hashed_password FROM Utenti WHERE username='%s'", $username);
 		$result=DBCONNECTION::$con->query($query);
-		if($result){
+		if($result) {
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
-		}else{
-			return null;
+			// CONFRONTA PASSWORD PRESA DA INPUT CON HASHED PASSWORD (criptata), PRESA DAL DB
+			$hashed_password = $row['hashed_password'];
+			if(password_verify($password, $hashed_password)) {
+				$query=sprintf("SELECT * FROM Utenti WHERE username='%s' and hashed_password='%s'", $username, $hashed_password);
+				$result=DBCONNECTION::$con->query($query);
+				if($result){
+					$row=$result->fetch_array(MYSQLI_ASSOC);
+					return new Utente($row['id'],$row['username'],$row['hashed_password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+				}
+			}
 		}
+		return null;
 	}
 
 	public static function getById($id){
@@ -24,7 +39,7 @@ class UtentiTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+			return new Utente($row['id'],$row['username'],$row['hashed_password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
 		}else{
 			return null;
 		}
@@ -36,7 +51,7 @@ class UtentiTab{
 		if($result){
 			$utenti = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$utenti[$row['id']]= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+				$utenti[$row['id']]= new Utente($row['id'],$row['username'],$row['hashed_password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
 			}
 			return $utenti;
 		}else{
@@ -51,14 +66,14 @@ class UtentiTab{
 	}
 
 	public static function insert($utente){
-		$query=sprintf("INSERT INTO Utenti (nome,password,mail,idAzienda,idRuolo) VALUES('%s','%s','%s',%d,%d)",$utente->getNome(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo());
+		$query=sprintf("INSERT INTO Utenti (username,hashed_password,mail,idAzienda,idRuolo) VALUES('%s','%s','%s',%d,%d)",$utente->getUsername(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 
 	public static function update($utente){
-		$query=sprintf("UPDATE Utenti SET nome='%s', password='%s', mail='%s', idAzienda=%d, idRuolo=%d WHERE id=%d",$utente->getNome(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo(),$utente->getId());
+		$query=sprintf("UPDATE Utenti SET username='%s', hashed_password='%s', mail='%s', idAzienda=%d, idRuolo=%d WHERE id=%d",$utente->getUsername(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo(),$utente->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 

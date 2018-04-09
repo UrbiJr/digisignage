@@ -8,16 +8,26 @@ switch ($action){
 		//include (CONFIG::$controllerPath.'login/viewLogin.php');
 		$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
 		break;
-	case'home':
+	/*
+	case 'home':
 		$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
 		break;
+	*/
 
 	case 'postLogin':
-		@$utente=UtentiTab::getByUtente_Password($_POST['username'],$_POST['password']);
-		if($id=$utente->getId()){
+		/* 	PER L'UTENTE CON ID 1 LA PASSWORD NON CRIPTATA E' password
+			PER L'UTENTE CON ID 4 LA PASSWORD NON CRIPTATA E' miapassword */
+		@$utente=UtentiTab::postLogin($_POST['username'],$_POST['password']);
+
+		// se utente non null, e se id non null
+		if($utente && $id=$utente->getId()){
 			$_SESSION['id_utente']=$id;
+<<<<<<< HEAD
 			$error=false;
 			//include("index.php");
+=======
+
+>>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
 			$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
 			break;
 
@@ -27,12 +37,11 @@ switch ($action){
 			//echo($error);
 			$action="login";
 			$model="login";
-			$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
 		}
 		case 'logout':
-				session_destroy();
-				$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
-				break;
+			session_destroy();
+			$content=get_include_contents(CONFIG::$controllerPath.'login/viewLogin.php');
+			break;
 
 }
 ?>

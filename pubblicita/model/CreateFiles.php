@@ -2,7 +2,7 @@
 class CreateFiles{
 	//file existing control
 	public static function controlIfFileExists($fn){return file_exists($fn)?true:false;}
-	
+
 	//convert from word to pdf
 	public static function WordToPdfConvert($fn){
 		//if (! ( fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
@@ -10,13 +10,13 @@ class CreateFiles{
 			/* NON ESEGUE (quindi non crea .pdf), SERVONO PERMESSI!! */
 			$result = shell_exec(("export HOME=/tmp && soffice --headless --convert-to pdf"." ".$fn));
 			echo $result;
-			
+
 		}catch(Exception $e){
 			$result = $e->getMessage();
 		}
 		return $result;
 	}
-	
+
 	//convert all pages into .jpg format
 	public static function convert($fn, $destination, $name) {
 		//if (! (fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
@@ -34,7 +34,6 @@ class CreateFiles{
 		}
 		return $result;
 	}
-
 	//count all pages of pdf file
 	public static function countPages($fn){
 		//if (! (fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
@@ -47,7 +46,6 @@ class CreateFiles{
 		}
 		return $result;
 	}
-
 	//convert one single page
 	public function convertPage($page, $fn, $destination, $name){
 		//if (! (fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
@@ -60,7 +58,6 @@ class CreateFiles{
 		}
 		return $result;
 	}
-
 	//convert just selected pages, thoose written in  array '$pages'
 	public static function convertNPages($pages, $fn, $destination, $name){
 		//if (! (fileTypeConverter::controlIfFileExists($fn))){ return fileTypeConverter::FNE;}
@@ -75,7 +72,7 @@ class CreateFiles{
 		sort($pages);
 		for($i=0; $i<=$nPages; $i++){
 			for($j=0; $j<count($pages); $j++){
-				if($pages[$j]==$i){ 
+				if($pages[$j]==$i){
 					$command = 'convert ' . $fn . '[' . $i . '] ' . CONFIG::$imagesPath . $name . $x . '.jpeg';
 					try{
 						shell_exec($command);
@@ -88,8 +85,7 @@ class CreateFiles{
 		}
 		if($result != null) return $result;
 	}
-	
-	
+
+
 }
 ?>
-
