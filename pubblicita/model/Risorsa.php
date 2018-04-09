@@ -81,7 +81,7 @@ class Risorsa{
 			}
 		}else{
 			$name="1.jpeg";
-			$file=new File(null,$this->name,null, './images/' . $this->getNome(),$this->id);
+			$file=new File(null,$name,null, './images/' . $this->getNome(),$this->id);
 			$file->save();
 		}
 	}

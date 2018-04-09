@@ -13,21 +13,11 @@
 			$target_dir = "/tmp/";
 			$target_file = $target_dir . basename($_FILES['file']['tmp_name']);
 			//$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
 			//echo($_FILES["file"]["tmp_name"]);
 			define("TEMP_NAME",$_FILES["file"]["tmp_name"]);
 			if (!(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file))) {
 				echo("Failed to upload.");
 			}
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
 			$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$utente->getIdAzienda());
 			$risorsa->save();
 			$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
