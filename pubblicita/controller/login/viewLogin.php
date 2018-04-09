@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php if($error){
 		echo ('<style type="text/css">
 	  	#div_error{
@@ -13,9 +13,9 @@
  ?>
 
 <form class="login100-form validate-form flex-sb flex-w" action="index.php" method="POST">
-=======
+
 <form class="login100-form validate-form flex-sb flex-w" action="index.php?model=login&action=postLogin" method="POST">
->>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
+
 	<input class="input100" type="hidden" name="model" value="login">
 	<input class="input100" type="hidden" name="action" value="postLogin" >
 
