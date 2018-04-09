@@ -22,13 +22,10 @@ switch ($action){
 		// se utente non null, e se id non null
 		if($utente && $id=$utente->getId()){
 			$_SESSION['id_utente']=$id;
-<<<<<<< HEAD
+
 			$error=false;
 			//include("index.php");
-=======
-
->>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
-			$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
+		$content=get_include_contents(CONFIG::$controllerPath.'login/viewHome.php');
 			break;
 
 		}else{

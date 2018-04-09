@@ -63,10 +63,7 @@ class Risorsa{
 				rename((TEMP_NAME), ("./images/".$this->nome));
 		}
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
 	private function saveToDatabase(){
 		$info = explode(".", $this->nome);
 		if($info[1]==='pdf'){
@@ -88,14 +85,5 @@ class Risorsa{
 			$file->save();
 		}
 	}
-<<<<<<< HEAD
-	
-	private function MakeDir($name){
-		
-=======
 
-	private function MakeDir($name){
-
->>>>>>> a250c2e9bec49667674d1870aa5616d76141a8f7
-	}
 }
