@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <html>
 	<head>
 		<title>Carica Documento</title>
@@ -28,3 +27,4 @@
 			</div>
  			<div class="col-sm-4"></div>
 		</div>
+</html>
