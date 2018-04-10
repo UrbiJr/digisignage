@@ -16,6 +16,11 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+  <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -88,10 +93,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Bootstrap core JavaScript-->
-    <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
-    <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
     <script src="./js/main.js"></script>
     <script src="./js/sortable.js"></script>
