@@ -34,7 +34,7 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
           <a class="nav-link" href="#">
-            <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text"> Dashboard</span></i>
+            <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text">MENU</span></i>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Carica_Risorsa">
@@ -80,12 +80,7 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
-      </ol>
+
     </div>
     <?php echo $content ?>
   </div>
