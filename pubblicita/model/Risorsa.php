@@ -59,7 +59,10 @@ class Risorsa{
 	}
 
 	public function delete(){
+		$info = explode(".", $this->nome);
+		$dir=CONFIG::$imagesPath."azienda-".$this->getIdAzienda()."/".$info[0];
 		RisorseTab::remove($this);
+		Risorsa::deleteDir($dir);
 	}
 
 	public function getFile(){
@@ -103,8 +106,28 @@ class Risorsa{
 			$file->save();
 		}
 	}
-	
-	private function MakeDir($name){
 		
+	private static function deleteDir($path)
+	{
+		if (is_dir($path) === true)
+		{
+			$files = array_diff(scandir($path), array('.', '..'));
+
+			foreach ($files as $file)
+			{
+				Risorsa::deleteDir(realpath($path) . '/' . $file);
+			}
+
+			return rmdir($path);
+		}
+
+		else if (is_file($path) === true)
+		{
+			return unlink($path);
+		}
+
+		return false;
 	}
+
+	
 }
