@@ -1,7 +1,7 @@
-
 <?php
 
 include("CreateFiles.php");
+include("Thumbnail.php");
 
 class Risorsa{
 	private $id;
@@ -69,16 +69,25 @@ class Risorsa{
 	function controllaTipoRisorsa(){
 		$tmp_name=explode('/',TEMP_NAME);
 		$info = explode(".", $this->nome);
+		//CREAZIONE CARTELLA PER OGNI RISORSA
 		@mkdir("./images/azienda-".$this->idAzienda, 0777);
 		chmod("./images/azienda-".$this->idAzienda, 0777);
 		@mkdir("./images/azienda-".$this->idAzienda."/".$info[0], 0777);
 		chmod("./images/azienda-".$this->idAzienda."/".$info[0], 0777);
 		switch($info[1]){
 			case 'pdf':
-				echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img"));
+				if(CreateFiles::countPages(TEMP_NAME)>1){
+					echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img"));
+					Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
+				}else{
+					echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img-0"));
+					Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
+				}
 				break;
 			default:
-				rename((TEMP_NAME), ("./images/azienda-".$this->idAzienda."/".$info[0]."/img-1.jpeg"));
+				rename((TEMP_NAME), ("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg"));
+				Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
+				break;
 		}
 	}
 
@@ -92,7 +101,7 @@ class Risorsa{
 				$file->save();
 			}else{
 				for($i=0;$i<$n;$i++){
-					$name="img-".$i.".jpeg";
+					$name="img-".++$i.".jpeg";
 					$file=new File(null,$name,null,"./images/azienda-".$this->idAzienda."/".$info[0]."/".$name,$this->id);
 					$file->save();
 				}
@@ -102,9 +111,5 @@ class Risorsa{
 			$file=new File(null,$name,null,"./images/azienda-".$this->idAzienda."/".$info[0]."/".$name,$this->id);
 			$file->save();
 		}
-	}
-	
-	private function MakeDir($name){
-		
 	}
 }
