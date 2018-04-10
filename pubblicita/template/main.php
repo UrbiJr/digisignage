@@ -16,42 +16,47 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+  <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php?model=login&action=home">ProjectWork</a>
+    <a class="navbar-brand" href="index.php?model=login&action=home"><img src="images/logone.png"  width="200" height="50"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php?model=login&action=home">
-            <i class="nav-link" href="index.php?model=login&amp;action=home"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text"> Dashboard</span></i>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
+          <a class="nav-link" href="#">
+            <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text">MENU</span></i>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Carica_Risorsa">
-          <a class="nav-link" href="index.php?model=risorsa_documento&action=new">
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=new" onclick="getNameDashboard('Carica Risorsa)';">
             <i class="fa fa-arrow-circle-o-up"></i>
             <span class="nav-link-text">Carica Risorsa</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ordina">
-          <a class="nav-link" href="index.php?model=sequenza&action=start">
+          <a class="nav-link" href="index.php?model=sequenza&action=start" onclick="document.getElementById('bar_dash').innerHTML='Ordina';">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Ordina</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Visualizza">
-          <a class="nav-link" href="index.php?model=risorsa_documento&action=list">
+          <a class="nav-link" href="index.php?model=risorsa_documento&action=list" onclick="document.getElementById('bar_dash').innerHTML='Visualizza';">
             <i class="fa fa-eye"></i>
             <span class="nav-link-text">Visualizza</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gestisci Gruppo">
-           <a class="nav-link" href="#">
+           <a class="nav-link" href="#" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Gruppo';">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Gestisci Gruppo</span>
           </a>
@@ -79,7 +84,7 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li id="bar_dash" class="breadcrumb-item active"></li>
       </ol>
     </div>
     <?php echo $content ?>
@@ -89,8 +94,12 @@
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/sortable.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
@@ -106,4 +115,3 @@
 </body>
 
 </html>
-
