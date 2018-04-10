@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
     $('.reorder_link').on('click',function(){
-        $("ul.reorder-photos-list").sortable({ tolerance: 'pointer' });
+        $("#sequenza").sortable({ tolerance: 'pointer' });
         $('.reorder_link').html('Salva ordinamento');
         $('.reorder_link').attr("id","save_reorder");
         $('#reorder-helper').slideDown('slow');
         $('.image_link').attr("href","javascript:void(0);");
         $('.image_link').css("cursor","move");
-        $("#save_reorder").click(function( e ){
+        $("#btn_salva").click(function( e ){
             if( !$("#save_reorder i").length ){
 
                 $("ul.reorder-photos-list").sortable('destroy');
@@ -43,8 +43,8 @@ $(document).ready(function(){
             e.preventDefault();
         });
     });
-});
 
-function reload(){
-	window.location.href = "index.php?model=sequenza&action=start&nocache=" + (new Date()).getTime();
-}
+    $("#btn_riordina").click(function(){
+        window.location.href = "index.php?model=sequenza&action=start&nocache=" + (new Date()).getTime();
+    });
+});
