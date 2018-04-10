@@ -43,6 +43,9 @@
 		case 'sequenza':
 			include (CONFIG::$controllerPath.'sequenza/controller.php');
 			break;
+ 		case 'dispositivo':
+			include (CONFIG::$controllerPath.'dispositivo/controller.php');
+			break;
 	}
 
 	if(($action=='login' && $model=='login') || ($action=='logout' && $model=='login') ){
