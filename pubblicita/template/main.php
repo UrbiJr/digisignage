@@ -27,9 +27,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php?model=login&action=home">
-            <i class="nav-link" href="index.php?model=login&amp;action=home"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text"> Dashboard</span></i>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
+          <a class="nav-link" href="#">
+            <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text"> Dashboard</span></i>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Carica_Risorsa">
@@ -92,7 +92,7 @@
     <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
     <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    
+
     <script src="./js/main.js"></script>
     <script src="./js/sortable.js"></script>
     <!-- Core plugin JavaScript-->
