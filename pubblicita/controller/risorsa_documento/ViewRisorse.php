@@ -1,8 +1,4 @@
-<html>
-	<head>
-			</head>
-	<body>
-		</br>
+</br>
 		<?php if($risorse):?>
 			<h1 align="center">Schede</h1><br>
 			<div class="container">
@@ -33,5 +29,3 @@
 				<h2><?php echo $message?></h2>
 			<?php endif;?>
 		</div>
-	</body>
-</html>
