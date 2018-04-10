@@ -29,11 +29,7 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
           <a class="nav-link" href="#">
-<<<<<<< HEAD
             <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text"></span></i>
-=======
-            <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text"> Dashboard</span></i>
->>>>>>> a67a2f018334bd55022cc982108950ee4d7ae5c2
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Carica_Risorsa">
