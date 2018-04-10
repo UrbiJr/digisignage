@@ -43,7 +43,7 @@ class RisorseTab{
 		$query=sprintf("UPDATE Risorse SET nome='%s',idAzienda=%d WHERE id=%d",$risorsa->getNome(), $risorsa->getIdAzienda() ,$risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
-	public static function getFiles($risorsa){
+	public static function getFile($risorsa){
 		$query=sprintf("SELECT * FROM File WHERE idRisorsa = %d", $risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
