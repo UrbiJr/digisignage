@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	$('#reload-button').css('display', 'none');
 
     $('.reorder_link').on('click',function(){
         $("ul.reorder-photos-list").sortable({ tolerance: 'pointer' });
