@@ -24,7 +24,7 @@
 			break;
 		case 'delete':
 			$risorsa=RisorseTab::getById($_GET['id']);
-			RisorseTab::remove($risorsa);
+			$risorsa->delete();
 			$risorse=RisorseTab::getRisorseByUtente($utente);
 			$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewRisorse.php");
 			break;
@@ -40,4 +40,6 @@
 			echo 'oh no';
 			break;
 	}
+	
+	
 ?>
