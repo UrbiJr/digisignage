@@ -3,8 +3,6 @@
 <?php
 $ordinaSequenze=new OrdinaSequenze();
 ?>
-<script src="./js/sortable.js"></script>
-
 
 <div>
     <a href="javascript:void(0);" class="btn outlined mleft_no reorder_link" id="save_reorder">Riordina foto</a>
@@ -27,5 +25,5 @@ $ordinaSequenze=new OrdinaSequenze();
         </ul>
     </div>
     <br />
-	<button id="reload-button" type="button" onclick="reload()">Riordina ancora</button>
+	<button id="reload-button" style="display:none" type="button" onclick="reload()">Riordina ancora</button>
 </div>
