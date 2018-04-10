@@ -80,12 +80,7 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li id="bar_dash" class="breadcrumb-item active"></li>
-      </ol>
+    
     </div>
     <?php echo $content ?>
   </div>
