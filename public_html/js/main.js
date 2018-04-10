@@ -22,7 +22,10 @@
 
 
     $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
+        $(this).focus(function(){gin(){
+      $( "#div_error" ).css("visibility","hidden");
+    }
+
            hideValidate(this);
         });
     });
@@ -40,7 +43,10 @@
         }
     }
 
-    function showValidate(input) {
+    function showValidate(input) {gin(){
+      $( "#div_error" ).css("visibility","hidden");
+    }
+
         var thisAlert = $(input).parent();
 
         $(thisAlert).addClass('alert-validate');
@@ -112,6 +118,8 @@
       $( "#div_error" ).css("visibility","hidden");
     }
 
-
+    function getNameDashboard(name){
+      $("#bar_dash").text(name);
+    }
 
 })(jQuery);
