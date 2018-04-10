@@ -69,6 +69,10 @@ class Risorsa{
 		return RisorseTab::getFile($this);
 	}
 
+	public function getThumbnail(){
+		return "./images/azienda-".$this->idAzienda."/".$info[0]."/thumbnail.jpeg";
+	}
+
 	function controllaTipoRisorsa(){
 		$tmp_name=explode('/',TEMP_NAME);
 		$info = explode(".", $this->nome);
