@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
   <title>ProjectWork</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -15,16 +16,13 @@
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/sb-admin.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <!-- Bootstrap core JavaScript-->
   <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
   <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <style>
-  input[type='file']{
-    color: transparent;
-  }
-  </style>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -81,8 +79,13 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo( $utente->getUsername());  ?></a>
+        <li>
+         <div class="dropdown">
+           <button class="dropbtn"><?php echo( $utente->getUsername());?></button>
+           <div class="dropdown-content">
+             <a href="#"><?php echo( "IdAzienda: ".$utente->getAzienda());?></a>
+           </div>
+         </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="index.php?model=login&action=logout">
@@ -94,7 +97,6 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-
     </div>
     <?php echo $content ?>
   </div>
