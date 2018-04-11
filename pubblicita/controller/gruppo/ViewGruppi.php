@@ -7,8 +7,7 @@
 				<th>Id</th>
 				<th>Sigla</th>
 				<th>Descrizione</th>
-				<th>Azienda</th>
- 	 	     		<th>Modifica</th>
+ 	 	     	<th>Modifica</th>
 				<th>Elimina</th>
 			</tr>
 			<?php foreach($gruppi as $key => $gruppo):?>
@@ -16,7 +15,6 @@
 					<td><?php echo $key?></td>
 					<td><?php echo $gruppo->getSigla();?></td>
 					<td><?php echo $gruppo->getDescrizione();?></td>
-					<td><?php echo $gruppo->getAzienda()->getRagioneSociale();?></td>	
             		<td><a href="index.php?model=gruppo&id=<?php echo $key?>&action=edit">Modifica<a></td>
 					<td><a onClick="return confirm('Sei sicuro?')" href="index.php?model=gruppo&id=<?php echo $key?>&action=delete">Elimina<a></td>
 				</tr>

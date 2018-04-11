@@ -13,13 +13,6 @@
          	  		<input type="hidden" name="id" value=<?php echo($gruppo->getId());?>>
   			   	 	Reinserisci Sigla <input type="text" name="sigla" value=<?php echo($gruppo->getSigla()); ?>><br>
 					Reinserisci descrizione <input type="text" name="descrizione" value=<?php echo($gruppo->getDescrizione()); ?>><br>
-
-           			Reinserisci azienda <select name="idAzienda"><br>
-					<?php foreach ($aziende as $key=>$azienda):?>
-					<option value=<?php echo ($key);?>
-					<?php if($gruppo->getIdAzienda()==$azienda->getId()):
-					echo ("selected");?> <?php endif;?>><?php echo($azienda->getRagioneSociale())?></option>
-					<?php endforeach;?>
 				    <input type="submit" class="btn btn-dark" value="Modifica" name="submit" />
 				</form>
 				<p> <?php echo $error ?> </p>
