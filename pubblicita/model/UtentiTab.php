@@ -78,7 +78,7 @@ class UtentiTab{
 	}
 
 		public static function getAzienda($utente){
-		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$utente->getId());
+		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$utente->getIdAzienda());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
@@ -91,7 +91,7 @@ class UtentiTab{
 	}
 
 	public static function getRuolo($utente){
-		$query=sprintf("SELECT * FROM Ruolo WHERE id=%d",$utente->getId());
+		$query=sprintf("SELECT * FROM Ruolo WHERE id=%d",$utente->getIdRuolo());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
