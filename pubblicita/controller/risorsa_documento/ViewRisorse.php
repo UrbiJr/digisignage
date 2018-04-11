@@ -1,8 +1,8 @@
 </br>
 		<?php if($risorse):?>
-			<h1 align="center">Schede</h1><br>
+			<h1 align="center">Lista risorse</h1><br>
 			<div class="container">
-				<table align="center"s class="table table-striped">
+				<table align="center" class="table table-striped">
 					<tr>
 						<th>Id</th>
 						<th>Nome</th>

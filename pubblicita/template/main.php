@@ -82,7 +82,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">utente</a>
+          <a class="nav-link" href="#"><?php echo( $utente->getUsername());  ?></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="index.php?model=login&action=logout">

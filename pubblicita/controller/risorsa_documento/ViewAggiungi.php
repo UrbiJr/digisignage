@@ -1,39 +1,31 @@
-
-<div class="container-fluid">
-<div class="row">
-	<div class="col-sm-4"></div
-		<div class="col-sm-4">
-			<center>
-				<h1 class="display-4">Carica Risorsa</h1>
-			</center>
-		</div>
-	<div class="col-sm-4"></div>
-</div>
-
 <html>
 	<head>
 		<title>Carica Documento</title>
-		<link rel="stylesheet" type="text/css" href="<?php echo CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.css" ?>">
+		<link rel="stylesheet" type="text/css" href="css/ViewAggiungi.css">
+		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
 	</head>
 	<body>
 
 		<div class="row">
 
-
-<div class="row">
  			<div class="col-sm-4"></div>
  			<div class="col-sm-4">
-
+				<center>
+				<br>
+					<h1><i>Carica risorsa</i></h1> <br>
+					<h3>Seleziona la risorsa da caricare </h3> <br>
 					<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
-
+<div><input type='file' class="btn btnUpload"title="Choose a video please" id="aa" onchange="pressed()"><label id="fileLabel"></label></div>
+						<p>
+							<input type="hidden" name="action" value="add"/> 
+							<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+						</p>
+						<p>
+							<input type="submit" class="btn btn-dark" value="Aggiungi" name="submit" />
+						</p>
 					</form>
-					<p> <?php echo $error ?> </p>
+					<br>
+					<h2><?php echo $error; ?> </h2>
+				</center>
 
-			</div>
- 			<div class="col-sm-4"></div>
-		</div>
-<<<<<<< HEAD
-	</div>
-=======
 </html>
->>>>>>> 62745377c5e958bb62fe90b417e6c261a3b62b38
