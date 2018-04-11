@@ -9,7 +9,7 @@ switch ($action) {
       	$content = get_include_contents(CONFIG::$controllerPath."gruppo/ViewAggiungi.php");
       	break;
     case 'add':
- 	    $gruppo = new gruppo(NULL,$_POST['sigla'],$_POST['descrizione'],$_POST['idAzienda']);
+ 	    $gruppo = new gruppo(NULL,$_POST['sigla'],$_POST['descrizione'],$utente->getIdAzienda());
 		$gruppo->save();
 	  	$gruppi = GruppiTab::getAll();
     		$aziende = AziendeTab::getAll();
@@ -23,7 +23,7 @@ switch ($action) {
       	break;
 
 	case 'update':
-       	$gruppo = new Gruppo ($_POST["id"],$_POST['sigla'],$_POST['descrizione'],$_POST['idAzienda']);
+       	$gruppo = new Gruppo ($_POST["id"],$_POST['sigla'],$_POST['descrizione'],$utente->getIdAzienda());
 	
 	    $gruppo->save();
 	    $aziende = AziendeTab::getAll();
