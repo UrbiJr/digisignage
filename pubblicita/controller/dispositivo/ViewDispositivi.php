@@ -2,7 +2,7 @@
 <?php if($dispositivi):?>
 	<h1 align="center">Dispositivi</h1><br>
 	<div class="container">
-		<table align="center"s class="table table-striped">
+		<table class="table table-striped">
 			<tr>
 				<th>Id</th>
 				<th>Nome</th>
@@ -19,7 +19,7 @@
 					<td><?php echo $disp->getNome();?></td>
 					<td><?php echo $disp->getIndirizzoMac();?></td>
 					<td><?php echo $disp->getIndirizzoIp();?></td>
-					<td><?php echo $disp->getOrientamento();?></td>	
+					<td><?php echo $disp->getOrientamento();?></td>
 					<td><?php echo $disp->getGruppo()->getSigla();?></td>
             		<td><a href="index.php?model=dispositivo&id=<?php echo $key?>&action=edit">Modifica<a></td>
 					<td><a onClick="return confirm('Sei sicuro?')" href="index.php?model=dispositivo&id=<?php echo $key?>&action=delete">Elimina<a></td>
