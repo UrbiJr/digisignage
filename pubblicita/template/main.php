@@ -58,7 +58,7 @@
             <i class="fa fa-eye"></i>
             <span class="nav-link-text">Visualizza</span>
           </a>
-        </li>index.php?model=risorsa_documento&action=new#
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
            <a class="nav-link" href="#" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Gruppo';">
             <i class="fa fa-fw fa-wrench"></i>
