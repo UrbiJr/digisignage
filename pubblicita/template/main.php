@@ -20,7 +20,11 @@
   <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
   <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
+  <style>
+  input[type='file']{
+    color: transparent;
+  }
+  </style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -74,8 +78,12 @@
             <i class="fa fa-fw fa-angle-left"></i>
           </a>
         </li>
+
       </ul>
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">utente</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="index.php?model=login&action=logout">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -86,7 +94,7 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-    
+
     </div>
     <?php echo $content ?>
   </div>
