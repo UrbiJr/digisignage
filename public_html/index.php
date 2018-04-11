@@ -46,6 +46,9 @@
  		case 'dispositivo':
 			include (CONFIG::$controllerPath.'dispositivo/controller.php');
 			break;
+                case 'gruppo':
+			include (CONFIG::$controllerPath.'gruppo/controller.php');
+			break;
 	}
 
 	if(($action=='login' && $model=='login') || ($action=='logout' && $model=='login') ){

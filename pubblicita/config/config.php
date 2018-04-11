@@ -45,7 +45,8 @@
  	require_once(CONFIG::$modelPath."SequenzeTab.php");
  	require_once(CONFIG::$modelPath."Utente.php");
  	require_once(CONFIG::$modelPath."UtentiTab.php");
-
+ 	require_once(CONFIG::$modelPath."Azienda.php");
+ 	require_once(CONFIG::$modelPath."AziendeTab.php");
 	require_once(CONFIG::$libPath."lib.php");
 
 
