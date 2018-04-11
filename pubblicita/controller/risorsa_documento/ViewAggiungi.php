@@ -17,7 +17,8 @@
 					<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
 <div><input type='file' class="btn btnUpload"title="Choose a video please" id="aa" onchange="pressed()"><label id="fileLabel"></label></div>
 						<p>
-							<input type="hidden" name="action" value="add"/> 
+							<input type="hidden" name="action" value="add"/>
+							<input type="hidden" name="action" value="add"/>
 							<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 						</p>
 						<p>
@@ -27,5 +28,9 @@
 					<br>
 					<h2><?php echo $error; ?> </h2>
 				</center>
+			</div>
+ 			<div class="col-sm-4"></div>
+		</div>
 
+	</div>
 </html>

@@ -60,7 +60,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-           <a class="nav-link" href="#" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Gruppo';">
+           <a class="nav-link" href="index.php?model=gruppo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Gruppo';">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Gestisci Gruppo</span>
           </a>
