@@ -32,8 +32,6 @@
 			</div>
  			<div class="col-sm-4"></div>
 		</div>
-<<<<<<< HEAD
+
 	</div>
-=======
 </html>
->>>>>>> 62745377c5e958bb62fe90b417e6c261a3b62b38

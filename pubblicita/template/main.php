@@ -58,7 +58,7 @@
             <i class="fa fa-eye"></i>
             <span class="nav-link-text">Visualizza</span>
           </a>
-        </li>
+        </li>index.php?model=risorsa_documento&action=new#
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
            <a class="nav-link" href="#" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Gruppo';">
             <i class="fa fa-fw fa-wrench"></i>
@@ -82,7 +82,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">utente</a>
+          <a class="nav-link" href="#"><?php echo( $utente->getUsername());  ?></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="index.php?model=login&action=logout">
