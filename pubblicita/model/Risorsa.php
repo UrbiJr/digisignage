@@ -1,4 +1,4 @@
-+<?php
+<?php
 
 include("CreateFiles.php");
 include("Thumbnail.php");

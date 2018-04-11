@@ -1,3 +1,15 @@
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-sm-4"></div
+		<div class="col-sm-4">
+			<center>
+				<h1 class="display-4">Carica Risorsa</h1>
+			</center>
+		</div>
+	<div class="col-sm-4"></div>
+</div>
+
 <html>
 	<head>
 		<title>Carica Documento</title>
@@ -27,7 +39,4 @@
 					<br>
 					<h2><?php echo $error ?> </h2>
 				</center>
-			</div>
- 			<div class="col-sm-4"></div>
-		</div>
 </html>
