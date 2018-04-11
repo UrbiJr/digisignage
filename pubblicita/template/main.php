@@ -99,7 +99,7 @@
          <div class="dropdown">
            <button class="dropbtn"><?php echo( $utente->getUsername());?></button>
            <div class="dropdown-content">
-             <a href="#"><?php echo( "IdAzienda: ".$utente->getAzienda());?></a>
+             <a href="#"><?php echo( "IdAzienda: ".$utente->getIdAzienda());?></a>
            </div>
          </div>
         </li>
