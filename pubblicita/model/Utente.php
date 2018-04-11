@@ -61,7 +61,7 @@ class Utente{
 		$this->idRuolo = $idRuolo;
 	}
 
-	public function getIdRuolo($idRuolo){
+	public function getIdRuolo(){
 		return $this->IdRuolo;
 	}
 
