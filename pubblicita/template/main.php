@@ -65,15 +65,12 @@
             <span class="nav-link-text">Gestisci Gruppo</span>
           </a>
         </li>
-        <?php if (@$utente->getIdRuolo()==5){
-
-          echo("<li class='nav-item' data-toggle='tooltip' data-placement='right' >
-               <a class='nav-link' href='#' onclick='document.getElementById('bar_dash').innerHTML='Gestore Admin';'>
-                <i class='fa fa-fw fa-wrench'></i>
-                <span class='nav-link-text'>Gestisci Gruppo</span>
-              </a>
-            </li>");
-          }  ?>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+           <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Gestisci Dispositivi</span>
+          </a>
+        </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

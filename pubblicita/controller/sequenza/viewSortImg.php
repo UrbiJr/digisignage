@@ -1,5 +1,6 @@
 <script type="text/javascript">
   $(document).ready(function(){
+    $("#anteprima").hide();
     $("#aggiungi_a_sequenza").click(function(){
       var risorse = document.getElementsByClassName("risorsa");
       var target = document.getElementById("sequenza");
@@ -30,32 +31,32 @@
         //aggiungi la risorsa alla lista in jq
         target.appendChild(checked[i]);
         //aggiungi con ajax
+
       }
     });
     $(".risorsa").on("click",".rimuovi_risorsa",function(){
-    alert("ciao");
+      //alert("ciao");
+      var target = document.getElementById("risorse");
+      var button = document.getElementById($(this).attr("id"));
+      var parent = button.parentElement;
+
+      var checkbox = document.createElement("INPUT");
+      checkbox.type = "checkbox";
+      checkbox.classList.add("ris_selector");
+
+      parent.removeChild(parent.children[1]);
+      parent.insertBefore(checkbox,parent.children[0]);
+      target.appendChild(parent);
     });
-    $("#sequenza").sortable({
+
+    $("#btn_pubblica").click(function(){
+
+    });
+    $("#btn_anteprima").click(function(){
+      //fai comparire la schermata di anteprima
 
     });
   });
-  /*
-  $(".rimuovi_risorsa").click(function(){
-    alert("ciao");
-    /*
-    var target = document.getElementById("risorse");
-    var button = document.getElementById($(this).attr("id"));
-    var parent = button.parentElement;
-    var checkbox = document.createElement("INPUT");
-    checkbox.type = "checkbox";
-    checkbox.classList.add("ris_selector");
-
-    parent.removeChild(parent.children[1]);
-    parent.insertBefore(checkbox,parent.children[0]);
-    target.appendChild(parent);
-    */
-  //});
-
   function getLastIdBtnRemove(){
     var buttons = document.getElementsByClassName("rimuovi_risorsa");
     if(buttons.length > 0){
@@ -70,12 +71,14 @@
   }
 </script>
 <style media="screen">
+/*
   #sequenza{
     height: 300px;
   }
   #risorse{
     height: 300px;
   }
+  */
 </style>
 <?php $ordinaSequenze = new OrdinaSequenze(); ?>
 <div class="container-fluid">
