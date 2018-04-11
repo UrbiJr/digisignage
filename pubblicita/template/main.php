@@ -71,6 +71,22 @@
             <span class="nav-link-text">Gestisci Dispositivi</span>
           </a>
         </li>
+        <?php $ruolo=RuoliTab::getById($utente->getIdRuolo());?>
+        <?php if($ruolo->getCodice()==30):?>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+                 <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+                  <i class="fa fa-fw fa-wrench"></i>
+                  <span class="nav-link-text">Inserisci azienda</span>
+                </a>
+              </li>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+                 <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+                  <i class="fa fa-fw fa-wrench"></i>
+                  <span class="nav-link-text">Inserisci Utente</span>
+                </a>
+              </li>
+            }
+         <?php endif; ?>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
