@@ -46,17 +46,18 @@ class GruppiTab{
 	}
 
 	public static function update($gruppo){
-		$query=sprintf("UPDATE gruppi SET sigla='%s', descrizione='%s', idAzienda=%d WHERE id=%d",$gruppo->getSigla(),$gruppo->getDescrizione(),$gruppo->getIdAzienda(),$gruppo->getId());
+		$query=sprintf("UPDATE Gruppi SET sigla='%s', descrizione='%s', idAzienda=%d WHERE id=%d",$gruppo->getSigla(),$gruppo->getDescrizione(),$gruppo->getIdAzienda(),$gruppo->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 
 	public static function getAzienda($gruppo){
-		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$gruppo->getIdAzienda());
+		$query=sprintf("SELECT * FROM Aziende WHERE id=%d",$gruppo->getIdAzienda());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
 				$azienda= new Azienda($row['id'],$row['ragioneSociale']);
 			}
+		
 			return $azienda;
 		}else{
 			return null;
