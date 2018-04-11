@@ -35,7 +35,7 @@ class Gruppo{
 		$this->descrizione = $descrizione;
 	}
 
-	public function getIdAzienda($idAzienda){
+	public function getIdAzienda(){
 		return $this->idAzienda;
 	}
 

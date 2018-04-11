@@ -62,7 +62,7 @@ class Utente{
 	}
 
 	public function getIdRuolo(){
-		return $this->IdRuolo;
+		return $this->idRuolo;
 	}
 
 	public function save(){
