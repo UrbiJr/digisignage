@@ -13,8 +13,7 @@
 <html>
 	<head>
 		<title>Carica Documento</title>
-		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
-		<link rel="stylesheet" type="text/css" href="css/ViewAggiungi.css">
+		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
 	</head>
 	<body>
 
