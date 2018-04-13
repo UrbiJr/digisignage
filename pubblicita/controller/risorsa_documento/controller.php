@@ -21,7 +21,7 @@
 				}
 				$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$utente->getIdAzienda());
 				$risorsa->save();
-				$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/ok.php");
+				$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/fileUploaded.php");
 			}else{
 				$error="Nessun file selezionato!";
 				$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");
