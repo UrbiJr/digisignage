@@ -15,10 +15,10 @@
 					<h1><i>Carica risorsa</i></h1> <br>
 					<h3>Seleziona la risorsa da caricare </h3> <br>
 					<form action="index.php?model=risorsa_documento&action=add" method="post" enctype="multipart/form-data">
-<div><input type='file' class="btn btnUpload"title="Choose a video please" id="aa" onchange="pressed()"><label id="fileLabel"></label></div>
+<div><input type='file' class="btn btnUpload"title="Choose a video please" name="file" onchange="pressed()"><label id="fileLabel"></label></div>
 						<p>
 							<input type="hidden" name="action" value="add"/>
-							<input type="hidden" name="action" value="add"/>
+							<input type="hidden" name="model" value="risorsa_documento"/>
 							<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 						</p>
 						<p>

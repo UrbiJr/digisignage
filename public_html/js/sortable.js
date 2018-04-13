@@ -3,10 +3,11 @@ $(document).ready(function(){
         $("#sequenza").sortable({ tolerance: 'pointer' });
         $('.image_link').attr("href","javascript:void(0);");
         $('.image_link').css("cursor","move");
+
         $("#btn_salva").click(function( e ){
             if( !$("#save_reorder i").length ){
 
-                $("ul.reorder-photos-list").sortable('destroy');
+                $("#sequenza").sortable('disable');
 
                 var h = [];
                 $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id').substr(9));  });
@@ -78,7 +79,6 @@ $(document).ready(function(){
       var target = document.getElementById("risorse");
       var button = document.getElementById($(this).attr("id"));
       var parent = button.parentElement;
-
       var checkbox = document.createElement("INPUT");
       checkbox.type = "checkbox";
       checkbox.classList.add("ris_selector");
@@ -86,10 +86,13 @@ $(document).ready(function(){
       parent.removeChild(parent.children[1]);
       parent.insertBefore(checkbox,parent.children[0]);
       target.appendChild(parent);
+
     });
 
     $("#btn_riordina").click(function(){
         //window.location.href = "index.php?model=sequenza&action=start&nocache=" + (new Date()).getTime();
+        $("#sequenza").sortable('enable');
+        $("#reorder-helper").html("1. Sposta le foto per riordinare.<br>2. Clicca 'Salva Riordinamento' quando finito.");
     });
 });
 
