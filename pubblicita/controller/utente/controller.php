@@ -4,7 +4,13 @@ $action=(isset($_REQUEST['action']) ? $_REQUEST['action'] : 'list');
 
 switch ($action) {
   case 'list':
-    $utenti = UtentiTab::getAll();
+    $ruolo=RuoliTab::getById($utente->getIdRuolo());
+    if($ruolo->getCodice()==30){
+      $utenti = UtentiTab::getAll();
+     }else {
+      $utenti = UtentiTab::getByIdAzienda($utente->getIdAzienda());
+    }
+
     $content=get_include_contents(CONFIG::$controllerPath."utente/ViewUtenti.php");
     break;
   case 'new':
@@ -20,13 +26,25 @@ switch ($action) {
     }
     $utenteN = new Utente(NULL,$_POST['nome'],$_POST['password'],$_POST['mail'],$_POST['id_a'],$ruoloAdd);
     $utenteN->save();
-    $utenti = UtentiTab::getAll();
+    $ruolo=RuoliTab::getById($utente->getIdRuolo());
+    if($ruolo->getCodice()==30){
+      $utenti = UtentiTab::getAll();
+     }else {
+      $utenti = UtentiTab::getByIdAzienda($utente->getIdAzienda());
+    }
+
     $content = get_include_contents(CONFIG::$controllerPath."utente/ViewUtenti.php");
     break;
   case 'delete':
     $utenteN = UtentiTab::getById($_GET["id"]);
     $utenteN->delete();
-    $utenti = UtentiTab::getAll();
+    $ruolo=RuoliTab::getById($utente->getIdRuolo());
+    if($ruolo->getCodice()==30){
+      $utenti = UtentiTab::getAll();
+     }else {
+      $utenti = UtentiTab::getByIdAzienda($utente->getIdAzienda());
+    }
+
     $content = get_include_contents(CONFIG::$controllerPath."utente/ViewUtenti.php");
     break;
 }
