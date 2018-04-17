@@ -76,30 +76,29 @@ class Risorsa{
 	function controllaTipoRisorsa(){
 		$tmp_name=explode('/',TEMP_NAME);
 		$info = explode(".", $this->nome);
+		$info[1] = strtolower ($info[1]);
 		//CREAZIONE CARTELLA PER OGNI RISORSA
 		@mkdir("./images/azienda-".$this->idAzienda, 0777);
-		chmod("./images/azienda-".$this->idAzienda, 0777);
+		@chmod("./images/azienda-".$this->idAzienda, 0777);
 		@mkdir("./images/azienda-".$this->idAzienda."/".$info[0], 0777);
-		chmod("./images/azienda-".$this->idAzienda."/".$info[0], 0777);
-		switch($info[1]){
-			case 'pdf':
-				if(CreateFiles::countPages(TEMP_NAME)>1){
-					echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img"));
-					Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
-				}else{
-					echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img-0"));
-					Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
-				}
-				break;
-			default:
-				rename((TEMP_NAME), ("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg"));
+		@chmod("./images/azienda-".$this->idAzienda."/".$info[0], 0777);
+		if($info[1] === "pdf"){
+			if(CreateFiles::countPages(TEMP_NAME)>1){
+				echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img"));
 				Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
-				break;
+			}else{
+				echo (CreateFiles::convert(TEMP_NAME,"./images/azienda-".$this->idAzienda."/".$info[0]."/","img-0"));
+				Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
+			}
+		}else{
+			rename((TEMP_NAME), ("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg"));
+			Thumbnail::creaThumbnail("./images/azienda-".$this->idAzienda."/".$info[0]."/img-0.jpeg",$this->idAzienda, $info[0]);
 		}
 	}
 
 	private function saveToDatabase(){
 		$info = explode(".", $this->nome);
+		$info[1] = strtolower ($info[1]);
 		if($info[1]==='pdf'){
 			$n=CreateFiles::countPages(TEMP_NAME);
 			if($n==1){
