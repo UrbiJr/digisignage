@@ -57,7 +57,7 @@ class GruppiTab{
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
 				$azienda= new Azienda($row['id'],$row['ragioneSociale']);
 			}
-		
+
 			return $azienda;
 		}else{
 			return null;
@@ -102,6 +102,21 @@ class GruppiTab{
 				$utenti[$row['id']]= new Utente($row['id'],$row['nome'],$row['password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
 			}
 			return $utenti;
+		}else{
+			return null;
+		}
+	}
+
+	public static function getGruppoByUtente($utente){
+		$query=sprintf("SELECT * FROM Gruppi
+										JOIN GestioneGruppi ON Gruppi.id = GestioneGruppi.idGruppo
+										JOIN Utenti ON GestioneGruppi.idUtente = Utenti.id
+										WHERE Utenti.id=%d",$utente->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$gruppoArray = $result->fetch_array(MYSQLI_ASSOC);
+			$gruppo = new Gruppo($gruppoArray['id'],$gruppoArray['sigla'],$gruppoArray['descrizione'],$gruppoArray['idAzienda']);
+			return $gruppo;
 		}else{
 			return null;
 		}

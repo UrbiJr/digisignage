@@ -16,27 +16,27 @@ $(document).ready(function(){
                     type: "POST",
                     url: "index.php?model=sequenza&action=sort",
                     data: {ids: " " + h + ""},
-					dataType: "text",
+					          dataType: "text",
 
-				    beforeSend: function() {
-						$('#save_reorder').css('display', 'none');
-					    $("#reorder-helper").html( '<img height="24px" witdh="24px" src="images/loading.svg"/> Riordinando le foto - Potrebbe richiedere un momento. Non lasciare questa pagina.').removeClass("light_box").addClass("notice notice_error");
-					},
+        				    beforeSend: function() {
+          						$('#save_reorder').css('display', 'none');
+          					    $("#reorder-helper").html( '<img height="24px" witdh="24px" src="images/loading.svg"/> Riordinando le foto - Potrebbe richiedere un momento. Non lasciare questa pagina.').removeClass("light_box").addClass("notice notice_error");
+          					},
 
-					complete: function() {
-						$("#reorder-helper").html('<img height="24px" witdh="24px" src="images/completed.png"/> Caricamento completato.');
-					},
+          					complete: function() {
+          						$("#reorder-helper").html('<img height="24px" witdh="24px" src="images/completed.png"/> Caricamento completato.');
+          					},
 
-					success: function(data){
-						$('#reload-button').css('display', 'block');
-					},
+          					success: function(data){
+          						$('#reload-button').css('display', 'block');
+          					},
 
-					error: function(obj, text, error) {
-					    alert(obj.responseText);
-					}
-				});
-		        return false;
-			}
+          					error: function(obj, text, error) {
+          					    alert(obj.responseText);
+          					}
+				        });
+		            return false;
+			      }
             e.preventDefault();
         });
 
@@ -70,7 +70,24 @@ $(document).ready(function(){
         //aggiungi la risorsa alla lista in jq
         target.appendChild(checked[i]);
         //aggiungi con ajax
+        var idRisorsa = checked[i].id;
+        var nOrdine = (target.children).length;
 
+        $.ajax({
+          type: "POST",
+          url: "index.php?model=sequenza&action=add",
+          data: {idRisorsa: idRisorsa, nOrdine: nOrdine},
+          dataType: "text",
+          success: function(data){/*
+            //metti l'id della sequenza appena creata nell'attributo id di checked
+            checked[i].id = data;
+            //aggiungi la risorsa alla lista in jq
+            target.appendChild(checked[i]);
+          */},
+          error: function(){
+            alert("errore");
+          }
+        });
       }
     });
 
@@ -86,7 +103,17 @@ $(document).ready(function(){
       parent.removeChild(parent.children[1]);
       parent.insertBefore(checkbox,parent.children[0]);
       target.appendChild(parent);
+/*
+      var ris = (parent.id).split("_");
+      var idRisorsa = ris[ris.length-1];
 
+      $.ajax({
+        type: "GET",
+        url: "index.php?model=sequenza&action=delete",
+        data: {idRisorsa: idRisorsa},
+        dataType: "text"
+      });
+      */
     });
 
     $("#btn_riordina").click(function(){

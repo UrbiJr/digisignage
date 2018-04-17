@@ -94,5 +94,22 @@ class RisorseTab{
 		}else{
 			return null;
 		}
+	}
+
+	public static function getRisorseOutSeq($gruppo){
+		$query = sprintf("SELECT * FROM Risorse
+											WHERE id NOT IN(SELECT Sequenze.idRisorsa FROM Sequenze
+																			WHERE idGruppo=%d)",$gruppo->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$risorse = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+			}
+			return $risorse;
+		}else{
+			return null;
 		}
+
+	}
 }
