@@ -22,7 +22,7 @@
   <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
   <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="css/dispositivo/dispositivo.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -108,7 +108,7 @@
            <div class="dropdown-content">
              <a href="#"><?php
              $azienda=UtentiTab::getAzienda($utente);
-             echo("IdAzienda: ".$azienda->getRagioneSociale());?></a>
+             echo("Nome azienda: ".$azienda->getRagioneSociale());?></a>
            </div>
          </div>
         </li>
