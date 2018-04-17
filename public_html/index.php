@@ -52,6 +52,9 @@
 		case 'azienda':
 				include (CONFIG::$controllerPath.'azienda/controller.php');
 				break;
+		case 'utente':
+				include (CONFIG::$controllerPath.'utente/controller.php');
+				break;
 	}
 
 	if(($action=='login' && $model=='login') || ($action=='logout' && $model=='login') ){

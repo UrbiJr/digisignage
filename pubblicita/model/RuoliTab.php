@@ -18,6 +18,17 @@ class RuoliTab{
 		}
 	}
 
+	public static function getByCode($code){
+		$query=sprintf("SELECT * FROM Ruoli WHERE codice = %d", $code);
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$row=$result->fetch_array(MYSQLI_ASSOC);
+			return new Ruolo($row['id'],$row['codice'],$row['descrizione']);
+		}else{
+			return null;
+		}
+	}
+
 	public static function getAll(){
 		$query=sprintf("SELECT * FROM Ruoli");
 		$result=DBCONNECTION::$con->query($query);
@@ -61,6 +72,6 @@ class RuoliTab{
 			return $utenti;
 		}else{
 			return null;
-		}	
+		}
 	}
 }
