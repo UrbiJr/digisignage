@@ -5,15 +5,15 @@
 				<table align="center" class="table table-striped">
 					<tr>
 						<th>Id</th>
-						<th>Nome</th>
-						<th>Id Azienda</th>
+						<th>Nome Risorsa</th>
+						<!--<th>Id Azienda</th>-->
 						<th>Elimina</th>
 					</tr>
 					<?php foreach($risorse as $key => $risorsa):?>
 						<tr>
 							<td><?php echo $key?></td>
 							<td><?php echo $risorsa->getNome();?></td>
-							<td><?php echo $risorsa->getIdAzienda();?></td>
+							<!--<td><?php echo $risorsa->getIdAzienda();?></td>-->
 							<td><a onClick="return confirm('Sei sicuro')" href="index.php?model=risorsa_documento&id=<?php echo $key?>&action=delete">Elimina<a></td>
 						</tr>
 					<?php endforeach;?>

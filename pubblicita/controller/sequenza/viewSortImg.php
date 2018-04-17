@@ -16,27 +16,30 @@
   <div class="row">
     <div id="ris_container" class="col-5">
       <h4>Risorse utilizzabili</h4>
-      <ul id="risorse" class="list-group" >
-        <?php
-          //Fetch all images from database
-          $images=$ordinaSequenze->getRows();
-          if(!empty($images)):
-            foreach($images as $row):
-              $risorsa = RisorseTab::getById($row['id']);
-        ?>
-        <li id="image_li_<?php echo $row['id']; ?>" class="ui-sortable-handle risorsa">
-              <input type="checkbox" class="ris_selector">
-                <a href="javascript:void(0);" style="float:none;" class="image_link">
-                    <img src="<?php $risorsa->getThumbnail(); ?>" alt="">
-                </a>
-        </li>
-      <?php endforeach;
-            endif;?>
+      <ul id="risorse" class="list-group">
+
       </ul>
     </div>
     <div id="seq_container" class="col-6">
       <h4>Sequenza</h4>
       <ul id="sequenza" class="reorder_ul reorder-photos-list">
+        <?php
+          //Fetch all images from database
+          $images=$ordinaSequenze->getRows();
+          if(!empty($images)):
+            foreach($images as $index=>$row):
+              //var_dump($row['idRisorsa']);
+              $risorsa = RisorseTab::getById($row['idRisorsa']);
+              var_dump($risorsa->getThumbnail());
+        ?>
+          <li id="image_li_<?php echo $row['id']; ?>" class="risorsa">
+                  <a href="javascript:void(0);" style="float:none;" class="image_link">
+                    <img src="<?php echo $risorsa->getThumbnail(); ?>" alt="">
+                  </a>
+                  <button id="<?php echo $index ?>" type="button" class="btn btn-sm btn-default rimuovi_risorsa">rimuovi</button>
+          </li>
+        <?php endforeach;
+            endif;?>
       </ul>
     </div>
   </div>
