@@ -11,6 +11,7 @@
   <title>ProjectWork</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
@@ -34,36 +35,36 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" title="">
           <a class="nav-link" href="#">
-            <i class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text">MENU</span></i>
+            <i class="imgMenu" class="nav-link" href="#"><img src="images/loghino.png" width="20" height="20"><span class="nav-link-text">MENU</span></i>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
           <a class="nav-link" href="index.php?model=risorsa_documento&action=new" onclick="getNameDashboard('Carica Risorsa)';">
             <i class="fa fa-arrow-circle-o-up"></i>
             <span class="nav-link-text">Carica Risorsa</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right">
           <a class="nav-link" href="index.php?model=sequenza&action=start" onclick="document.getElementById('bar_dash').innerHTML='Ordina';">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Ordina</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
           <a class="nav-link" href="index.php?model=risorsa_documento&action=list" onclick="document.getElementById('bar_dash').innerHTML='Visualizza';">
             <i class="fa fa-eye"></i>
             <span class="nav-link-text">Visualizza</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
            <a class="nav-link" href="index.php?model=gruppo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Gruppo';">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Gestisci Gruppo</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
            <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Gestisci Dispositivi</span>
@@ -95,17 +96,20 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li>
+        <li class="nav-item">
          <div class="dropdown">
            <button class="dropbtn"><?php echo( $utente->getUsername());?></button>
            <div class="dropdown-content">
-             <a href="#"><?php echo( "IdAzienda: ".$utente->getIdAzienda());?></a>
+             <a  href="#"><?php echo( "IdAzienda: ".$utente->getIdAzienda());?></a>
            </div>
          </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.php?model=login&action=logout">
+         <div class="dropdown">
+           <button onClick="window.location.href = 'index.php?model=login&action=logout' " class="dropbtn">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+	   </button>
+         </div>
         </li>
       </ul>
     </div>
