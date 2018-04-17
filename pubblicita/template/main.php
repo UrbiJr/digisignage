@@ -72,7 +72,7 @@
         <?php $ruolo=RuoliTab::getById($utente->getIdRuolo());?>
         <?php if($ruolo->getCodice()==30):?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-                 <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+                 <a class="nav-link" href="index.php?model=azienda&action=list">
                   <i class="fa fa-fw fa-wrench"></i>
                   <span class="nav-link-text">Inserisci azienda</span>
                 </a>
