@@ -2,7 +2,7 @@
 		<?php if($risorse):?>
 			<h1 align="center">Lista risorse</h1><br>
 			<div class="container">
-				<table align="center" class="table table-striped">
+				<table align="center" class="table table-dark table-hover">
 					<tr>
 						<th>Id</th>
 						<th>Nome Risorsa</th>

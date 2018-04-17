@@ -77,7 +77,7 @@
                   <span class="nav-link-text">Inserisci Utente</span>
                 </a>
               </li>
-            
+
  	<?php elseif($ruolo->getCodice()==20):?>
  		<li class="nav-item" data-toggle="tooltip" data-placement="right" >
                  <a class="nav-link" href="index.php?model=utente&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
@@ -122,7 +122,7 @@
       </ul>
     </div>
   </nav>
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="margin-left: 50px">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
     </div>

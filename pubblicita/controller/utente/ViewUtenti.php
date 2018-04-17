@@ -3,7 +3,7 @@
 	<h1 align="center">Utenti</h1></br>
 	<div class="container">
 
-		<table align="center" class="table table-striped">
+		<table align="center" class="table table-dark table-hover">
 			<tr>
 				<th>Id</th>
 				<th>Nome</th>

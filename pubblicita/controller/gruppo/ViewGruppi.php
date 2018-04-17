@@ -2,7 +2,7 @@
 <?php if($gruppi):?>
 	<h1 align="center">Gruppi</h1><br>
 	<div class="container">
-		<table align="center"s class="table table-striped">
+		<table align="center"s class="table table-dark table-hover">
 			<tr>
 				<th>Id</th>
 				<th>Sigla</th>
