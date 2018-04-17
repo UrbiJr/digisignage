@@ -38,17 +38,17 @@ class Azienda{
 	public function delete(){
 		AziendeTab::remove($this);
 	}
-	
+
 	public function getUtenti(){
 		return AziendeTab::getUtenti($this);
 	}
-	
+
 	public function getRisorse(){
 		return AziendeTab::getRisorse($this);
-	}	
-	
+	}
+
 	public function getGruppi(){
 		return AziendeTab::getGruppi($this);
 	}
-	
+
 }

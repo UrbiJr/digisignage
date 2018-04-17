@@ -23,5 +23,5 @@
 <?php endif;?>
 <br>
 <div style="margin: 0 auto; text-align: center">
-	<a href="index.php?model=azienda&action=new" style="font-size:20px">Aggiungi Azienda</a><br><br>
+	<a href="index.php?model=azienda&action=new" style="font-size:20px">Aggiungi azienda</a><br><br>
 </div>

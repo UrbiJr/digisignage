@@ -99,7 +99,9 @@
          <div class="dropdown">
            <button class="dropbtn"><?php echo( $utente->getUsername());?></button>
            <div class="dropdown-content">
-             <a href="#"><?php echo( "IdAzienda: ".$utente->getIdAzienda());?></a>
+             <a href="#"><?php
+             $azienda=UtentiTab::getAzienda($utente);
+             echo("IdAzienda: ".$azienda->getRagioneSociale());?></a>
            </div>
          </div>
         </li>
