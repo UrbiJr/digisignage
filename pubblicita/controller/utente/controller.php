@@ -12,7 +12,13 @@ switch ($action) {
     $content = get_include_contents(CONFIG::$controllerPath."utente/ViewAggiungi.php");
     break;
   case 'add':
-    $utenteN = new Utente(NULL,$_POST['nome'],$_POST['password'],$_POST['mail'],$_POST['id_a'],(RuoliTab::getByCode($_POST['ruolo']))->getid());
+    $ruolo=RuoliTab::getById($utente->getIdRuolo());
+    if($ruolo->getCodice()==30){
+      $ruoloAdd=(RuoliTab::getByCode(20))->getid();
+    }else {
+      $ruoloAdd=(RuoliTab::getByCode(10))->getid();
+    }
+    $utenteN = new Utente(NULL,$_POST['nome'],$_POST['password'],$_POST['mail'],$_POST['id_a'],$ruoloAdd);
     $utenteN->save();
     $utenti = UtentiTab::getAll();
     $content = get_include_contents(CONFIG::$controllerPath."utente/ViewUtenti.php");
