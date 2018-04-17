@@ -66,7 +66,8 @@ class UtentiTab{
 	}
 
 	public static function insert($utente){
-		$query=sprintf("INSERT INTO Utenti (username,hashed_password,mail,idAzienda,idRuolo) VALUES('%s','%s','%s',%d,%d)",$utente->getUsername(),$utente->getPassword(),$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo());
+		$hashed_password = password_hash($utente->getPassword(), PASSWORD_DEFAULT);
+		$query=sprintf("INSERT INTO Utenti (username,hashed_password,mail,idAzienda,idRuolo) VALUES('%s','%s','%s',%d,%d)",$utente->getUsername(),$hashed_password,$utente->getMail(),$utente->getIdAzienda(),$utente->getIdRuolo());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
@@ -78,7 +79,7 @@ class UtentiTab{
 	}
 
 		public static function getAzienda($utente){
-		$query=sprintf("SELECT * FROM Azienda WHERE id=%d",$utente->getIdAzienda());
+		$query=sprintf("SELECT * FROM Aziende WHERE id=%d",$utente->getIdAzienda());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
@@ -91,7 +92,7 @@ class UtentiTab{
 	}
 
 	public static function getRuolo($utente){
-		$query=sprintf("SELECT * FROM Ruolo WHERE id=%d",$utente->getIdRuolo());
+		$query=sprintf("SELECT * FROM Ruoli WHERE id=%d",$utente->getIdRuolo());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){

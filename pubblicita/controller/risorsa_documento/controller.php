@@ -12,6 +12,7 @@
 			$target_dir = "/tmp/";
 			$error="";
 			if($_FILES['file']['tmp_name']){
+				
 				$target_file = $target_dir . basename($_FILES['file']['tmp_name']);
 				//$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 				//echo($_FILES["file"]["tmp_name"]);
@@ -19,9 +20,16 @@
 				if (!(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file))) {
 					echo("Failed to upload.");
 				}
-				$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$utente->getIdAzienda());
-				$risorsa->save();
-				$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/fileUploaded.php");
+				$info= explode(".", basename($_FILES['file']['name']));
+				$info[1] = strtolower ($info[1]);
+				if($info[1] === "pdf" || $info[1] === "jpeg" || $info[1] === "jpg"){
+					$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$utente->getIdAzienda());
+					$risorsa->save();
+					$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/fileUploaded.php");
+				}else{
+					$error="Estensione non supportata!";
+					$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");
+				}
 			}else{
 				$error="Nessun file selezionato!";
 				$content=get_include_contents(CONFIG::$controllerPath."risorsa_documento/ViewAggiungi.php");

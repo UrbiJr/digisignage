@@ -26,5 +26,5 @@
 <?php endif;?>
 <br>
 <div style="margin: 0 auto; text-align: center">
-	<a href="index.php?model=gruppo&action=new" style="font-size:20px">Aggiungi GRUPPO</a><br><br>
+	<a href="index.php?model=gruppo&action=new" style="font-size:20px">Aggiungi gruppo</a><br><br>
 </div>
