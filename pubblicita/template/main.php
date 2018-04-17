@@ -11,7 +11,6 @@
   <title>ProjectWork</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
@@ -64,6 +63,12 @@
             <span class="nav-link-text">Gestisci Gruppo</span>
           </a>
         </li>
+        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
+           <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Gestisci Dispositivi</span>
+          </a>
+        </li>
         <?php $ruolo=RuoliTab::getById($utente->getIdRuolo());?>
         <?php if($ruolo->getCodice()==30):?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" >
@@ -73,25 +78,13 @@
                 </a>
               </li>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-                 <a class="nav-link" href="index.php?model=utente&action=list">
+                 <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
                   <i class="fa fa-fw fa-wrench"></i>
                   <span class="nav-link-text">Inserisci Utente</span>
                 </a>
               </li>
-        <?php elseif($ruolo->getCodice()==20):?>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-             <a class="nav-link" href="index.php?model=utente&action=list">
-              <i class="fa fa-fw fa-wrench"></i>
-              <span class="nav-link-text">Inserisci Utente</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-             <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
-              <i class="fa fa-fw fa-wrench"></i>
-              <span class="nav-link-text">Gestisci Dispositivi</span>
-            </a>
-          </li>
-        <?php endif; ?>
+            }
+         <?php endif; ?>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

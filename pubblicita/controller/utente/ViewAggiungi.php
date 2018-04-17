@@ -18,9 +18,9 @@
   					         <option value="<?php echo $azienda->getId();?>"><?php echo $azienda->getRagioneSociale();?></option>
   				    <?php endforeach?>
               <input type="hidden" value="20" name="ruolo">
-            <?php else if($ruolo->getCodice()==20):?>
+            <?php elseif($ruolo->getCodice()==20):?>
               <input type="hidden" value="10" name="ruolo">
-              <input type="hidden" value="<?php echo $utente->getIdAzienda();?>" name="azienda">
+              <input type="hidden" value="<?php echo $utente->getIdAzienda();?>" name="id_a">
             <?php endif;?>
 					  <br/><input type="submit" class="btn btn-dark" value="Aggiungi" name="submit" />
 				</form>
