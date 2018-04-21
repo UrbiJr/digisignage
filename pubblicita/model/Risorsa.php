@@ -6,6 +6,7 @@ include("Thumbnail.php");
 class Risorsa{
 	private $id;
 	private $nome;
+	private $data;
 	private $idAzienda;
 
 	/* 	costruttore per Risorse create per la prima volta
@@ -14,9 +15,10 @@ class Risorsa{
 		primo parametro.
 		Altrimenti, utilizzare l'$id restituito dalla query (per esempio)
 	*/
-	function __construct($id, $nome, $idAzienda){
+	function __construct($id, $nome,$data, $idAzienda){
 		$this->id = $id;
 		$this->nome=$nome;
+		$this->data=$data;
 		$this->idAzienda=$idAzienda;
 		if ($this->id == null) {
 			$this->controllaTipoRisorsa();
@@ -37,6 +39,14 @@ class Risorsa{
 
 	public function setNome($nome){
 		$this->nome = $nome;
+	}
+
+	public function setData($data){
+		$this->data=$data;
+	}
+
+	public function getData(){
+		return $this->data;
 	}
 
 	public function getIdAzienda(){

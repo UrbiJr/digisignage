@@ -9,7 +9,7 @@ class RisorseTab{
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$row=$result->fetch_array(MYSQLI_ASSOC);
-			return new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+			return new Risorsa($row['id'],$row['nome'],$row['data'],$row['idAzienda']);
 		}else{
 			return null;
 		}
@@ -20,7 +20,7 @@ class RisorseTab{
 		if($result){
 			$risorse = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['data'],$row['idAzienda']);
 			}
 			return $risorse;
 		}else{
@@ -34,13 +34,13 @@ class RisorseTab{
 		$result=DBCONNECTION::$con->query($query);
 	}
 	public static function insert($risorsa){
-		$query=sprintf("INSERT INTO Risorse (nome, idAzienda) VALUES('%s', %d)",$risorsa->getNome(), $risorsa->getIdAzienda());
+		$query=sprintf("INSERT INTO Risorse (nome,data, idAzienda) VALUES('%s','%s', %d)",$risorsa->getNome(),$risorsa->getData(), $risorsa->getIdAzienda());
 		$result=DBCONNECTION::$con->query($query);
 		$n=DBCONNECTION::$con->insert_id;
 		return $n;
 	}
 	public static function update($risorsa){
-		$query=sprintf("UPDATE Risorse SET nome='%s',idAzienda=%d WHERE id=%d",$risorsa->getNome(), $risorsa->getIdAzienda() ,$risorsa->getId());
+		$query=sprintf("UPDATE Risorse SET nome='%s', data='%s', idAzienda=%d WHERE id=%d",$risorsa->getNome(),$risorsa->getData(), $risorsa->getIdAzienda() ,$risorsa->getId());
 		$result=DBCONNECTION::$con->query($query);
 	}
 	public static function getFile($risorsa){

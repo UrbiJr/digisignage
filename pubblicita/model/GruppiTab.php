@@ -79,13 +79,13 @@ class GruppiTab{
 	}
 
 	public static function getRisorse($gruppo){
-		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorsa
+		$query=sprintf("SELECT Risorse.id, Risorse.nome, Risorse.data, Risorse.idAzienda FROM Risorse JOIN Sequenze ON Risorse.id=Sequenze.idRisorsa
 		JOIN Gruppi ON Gruppi.id=Sequenze.idGruppo WHERE Gruppi.id=%d",$gruppo->getId());
 		$result=DBCONNECTION::$con->query($query);
 		if($result){
 			$risorse= array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['idAzienda']);
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['data'],$row['idAzienda']);
 			}
 			return $risorse;
 		}else{

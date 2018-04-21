@@ -69,7 +69,7 @@ class SequenzeTab{
 		if($result){
 			$risorse = array();
 			while($row=$result->fetch_array(MYSQLI_ASSOC)){
-				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome']);
+				$risorse[$row['id']]= new Risorsa($row['id'],$row['nome'],$row['data'],$row['idAzienda']);
 			}
 			return $risorse;
 		}else{
