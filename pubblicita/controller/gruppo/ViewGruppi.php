@@ -10,11 +10,11 @@
  	 	    <th>Modifica</th>
 				<th>Elimina</th>
 			</tr>
-			<?php foreach($gruppi as $key => $gruppo):?>
+			<?php foreach($gruppi as $key => $gruppo1):?>
 				<tr>
 					<td><?php echo $key?></td>
-					<td><?php echo $gruppo->getSigla();?></td>
-					<td><?php echo $gruppo->getDescrizione();?></td>
+					<td><?php echo $gruppo1->getSigla();?></td>
+					<td><?php echo $gruppo1->getDescrizione();?></td>
           <td><a href="index.php?model=gruppo&id=<?php echo $key?>&action=edit">Modifica<a></td>
 					<td><a onClick="return confirm('Sei sicuro?')" href="index.php?model=gruppo&id=<?php echo $key?>&action=delete">Elimina<a></td>
 				</tr>
