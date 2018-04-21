@@ -2,7 +2,7 @@
 <?php if($dispositivi):?>
 	<h1 align="center">Dispositivi</h1><br>
 	<div class="container">
-		<table class="table table-striped">
+		<table class="table table-dark table-hover">
 			<tr>
 				<th>Id</th>
 				<th>Nome</th>

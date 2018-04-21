@@ -22,7 +22,7 @@
   <script src="./js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
   <script src="./js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="css/dispositivo/dispositivo.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -63,12 +63,6 @@
             <span class="nav-link-text">Gestisci Gruppo</span>
           </a>
         </li>
-        <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
-           <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Gestisci Dispositivi</span>
-          </a>
-        </li>
         <?php $ruolo=RuoliTab::getById($utente->getIdRuolo());?>
         <?php if($ruolo->getCodice()==30):?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" >
@@ -78,13 +72,26 @@
                 </a>
               </li>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-                 <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+                 <a class="nav-link" href="index.php?model=utente&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
                   <i class="fa fa-fw fa-wrench"></i>
                   <span class="nav-link-text">Inserisci Utente</span>
                 </a>
               </li>
-            }
-         <?php endif; ?>
+
+ 	<?php elseif($ruolo->getCodice()==20):?>
+ 		<li class="nav-item" data-toggle="tooltip" data-placement="right" >
+                 <a class="nav-link" href="index.php?model=utente&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+                  <i class="fa fa-fw fa-wrench"></i>
+                  <span class="nav-link-text">Inserisci Utente</span>
+                </a>
+              </li>
+  	      <li class="menuItem nav-item" data-toggle="tooltip" data-placement="right" >
+                <a class="nav-link" href="index.php?model=dispositivo&action=list" onclick="document.getElementById('bar_dash').innerHTML='Gestisci Dispositivi';">
+                 <i class="fa fa-fw fa-wrench"></i>
+                 <span class="nav-link-text">Gestisci Dispositivi</span>
+                </a>
+              </li>
+      <?php endif; ?>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -101,7 +108,7 @@
            <div class="dropdown-content">
              <a href="#"><?php
              $azienda=UtentiTab::getAzienda($utente);
-             echo("IdAzienda: ".$azienda->getRagioneSociale());?></a>
+             echo("Nome azienda: ".$azienda->getRagioneSociale());?></a>
            </div>
          </div>
         </li>
@@ -115,7 +122,7 @@
       </ul>
     </div>
   </nav>
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="margin-left: 50px">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
     </div>

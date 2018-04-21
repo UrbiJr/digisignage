@@ -44,7 +44,19 @@ class UtentiTab{
 			return null;
 		}
 	}
-
+	public static function getByIdAzienda($id){
+		$query=sprintf("SELECT * FROM Utenti WHERE idAzienda = %d", $id);
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$utenti = array();
+			while($row=$result->fetch_array(MYSQLI_ASSOC)){
+				$utenti[$row['id']]= new Utente($row['id'],$row['username'],$row['hashed_password'],$row['mail'],$row['idAzienda'],$row['idRuolo']);
+			}
+			return $utenti;
+		}else{
+			return null;
+		}
+	}
 	public static function getAll(){
 		$query=sprintf("SELECT * FROM Utenti");
 		$result=DBCONNECTION::$con->query($query);
