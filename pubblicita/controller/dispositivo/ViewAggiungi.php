@@ -1,9 +1,4 @@
-<html>
-	<head>
-		<title>Aggiungi Dispositivo</title>
-		<link rel="stylesheet" type="text/css" href="css/dispositivo/dispositivo.css">
-	</head>
-	<body>
+
 		<div class="row">
  			<div class="form-container col-sm-4">
 				<h1>Aggiungi dispositivo</h1>
@@ -29,5 +24,3 @@
 				<p> <?php echo $error ?> </p>
 			</div>
 		</div>
-	</body>
-</html>
