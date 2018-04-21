@@ -122,7 +122,7 @@
       </ul>
     </div>
   </nav>
-  <div class="content-wrapper" style="margin-left: 50px">
+  <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
     </div>
