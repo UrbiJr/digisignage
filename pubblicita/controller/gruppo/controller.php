@@ -35,7 +35,8 @@ switch ($action) {
   		$content = get_include_contents(CONFIG::$controllerPath."gruppo/ViewGruppi.php");
     	break;
    	case 'list':
-      $gruppi = GruppiTab::getAll();
+      $azienda = AziendeTab::getAziendaById($utente->getIdAzienda());
+      $gruppi = GruppiTab::getGruppoByAzienda($azienda);
     	$aziende = AziendeTab::getAll();
     	$content=get_include_contents(CONFIG::$controllerPath."gruppo/ViewGruppi.php");
     	break;

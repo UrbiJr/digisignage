@@ -107,6 +107,20 @@ class GruppiTab{
 		}
 	}
 
+	public static function getGruppoByAzienda($azienda){
+		$query=sprintf("SELECT * FROM Gruppi
+										JOIN Aziende ON Gruppi.idAzienda = Azienda.id+
+										WHERE Aziende.id=%d",$azienda->getId());
+		$result=DBCONNECTION::$con->query($query);
+		if($result){
+			$gruppoArray = $result->fetch_array(MYSQLI_ASSOC);
+			$gruppo = new Gruppo($gruppoArray['id'],$gruppoArray['sigla'],$gruppoArray['descrizione'],$gruppoArray['idAzienda']);
+			return $gruppo;
+		}else{
+			return null;
+		}
+	}
+
 	public static function getGruppoByUtente($utente){
 		$query=sprintf("SELECT * FROM Gruppi
 										JOIN GestioneGruppi ON Gruppi.id = GestioneGruppi.idGruppo
