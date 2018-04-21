@@ -23,7 +23,8 @@
 				$info= explode(".", basename($_FILES['file']['name']));
 				$info[1] = strtolower ($info[1]);
 				if($info[1] === "pdf" || $info[1] === "jpeg" || $info[1] === "jpg"){
-					$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$utente->getIdAzienda());
+					$date=date("Y-m-d H:m:s");
+					$risorsa=new Risorsa(null,basename($_FILES['file']['name']),$date,$utente->getIdAzienda());
 					$risorsa->save();
 					$content = get_include_contents(CONFIG::$controllerPath."risorsa_documento/fileUploaded.php");
 				}else{
