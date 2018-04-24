@@ -4,7 +4,7 @@
 			<div class="container">
 				<table align="center" class="table table-dark table-hover">
 					<tr>
-						<th>Id</th>
+						<th>Anteprima</th>
 						<th>Nome Risorsa</th>
 						<th>Data Inserimento</th>
 						<!--<th>Id Azienda</th>-->
@@ -12,7 +12,7 @@
 					</tr>
 					<?php foreach($risorse as $key => $risorsa):?>
 						<tr>
-							<td><?php echo $key?></td>
+							<td><img src="<?php echo $risorsa->getThumbnail();?>"/></td>
 							<td><?php echo $risorsa->getNome();?></td>
 							<td><?php echo $risorsa->getData();?></td>
 							<!--<td><?php echo $risorsa->getIdAzienda();?></td>-->
