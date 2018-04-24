@@ -18,13 +18,15 @@
 			break;
 		case "add":
 			$gruppo = GruppiTab::getGruppoByUtente($utente);
-			$sequenza = new Sequenza(0,$_POST['nOrdine'],$_POST["idRisorsa"],$gruppo->getId());
-			$id = SequenzeTab::insert($sequenza);
+			$sequenza = new Sequenza(null,$_POST['nOrdine'],$_POST["idRisorsa"],$gruppo->getId());
+			//$id = SequenzeTab::insert($sequenza);
+      $sequenza->save();
 			//response alla richesta ajax
-			//echo $id;
+			echo $sequenza->getId();
 			break;
 		case "delete":
-
+      $sequenza = SequenzeTab::getById($_POST['idSequenza']);
+      $sequenza->delete();
 			break;
 	}
 

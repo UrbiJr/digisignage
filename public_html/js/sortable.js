@@ -1,89 +1,142 @@
 $(document).ready(function(){
-
-        $("#sequenza").sortable({ tolerance: 'pointer' });
-        $('.image_link').attr("href","javascript:void(0);");
-        $('.image_link').css("cursor","move");
-
-        $("#btn_salva").click(function( e ){
-            if( !$("#save_reorder i").length ){
-
-                $("#sequenza").sortable('disable');
-
-                var h = [];
-                $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id').substr(9));  });
-
-                $.ajax({
-                    type: "POST",
-                    url: "index.php?model=sequenza&action=sort",
-                    data: {ids: " " + h + ""},
-					          dataType: "text",
-
-        				    beforeSend: function() {
-          						$('#save_reorder').css('display', 'none');
-          					    $("#reorder-helper").html( '<img height="24px" witdh="24px" src="images/loading.svg"/> Riordinando le foto - Potrebbe richiedere un momento. Non lasciare questa pagina.').removeClass("light_box").addClass("notice notice_error");
-          					},
-
-          					complete: function() {
-          						$("#reorder-helper").html('<img height="24px" witdh="24px" src="images/completed.png"/> Caricamento completato.');
-          					},
-
-          					success: function(data){
-          						$('#reload-button').css('display', 'block');
-          					},
-
-          					error: function(obj, text, error) {
-          					    alert(obj.responseText);
-          					}
-				        });
-		            return false;
-			      }
-            e.preventDefault();
+    $("#sequenza").sortable({
+      cursor : "pointer",
+      update: function(event, ui){
+        var h = [];
+        $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id'));  });
+        $.ajax({
+          type: "POST",
+          url: "index.php?model=sequenza&action=sort",
+          data: {ids: " " + h + ""},
+          dataType: "text",
+          success: function(data){
+            //alert("data: "+data);
+          },
+          error: function(obj, text, error){
+              //alert(obj.responseText);
+          }
         });
-
-    $("#aggiungi_a_sequenza").click(function(){
-      var risorse = document.getElementsByClassName("risorsa");
+      }
+    });
+    $("#aggiungi_risorse_selezionate").unbind('click').click(function(){
+      //var risorse = document.getElementsByClassName("risorsa_item");
+      var risorse = document.getElementById("risorse").children;
       var target = document.getElementById("sequenza");
-      var checkbox,checked = [];
+      var checkbox, risorseSelezionate = [];
       //crea elenco di risorse selezionate
       for (var i = 0; i < risorse.length; i++) {
         checkbox = risorse[i].children[0];
         if(checkbox.checked){
-          checked.push(risorse[i]);
+          risorseSelezionate.push(risorse[i]);
         }
       }
-      var rm,
-      lastId = parseInt(getLastIdBtnRemove());
+      //alert(risorseSelezionate.length);
       //aggiungi le risorse selezionate alla sequenza
-      for (var i = 0; i < checked.length; i++) {
-        //crea il bottone per rimuovere la risorsa dalla sequenza
-        rm = document.createElement("BUTTON");
-        rm.classList.add("btn");
-        rm.classList.add("btn-sm");
-        rm.classList.add("btn-default");
-        rm.classList.add("rimuovi_risorsa");
-        rm.id = (lastId+1);
-        lastId = parseInt(rm.id);
-        rm.appendChild(document.createTextNode("rimuovi"));
-        //rimuovi la checkbox
-        checked[i].removeChild(checked[i].children[0]);
-        checked[i].appendChild(rm);
-        //aggiungi la risorsa alla lista in jq
-        target.appendChild(checked[i]);
+      for (var x = 0; x < risorseSelezionate.length; x++) {
         //aggiungi con ajax
-        var idRisorsa = checked[i].id;
-        var nOrdine = (target.children).length;
+        var idRisorsa = risorseSelezionate[x].id;
+        var nOrdine = (target.children).length+1;
 
         $.ajax({
           type: "POST",
           url: "index.php?model=sequenza&action=add",
           data: {idRisorsa: idRisorsa, nOrdine: nOrdine},
           dataType: "text",
-          success: function(data){/*
+          success: function(data){
+            //alert(data);
+            button = risorseSelezionate[x].children[2];
+            button.classList.remove("aggiungi_risorsa");
+            button.classList.add("rimuovi_risorsa");
+            button.innerHTML = "rimuovi";
+            //metti l'id della sequenza appena creata nell'attributo id di checked
+
+            //aggiungi la risorsa alla lista in jq
+            target.appendChild(risorseSelezionate[x]);
+          },
+          error: function(){
+            alert("errore");
+          }
+        });
+      }
+    });
+    $(".aggiungi_risorsa").unbind('click').click(function(){
+      //elemento a cui appendere la risorsa
+      var target = document.getElementById("sequenza");
+      //ottiene il bottone che viene premuto
+      var button = document.getElementById($(this).attr("id"));
+      //ottieni la risorsa da cui proviene il bottone
+      var risorsa = button.parentElement;
+
+      var idRisorsa = risorsa.id;
+      var nOrdine = (target.children).length+1;
+      //alert(nOrdine);
+      //aggiungi al database tramite ajax
+      $.ajax({
+        type: "POST",
+	      url: "index.php?model=sequenza&action=add",
+      	data : {idRisorsa: idRisorsa, nOrdine: nOrdine},
+        dataType: "text",
+	      success: function(data){
+	        alert(data);
+	        //attribuischi alla sequenza appena aggiunta sulla pagina l'id di quella sul database
+          //cambia la classe del bottone aggiungi_sequenza in rimuovi_sequenza
+          button.classList.remove("aggiungi_risorsa");
+          button.classList.add("rimuovi_risorsa");
+          button.innerHTML = "rimuovi";
+      	  //aggiugni la risorsa alla sequenza
+      	  target.appendChild(risorsa);
+	      },
+	      error: function(){
+	        alert("errore");
+	      }
+      });
+
+    });
+
+    $("#rimuovi_risorse_selezionate").unbind('click').click(function(){
+      var risorse = document.getElementsByClassName("risorsa_seq");
+      var target = document.getElementById("risorse");
+      var checkbox,risorseSelezionate = [];
+      var button;
+      //crea elenco di risorse selezionate
+      for (var i = 0; i < risorse.length; i++) {
+        checkbox = risorse[i].children[0];
+        if(checkbox.checked){
+          risorseSelezionate.push(risorse[i]);
+        }
+      }
+      //aggiungi le risorse selezionate alla sequenza
+      for (var i = 0; i < risorseSelezionate.length; i++) {
+        //aggiungi con ajax
+        var idSequenza = risorseSelezionate[i].id;
+
+        $.ajax({
+          type: "POST",
+          url: "index.php?model=sequenza&action=delete",
+          data: {idSequenza: idSequenza},
+          dataType: "text",
+          success: function(data){
+            button = risorseSelezionate[i].children[2];
+            button.classList.remove("rimuovi_risorsa");
+            button.classList.add("aggiungi_risorsa");
+            button.innerHTML = "aggiungi";
+            /*
             //metti l'id della sequenza appena creata nell'attributo id di checked
             checked[i].id = data;
             //aggiungi la risorsa alla lista in jq
             target.appendChild(checked[i]);
-          */},
+            */
+            target.appendChild(risorseSelezionate[i]);
+            //sistema il numero ordine sul db
+            var h = [];
+            $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id'));  });
+            $.ajax({
+              type: "POST",
+              url: "index.php?model=sequenza&action=sort",
+              data: {ids: " " + h + ""},
+              dataType: "text"
+            });
+          },
           error: function(){
             alert("errore");
           }
@@ -91,35 +144,37 @@ $(document).ready(function(){
       }
     });
 
-    $(".risorsa").on("click",".rimuovi_risorsa",function(){
+    $(".risorsa").unbind('click').on("click",".rimuovi_risorsa",function(){
       //alert("ciao");
       var target = document.getElementById("risorse");
       var button = document.getElementById($(this).attr("id"));
       var parent = button.parentElement;
-      var checkbox = document.createElement("INPUT");
-      checkbox.type = "checkbox";
-      checkbox.classList.add("ris_selector");
 
-      parent.removeChild(parent.children[1]);
-      parent.insertBefore(checkbox,parent.children[0]);
-      target.appendChild(parent);
-/*
-      var ris = (parent.id).split("_");
-      var idRisorsa = ris[ris.length-1];
+      var idSequenza = parent.id;
+      alert(idSequenza);
 
       $.ajax({
-        type: "GET",
+        type: "POST",
         url: "index.php?model=sequenza&action=delete",
-        data: {idRisorsa: idRisorsa},
-        dataType: "text"
+        data: {idSequenza: idSequenza},
+        dataType: "text",
+        success: function(){
+          button.innerHTML = "aggiungi";
+          button.classList.remove("rimuovi_risorsa");
+          button.classList.add("aggiungi_risorsa");
+          target.appendChild(parent);
+          //sistema il numero ordine sul db
+          var h = [];
+          $("ul.reorder-photos-list li").each(function() {  h.push($(this).attr('id'));  });
+          $.ajax({
+            type: "POST",
+            url: "index.php?model=sequenza&action=sort",
+            data: {ids: " " + h + ""},
+            dataType: "text"
+          });
+        }
       });
-      */
-    });
 
-    $("#btn_riordina").click(function(){
-        //window.location.href = "index.php?model=sequenza&action=start&nocache=" + (new Date()).getTime();
-        $("#sequenza").sortable('enable');
-        $("#reorder-helper").html("1. Sposta le foto per riordinare.<br>2. Clicca 'Salva Riordinamento' quando finito.");
     });
 });
 
